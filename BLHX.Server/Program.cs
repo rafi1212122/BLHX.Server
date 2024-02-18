@@ -8,7 +8,7 @@ internal class Program
     static void Main()
     {
         Logger.c.Log("Starting...");
-        
+
         Task.Run(GameServer.Start);
         Task.Run(InputSystem.Start).Wait();
     }

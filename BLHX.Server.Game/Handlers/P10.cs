@@ -1,0 +1,72 @@
+﻿using BHXY.Server.Common.Proto.p10;
+using BLHX.Server.Common.Proto;
+
+namespace BLHX.Server.Game.Handlers
+{
+    internal static class P10
+    {
+        [PacketHandler(Command.Cs10800)]
+        static void Cs10800Handler(Connection connection, Packet packet)
+        {
+            var req = packet.Decode<Cs10800>();
+            connection.Send(new Sc10801()
+            {
+                GatewayIp = "192.168.1.4",
+                GatewayPort = 20000,
+                Url = "http://192.168.1.4",
+                ProxyIp = "192.168.1.4",
+                ProxyPort = 20000,
+                Versions = [
+                    "$azhash$7$1$459$470aa097fec844d6",
+                    "$cvhash$467$98edcdd4e7dac668",
+                    "$l2dhash$514$b59cdb747b1c64c9",
+                    "$pichash$15$0d6f59289972cc8a",
+                    "$bgmhash$13$76fdc897426a138d",
+                    "$paintinghash$82$6daa07fa50583c60",
+                    "$mangahash$24$3cefad85368b3296",
+                    "$cipherhash$24$3cefad85368b3296",
+                    "dTag-1"
+                ],
+                Timestamp = (uint)DateTimeOffset.Now.ToUnixTimeSeconds(),
+                Monday0oclockTimestamp = 1606114800
+            });
+        }
+
+        [PacketHandler(Command.Cs10020)]
+        static void Cs10020Handler(Connection connection, Packet packet)
+        {
+            // Arg2 uid
+            // Arg3 accessToken
+            // CheckKey md5(Arg1 + salt)
+            var req = packet.Decode<Cs10020>();
+            connection.Send(new Sc10021()
+            {
+                Result = 0,
+                AccountId = 1,
+                Serverlists = [
+                    new Serverinfo()
+                    {
+                        Ids = [0],
+                        Name = "BLHX.Server",
+                        Ip = "192.168.1.4",
+                        Port = 20000,
+                        ProxyIp = "192.168.1.4",
+                        ProxyPort = 20000
+                    }
+                ],
+                ServerTicket = req.Arg3
+            });
+        }
+
+        [PacketHandler(Command.Cs10022)]
+        static void Cs10022Handler(Connection connection, Packet packet)
+        {
+            var req = packet.Decode<Cs10022>();
+            connection.Send(new Sc10023()
+            {
+                Result = 0,
+                UserId = 1
+            });
+        }
+    }
+}

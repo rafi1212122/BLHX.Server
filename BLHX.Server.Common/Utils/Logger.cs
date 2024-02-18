@@ -26,7 +26,7 @@ namespace BLHX.Server.Common.Utils
             Console.Write(_name);
             Console.ResetColor();
             Console.Write("> ");
-            Console.WriteLine(string.Join("\t", message));
+            Console.Write(string.Join("\t", message.Append(Environment.NewLine)));
             Console.ResetColor();
         }
 
@@ -40,14 +40,14 @@ namespace BLHX.Server.Common.Utils
             Console.Write(_name);
             Console.ResetColor();
             Console.Write("> ");
-            Console.WriteLine(string.Join("\t", message));
+            Console.Write(string.Join("\t", message.Append(Environment.NewLine)));
             Console.ResetColor();
         }
 
         public void Trail(params string[] msg)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine($"\t└── {string.Join(' ', msg)}");
+            Console.Write($"\t└── {string.Join(' ', msg)}\n");
             Console.ResetColor();
         }
 
@@ -64,7 +64,7 @@ namespace BLHX.Server.Common.Utils
             Console.ForegroundColor = ConsoleColor.White;
             if (TraceOnError)
                 Console.BackgroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine(string.Join("\t", message));
+            Console.Write(string.Join("\t", message.Append(Environment.NewLine)));
             Console.ResetColor();
 #if DEBUG
             StackTrace trace = new(true);
@@ -86,7 +86,7 @@ namespace BLHX.Server.Common.Utils
             Console.Write("> ");
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine(string.Join("\t", message));
+            Console.Write(string.Join("\t", message.Append(Environment.NewLine)));
             Console.ResetColor();
             Console.BackgroundColor = ConsoleColor.Black;
 
