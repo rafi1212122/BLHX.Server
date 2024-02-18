@@ -1,14 +1,15 @@
 ﻿using BLHX.Server.Common.Utils;
 using BLHX.Server.Game;
 
-namespace BLHX.Server
+namespace BLHX.Server;
+
+internal class Program
 {
-    internal class Program
+    static void Main()
     {
-        static void Main()
-        {
-            Logger.c.Log("Starting...");
-            Task.Run(GameServer.Start).Wait();
-        }
+        Logger.c.Log("Starting...");
+        
+        Task.Run(GameServer.Start);
+        Task.Run(InputSystem.Start).Wait();
     }
 }
