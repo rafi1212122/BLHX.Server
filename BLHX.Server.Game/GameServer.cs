@@ -16,7 +16,7 @@ namespace BLHX.Server.Game
             // Preload
             System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(PacketFactory).TypeHandle);
 
-            EndPoint = new(IPAddress.Any, 20000);
+            EndPoint = new(IPAddress.Any, (int)Config.Instance.Port);
             listener = new TcpListener(EndPoint);
         }
 

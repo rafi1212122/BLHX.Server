@@ -1,5 +1,6 @@
 ﻿using BHXY.Server.Common.Proto.p10;
 using BLHX.Server.Common.Proto;
+using BLHX.Server.Common.Utils;
 
 namespace BLHX.Server.Game.Handlers
 {
@@ -11,11 +12,11 @@ namespace BLHX.Server.Game.Handlers
             var req = packet.Decode<Cs10800>();
             connection.Send(new Sc10801()
             {
-                GatewayIp = "192.168.1.4",
-                GatewayPort = 20000,
-                Url = "http://192.168.1.4",
-                ProxyIp = "192.168.1.4",
-                ProxyPort = 20000,
+                GatewayIp = Config.Instance.Address,
+                GatewayPort = Config.Instance.Port,
+                Url = "http://" + Config.Instance.Address,
+                ProxyIp = Config.Instance.Address,
+                ProxyPort = Config.Instance.Port,
                 Versions = [
                     "$azhash$7$1$459$470aa097fec844d6",
                     "$cvhash$467$98edcdd4e7dac668",
@@ -48,10 +49,10 @@ namespace BLHX.Server.Game.Handlers
                     {
                         Ids = [0],
                         Name = "BLHX.Server",
-                        Ip = "192.168.1.4",
-                        Port = 20000,
-                        ProxyIp = "192.168.1.4",
-                        ProxyPort = 20000
+                        Ip = Config.Instance.Address,
+                        Port = Config.Instance.Port,
+                        ProxyIp = Config.Instance.Address,
+                        ProxyPort = Config.Instance.Port
                     }
                 ],
                 ServerTicket = req.Arg3

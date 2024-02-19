@@ -16,6 +16,7 @@ public class commandHandler : Attribute
         Description = description;
         Example = example;
     }
+
 }
 
 [AttributeUsage(AttributeTargets.Property)]
@@ -47,6 +48,22 @@ public abstract class Command
             if (argsProperties.TryGetValue(arg.Key, out var prop))
                 prop.SetValue(this, arg.Value);
         }
+    }
+
+    protected T Parse<T>(string? value, T fallback = default)
+    {
+        var tryParseMethod = typeof(T).GetMethod("TryParse", [typeof(string), typeof(T).MakeByRefType()]);
+
+        if (tryParseMethod != null)
+        {
+            var parameters = new object[] { value, null };
+            bool success = (bool)tryParseMethod.Invoke(null, parameters);
+
+            if (success)
+                return (T)parameters[1];
+        }
+
+        return fallback;
     }
 }
 

@@ -9,6 +9,8 @@ internal class Program
     {
         Logger.c.Log("Starting...");
 
+        Config.Load();
+
         Task.Run(GameServer.Start);
         Task.Run(InputSystem.Start).Wait();
     }
