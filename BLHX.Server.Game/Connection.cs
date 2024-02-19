@@ -18,7 +18,6 @@ namespace BLHX.Server.Game
         readonly CancellationTokenSource cts = new();
         readonly Task loopTask;
         ushort packetIdx = 0;
-        public static JsonSerializerOptions jsonSerializerOptions = new() { IncludeFields = true };
         private ushort NextPacketIdx => packetIdx++;
         public IPEndPoint EndPoint => (IPEndPoint)tcpClient.Client.RemoteEndPoint!;
 

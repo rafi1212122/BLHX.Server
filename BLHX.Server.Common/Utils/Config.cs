@@ -2,7 +2,7 @@
 
 public class Config : Singleton<Config>
 {
-    public string Address { get; set; } = "192.168.1.4";
+    public string Address { get; set; } = "127.0.0.1";
     public uint Port { get; set; } = 20000;
 
     public static void Load()

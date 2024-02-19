@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BLHX.Server.Game\BLHX.Server.Game.csproj" />
+    <ProjectReference Include="..\BLHX.Server.SDK\BLHX.Server.SDK.csproj" />
   </ItemGroup>
 
 </Project>

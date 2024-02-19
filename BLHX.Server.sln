@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLHX.Server", "BLHX.Server\BLHX.Server.csproj", "{C67D2B44-EFF0-4325-9C90-9D8BA4799E02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLHX.Server", "BLHX.Server\BLHX.Server.csproj", "{C67D2B44-EFF0-4325-9C90-9D8BA4799E02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLHX.Server.Game", "BLHX.Server.Game\BLHX.Server.Game.csproj", "{33059688-36C1-43D1-BEE6-3A5C5C7DA4E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLHX.Server.Game", "BLHX.Server.Game\BLHX.Server.Game.csproj", "{33059688-36C1-43D1-BEE6-3A5C5C7DA4E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLHX.Server.Common", "BLHX.Server.Common\BLHX.Server.Common.csproj", "{BA896C61-5025-4CBB-B56C-18A59D3D0D7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLHX.Server.Common", "BLHX.Server.Common\BLHX.Server.Common.csproj", "{BA896C61-5025-4CBB-B56C-18A59D3D0D7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLHX.Server.SDK", "BLHX.Server.SDK\BLHX.Server.SDK.csproj", "{DBEE7F5B-FA2F-43BE-9B80-7E3D9A6267F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{BA896C61-5025-4CBB-B56C-18A59D3D0D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA896C61-5025-4CBB-B56C-18A59D3D0D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA896C61-5025-4CBB-B56C-18A59D3D0D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBEE7F5B-FA2F-43BE-9B80-7E3D9A6267F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBEE7F5B-FA2F-43BE-9B80-7E3D9A6267F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBEE7F5B-FA2F-43BE-9B80-7E3D9A6267F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBEE7F5B-FA2F-43BE-9B80-7E3D9A6267F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
