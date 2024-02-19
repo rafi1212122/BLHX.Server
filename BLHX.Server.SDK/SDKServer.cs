@@ -1,11 +1,15 @@
 using BLHX.Server.Common.Utils;
+using Microsoft.AspNetCore.Mvc.Abstractions;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using System.Reflection;
 
 namespace BLHX.Server.Sdk
 {
     public class SDKServer
     {
-        static readonly Logger c = new(nameof(SDKServer), ConsoleColor.Green);
+        public static readonly Logger c = new(nameof(SDKServer), ConsoleColor.Green);
         static Task? runTask = null;
 
         public static void Main(string[] args)
@@ -13,11 +17,15 @@ namespace BLHX.Server.Sdk
             var builder = WebApplication.CreateBuilder(args);
             // Disables default logger
             builder.Logging.ClearProviders();
+            builder.Services.AddMvcCore();
+            builder.Services.AddAntiforgery();
 
             var app = builder.Build();
             app.Urls.Add("http://*:80");
             app.Urls.Add("https://*:443");
 
+            app.UseStatusCodePages();
+            app.UseAntiforgery();
             app.UseMiddleware<RequestLoggingMiddleware>();
 
             foreach (Type controller in Assembly.GetExecutingAssembly().GetTypes().Where(p => typeof(IRegisterable).IsAssignableFrom(p) && !p.IsInterface))
@@ -62,5 +70,47 @@ namespace BLHX.Server.Sdk
     public interface IRegisterable
     {
         public abstract static void Register(WebApplication app);
+    }
+
+    public static class BindingExtensions
+    {
+        public static async Task<T?> BindFromForm<T>(this HttpContext httpContext)
+        {
+            var serviceProvider = httpContext.RequestServices;
+            var factory = serviceProvider.GetRequiredService<IModelBinderFactory>();
+            var metadataProvider = serviceProvider.GetRequiredService<IModelMetadataProvider>();
+
+            var metadata = metadataProvider.GetMetadataForType(typeof(T));
+            var modelBinder = factory.CreateBinder(new()
+            {
+                Metadata = metadata
+            });
+
+            var context = new DefaultModelBindingContext
+            {
+                ModelMetadata = metadata,
+                ModelName = string.Empty,
+                ValueProvider = new FormValueProvider(
+                    BindingSource.Form,
+                    httpContext.Request.Form,
+                    CultureInfo.InvariantCulture
+                ),
+                ActionContext = new ActionContext(
+                    httpContext,
+                    new RouteData(),
+                    new ActionDescriptor()),
+                ModelState = new ModelStateDictionary()
+            };
+            await modelBinder.BindModelAsync(context);
+            return (T?)context.Result.Model;
+        }
+    }
+
+    public abstract record BindableFormRequest<TSelf>
+    {
+        public static async ValueTask<TSelf?> BindAsync(HttpContext httpContext, ParameterInfo parameter)
+        {
+            return await httpContext.BindFromForm<TSelf>();
+        }
     }
 }
