@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Net.Sockets;
+using BLHX.Server.Common.Data;
 using BLHX.Server.Common.Utils;
 
 namespace BLHX.Server.Game

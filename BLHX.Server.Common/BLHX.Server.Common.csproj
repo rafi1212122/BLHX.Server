@@ -11,4 +11,16 @@
     <PackageReference Include="protobuf-net" Version="3.2.30" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Resources\sharecfgdata\chapter_template.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\sharecfgdata\ship_data_statistics.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\sharecfgdata\task_data_template.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

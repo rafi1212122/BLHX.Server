@@ -1,7 +1,7 @@
 ﻿using BLHX.Server.Common.Proto.p10;
 using BLHX.Server.Common.Database;
 using BLHX.Server.Common.Proto;
-using BLHX.Server.Common.Utils;
+using BLHX.Server.Common.Data;
 
 namespace BLHX.Server.Game.Handlers
 {

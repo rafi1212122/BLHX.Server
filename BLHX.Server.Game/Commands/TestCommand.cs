@@ -1,4 +1,5 @@
-﻿using BLHX.Server.Common.Utils;
+﻿using BLHX.Server.Common.Data;
+using BLHX.Server.Common.Utils;
 
 namespace BLHX.Server.Game.Commands;
 
@@ -10,11 +11,14 @@ public class TestCommand : Command
     [Argument("type")]
     public string? Type { get; set; }
 
+    [Argument("verbose")]
+    public string? Verbose { get; set; }
+    
     [Argument("count")]
     public string? Count { get; set; }
 
-    [Argument("verbose")]
-    public string? Verbose { get; set; }
+    [Argument("value")]
+    public string? Value { get; set; }
 
     public override void Execute(Dictionary<string, string> args)
     {
@@ -24,6 +28,9 @@ public class TestCommand : Command
         {
             case "gacha":
                 TestGacha(Parse(Count, 1000000), Parse(Verbose, false));
+                break;
+            case "lookup":
+                LookupShip(Parse(Value, 1));
                 break;
             default:
                 Logger.c.Warn("Unknown test type");
@@ -58,5 +65,15 @@ public class TestCommand : Command
 
             Logger.c.Log($"{RarityStrings[i]}: {counts[i]} ({percentage}%)");
         }
+    }
+
+    void LookupShip(int id)
+    {
+        ShipDataStatistics? ship = Data.ShipDataStatistics.GetValueOrDefault(id);
+
+        if (ship != null)
+            Logger.c.Log($"Ship {id} ({ship.EnglishName}):\n{JSON.Stringify(ship)}");
+        else
+            Logger.c.Warn($"Ship {id} not found");
     }
 }

@@ -1,4 +1,5 @@
-﻿using BLHX.Server.Common.Utils;
+﻿using BLHX.Server.Common.Data;
+using BLHX.Server.Common.Utils;
 using BLHX.Server.Game;
 using BLHX.Server.Sdk;
 using System.Net.NetworkInformation;
@@ -17,6 +18,8 @@ internal class Program
             Config.Instance.Address = NetworkInterface.GetAllNetworkInterfaces().Where(i => i.NetworkInterfaceType != NetworkInterfaceType.Loopback && i.OperationalStatus == OperationalStatus.Up).First().GetIPProperties().UnicastAddresses.Where(a => a.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).First().Address.ToString();
             Config.Save();
         }
+
+        Data.Load();
 
         Task.Run(GameServer.Start);
         SDKServer.Main(args);

@@ -37,7 +37,7 @@ namespace BLHX.Server.Sdk
             }
 
             runTask = app.RunAsync();
-            c.Log($"{nameof(SDKServer)} started in port {string.Join(", ", app.Urls.Select(x => x.Split(':').Last()))}!");
+            c.Log($"{nameof(SDKServer)} started on port {string.Join(", ", app.Urls.Select(x => x.Split(':').Last()))}");
         }
 
         private class RequestLoggingMiddleware(RequestDelegate next)
