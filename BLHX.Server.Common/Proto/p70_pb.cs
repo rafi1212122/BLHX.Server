@@ -6,7 +6,7 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace BHXY.Server.Common.Proto.p70
+namespace BLHX.Server.Common.Proto.p70
 {
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_70001")]
@@ -56,7 +56,7 @@ namespace BHXY.Server.Common.Proto.p70
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"meta_char_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.p63.Metacharinfo> MetaCharLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.p63.Metacharinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p63.Metacharinfo> MetaCharLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p63.Metacharinfo>();
 
     }
 
@@ -95,7 +95,7 @@ namespace BHXY.Server.Common.Proto.p70
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"ship")]
-        public global::BHXY.Server.Common.Proto.common.Shipinfo Ship { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Shipinfo Ship { get; set; }
 
     }
 

@@ -6,7 +6,7 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace BHXY.Server.Common.Proto.p50
+namespace BLHX.Server.Common.Proto.p50
 {
 
     [global::ProtoBuf.ProtoContract(Name = @"ad_arg")]
@@ -272,7 +272,7 @@ namespace BHXY.Server.Common.Proto.p50
         public global::System.Collections.Generic.List<uint> MedalIds { get; set; } = new global::System.Collections.Generic.List<uint>();
 
         [global::ProtoBuf.ProtoMember(17, Name = @"display")]
-        public global::BHXY.Server.Common.Proto.common.Displayinfo Display { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Displayinfo Display { get; set; }
 
     }
 
@@ -302,7 +302,7 @@ namespace BHXY.Server.Common.Proto.p50
         public uint PreOnlineTime { get; set; }
 
         [global::ProtoBuf.ProtoMember(7, Name = @"display")]
-        public global::BHXY.Server.Common.Proto.common.Displayinfo Display { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Displayinfo Display { get; set; }
 
     }
 
@@ -341,7 +341,7 @@ namespace BHXY.Server.Common.Proto.p50
         public uint Lv { get; set; }
 
         [global::ProtoBuf.ProtoMember(4, Name = @"display")]
-        public global::BHXY.Server.Common.Proto.common.Displayinfo Display { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Displayinfo Display { get; set; }
 
     }
 

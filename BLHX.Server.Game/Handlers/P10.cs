@@ -1,4 +1,4 @@
-﻿using BHXY.Server.Common.Proto.p10;
+﻿using BLHX.Server.Common.Proto.p10;
 using BLHX.Server.Common.Database;
 using BLHX.Server.Common.Proto;
 using BLHX.Server.Common.Utils;
@@ -9,7 +9,7 @@ namespace BLHX.Server.Game.Handlers
     {
         #region GateCommands
         [PacketHandler(Command.Cs10800)]
-        static void Cs10800Handler(Connection connection, Packet packet)
+        static void VersionHandler(Connection connection, Packet packet)
         {
             var req = packet.Decode<Cs10800>();
             connection.Send(new Sc10801()
@@ -37,7 +37,7 @@ namespace BLHX.Server.Game.Handlers
         }
 
         [PacketHandler(Command.Cs10020)]
-        static void Cs10020Handler(Connection connection, Packet packet)
+        static void UserLoginHandler(Connection connection, Packet packet)
         {
             // Arg2 uid
             // Arg3 accessToken
@@ -65,20 +65,27 @@ namespace BLHX.Server.Game.Handlers
         #endregion
 
         [PacketHandler(Command.Cs10022)]
-        static void Cs10022Handler(Connection connection, Packet packet)
+        static void ServerLoginHandler(Connection connection, Packet packet)
         {
             var req = packet.Decode<Cs10022>();
             var rsp = new Sc10023();
 
             var account = DBManager.AccountContext.Accounts.SingleOrDefault(x => x.Uid == req.AccountId);
-            if (account is null)
+            if (account is null || account.Token != req.ServerTicket)
             {
                 rsp.Result = 1;
                 connection.Send(rsp);
                 return;
             }
             // TODO: Create/access player data!
+            rsp.ServerTicket = req.ServerTicket;
             connection.Send(rsp);
+        }
+
+        [PacketHandler(Command.Cs10100)]
+        static void HeartbeatHandler(Connection connection, Packet packet)
+        {
+            connection.Send(new Sc10101() { State = 1 });
         }
     }
 }

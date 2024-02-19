@@ -6,7 +6,7 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace BHXY.Server.Common.Proto.p18
+namespace BLHX.Server.Common.Proto.p18
 {
 
     [global::ProtoBuf.ProtoContract(Name = @"arenarank")]
@@ -29,7 +29,7 @@ namespace BHXY.Server.Common.Proto.p18
         public uint Score { get; set; }
 
         [global::ProtoBuf.ProtoMember(5, Name = @"display")]
-        public global::BHXY.Server.Common.Proto.common.Displayinfo Display { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Displayinfo Display { get; set; }
 
     }
 
@@ -205,7 +205,7 @@ namespace BHXY.Server.Common.Proto.p18
         public uint ArenaRank { get; set; }
 
         [global::ProtoBuf.ProtoMember(6, Name = @"display")]
-        public global::BHXY.Server.Common.Proto.common.Displayinfo Display { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Displayinfo Display { get; set; }
 
     }
 
@@ -394,13 +394,13 @@ namespace BHXY.Server.Common.Proto.p18
         public uint Rank { get; set; }
 
         [global::ProtoBuf.ProtoMember(6, Name = @"vanguard_ship_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo> VanguardShipLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo> VanguardShipLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo>();
 
         [global::ProtoBuf.ProtoMember(7, Name = @"main_ship_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo> MainShipLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo> MainShipLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo>();
 
         [global::ProtoBuf.ProtoMember(8, Name = @"display")]
-        public global::BHXY.Server.Common.Proto.common.Displayinfo Display { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Displayinfo Display { get; set; }
 
     }
 

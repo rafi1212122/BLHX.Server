@@ -6,7 +6,7 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace BHXY.Server.Common.Proto.p12
+namespace BLHX.Server.Common.Proto.p12
 {
 
     [global::ProtoBuf.ProtoContract(Name = @"build_info")]
@@ -431,7 +431,7 @@ namespace BHXY.Server.Common.Proto.p12
         public global::System.Collections.Generic.List<uint> ShipLists { get; set; } = new global::System.Collections.Generic.List<uint>();
 
         [global::ProtoBuf.ProtoMember(4, Name = @"commanders")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commandersinfo> Commanders { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commandersinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo> Commanders { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo>();
 
     }
 
@@ -443,7 +443,7 @@ namespace BHXY.Server.Common.Proto.p12
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"shiplist")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo> Shiplists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo> Shiplists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo>();
 
     }
 
@@ -458,7 +458,7 @@ namespace BHXY.Server.Common.Proto.p12
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"build_info")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Buildinfo> BuildInfoes { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Buildinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Buildinfo> BuildInfoes { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Buildinfo>();
 
     }
 
@@ -512,7 +512,7 @@ namespace BHXY.Server.Common.Proto.p12
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"ship_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo> ShipLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo> ShipLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo>();
 
     }
 
@@ -587,7 +587,7 @@ namespace BHXY.Server.Common.Proto.p12
         public uint WorklistCount { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"worklist_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Buildinfo> WorklistLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Buildinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Buildinfo> WorklistLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Buildinfo>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"draw_count_1", IsRequired = true)]
         public uint DrawCount1 { get; set; }
@@ -611,7 +611,7 @@ namespace BHXY.Server.Common.Proto.p12
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"ship_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo> ShipLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo> ShipLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo>();
 
     }
 
@@ -638,7 +638,7 @@ namespace BHXY.Server.Common.Proto.p12
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"ship_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo> ShipLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo> ShipLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo>();
 
     }
 
@@ -725,7 +725,7 @@ namespace BHXY.Server.Common.Proto.p12
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"ship_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo> ShipLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo> ShipLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo>();
 
     }
 
@@ -764,7 +764,7 @@ namespace BHXY.Server.Common.Proto.p12
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"drop_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
     }
 
@@ -824,7 +824,7 @@ namespace BHXY.Server.Common.Proto.p12
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"skin_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Idtimeinfo> SkinLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Idtimeinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Idtimeinfo> SkinLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Idtimeinfo>();
 
         [global::ProtoBuf.ProtoMember(2, Name = @"forbidden_skin_list")]
         public global::System.Collections.Generic.List<uint> ForbiddenSkinLists { get; set; } = new global::System.Collections.Generic.List<uint>();
@@ -890,7 +890,7 @@ namespace BHXY.Server.Common.Proto.p12
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"ship_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo> ShipLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo> ShipLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo>();
 
     }
 

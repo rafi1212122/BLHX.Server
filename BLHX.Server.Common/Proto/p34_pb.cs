@@ -6,7 +6,7 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace BHXY.Server.Common.Proto.p34
+namespace BLHX.Server.Common.Proto.p34
 {
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_34001")]
@@ -246,7 +246,7 @@ namespace BHXY.Server.Common.Proto.p34
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"drop_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
     }
 
@@ -339,7 +339,7 @@ namespace BHXY.Server.Common.Proto.p34
         public WorldbossInfo BossInfo { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"user_info", IsRequired = true)]
-        public global::BHXY.Server.Common.Proto.common.Usersimpleinfo UserInfo { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Usersimpleinfo UserInfo { get; set; }
 
         [global::ProtoBuf.ProtoMember(3, Name = @"type", IsRequired = true)]
         public uint Type { get; set; }
@@ -384,7 +384,7 @@ namespace BHXY.Server.Common.Proto.p34
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"drops")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> Drops { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> Drops { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
     }
 
@@ -435,7 +435,7 @@ namespace BHXY.Server.Common.Proto.p34
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"ship_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo> ShipLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo> ShipLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo>();
 
     }
 

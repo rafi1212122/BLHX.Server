@@ -6,7 +6,7 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace BHXY.Server.Common.Proto.p33
+namespace BLHX.Server.Common.Proto.p33
 {
 
     [global::ProtoBuf.ProtoContract(Name = @"ai_act")]
@@ -456,7 +456,7 @@ namespace BHXY.Server.Common.Proto.p33
         public global::System.Collections.Generic.List<uint> ShipIdLists { get; set; } = new global::System.Collections.Generic.List<uint>();
 
         [global::ProtoBuf.ProtoMember(2, Name = @"commanders")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commandersinfo> Commanders { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commandersinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo> Commanders { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo>();
 
     }
 
@@ -549,7 +549,7 @@ namespace BHXY.Server.Common.Proto.p33
         public global::System.Collections.Generic.List<BuffInfo> BuffLists { get; set; } = new global::System.Collections.Generic.List<BuffInfo>();
 
         [global::ProtoBuf.ProtoMember(13, Name = @"commander_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commandersinfo> CommanderLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commandersinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo> CommanderLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo>();
 
         [global::ProtoBuf.ProtoMember(14, Name = @"kill_count", IsRequired = true)]
         public uint KillCount { get; set; }
@@ -696,7 +696,7 @@ namespace BHXY.Server.Common.Proto.p33
         public global::System.Collections.Generic.List<Chapterawardinfo> ChapterAwards { get; set; } = new global::System.Collections.Generic.List<Chapterawardinfo>();
 
         [global::ProtoBuf.ProtoMember(11, Name = @"fleet_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Fleetinfo> FleetLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Fleetinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Fleetinfo> FleetLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Fleetinfo>();
 
         [global::ProtoBuf.ProtoMember(12, Name = @"new_flag_port_list")]
         public global::System.Collections.Generic.List<uint> NewFlagPortLists { get; set; } = new global::System.Collections.Generic.List<uint>();
@@ -747,7 +747,7 @@ namespace BHXY.Server.Common.Proto.p33
         public global::System.Collections.Generic.List<Chaptercellpos> MovePaths { get; set; } = new global::System.Collections.Generic.List<Chaptercellpos>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"drop_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
         [global::ProtoBuf.ProtoMember(4, Name = @"enter_map_id")]
         public uint EnterMapId
@@ -880,7 +880,7 @@ namespace BHXY.Server.Common.Proto.p33
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"drop_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"time", IsRequired = true)]
         public uint Time { get; set; }
@@ -973,7 +973,7 @@ namespace BHXY.Server.Common.Proto.p33
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"drops")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> Drops { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> Drops { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"exp", IsRequired = true)]
         public uint Exp { get; set; }
@@ -994,7 +994,7 @@ namespace BHXY.Server.Common.Proto.p33
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"drop_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
     }
 
@@ -1021,7 +1021,7 @@ namespace BHXY.Server.Common.Proto.p33
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"drop_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
     }
 
@@ -1147,7 +1147,7 @@ namespace BHXY.Server.Common.Proto.p33
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"drops")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> Drops { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> Drops { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
     }
 
@@ -1342,7 +1342,7 @@ namespace BHXY.Server.Common.Proto.p33
         public uint EnterMapId { get; set; }
 
         [global::ProtoBuf.ProtoMember(17, Name = @"cd_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Idtimeinfo> CdLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Idtimeinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Idtimeinfo> CdLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Idtimeinfo>();
 
         [global::ProtoBuf.ProtoMember(18, Name = @"buff_list")]
         public global::System.Collections.Generic.List<BuffInfo> BuffLists { get; set; } = new global::System.Collections.Generic.List<BuffInfo>();
@@ -1354,7 +1354,7 @@ namespace BHXY.Server.Common.Proto.p33
         public global::System.Collections.Generic.List<uint> SairenChapters { get; set; } = new global::System.Collections.Generic.List<uint>();
 
         [global::ProtoBuf.ProtoMember(21, Name = @"month_boss")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Kvdata> MonthBosses { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Kvdata>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Kvdata> MonthBosses { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Kvdata>();
 
     }
 

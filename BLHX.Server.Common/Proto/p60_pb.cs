@@ -6,7 +6,7 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace BHXY.Server.Common.Proto.p60
+namespace BLHX.Server.Common.Proto.p60
 {
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_60001")]
@@ -371,13 +371,13 @@ namespace BHXY.Server.Common.Proto.p60
         public uint Capital { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"this_weekly_tasks", IsRequired = true)]
-        public global::BHXY.Server.Common.Proto.guild.WeeklyTask ThisWeeklyTasks { get; set; }
+        public global::BLHX.Server.Common.Proto.guild.WeeklyTask ThisWeeklyTasks { get; set; }
 
         [global::ProtoBuf.ProtoMember(3, Name = @"benefit_finish_time", IsRequired = true)]
         public uint BenefitFinishTime { get; set; }
 
         [global::ProtoBuf.ProtoMember(4, Name = @"technologys")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.guild.GuildTechnology> Technologys { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.guild.GuildTechnology>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.GuildTechnology> Technologys { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.GuildTechnology>();
 
         [global::ProtoBuf.ProtoMember(5, Name = @"retreat_cnt", IsRequired = true)]
         public uint RetreatCnt { get; set; }
@@ -519,7 +519,7 @@ namespace BHXY.Server.Common.Proto.p60
         public uint PreOnlineTime { get; set; }
 
         [global::ProtoBuf.ProtoMember(9, Name = @"display")]
-        public global::BHXY.Server.Common.Proto.common.Displayinfo Display { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Displayinfo Display { get; set; }
 
         [global::ProtoBuf.ProtoMember(12, Name = @"join_time", IsRequired = true)]
         public uint JoinTime { get; set; }
@@ -561,7 +561,7 @@ namespace BHXY.Server.Common.Proto.p60
         public uint Lv { get; set; }
 
         [global::ProtoBuf.ProtoMember(4, Name = @"display")]
-        public global::BHXY.Server.Common.Proto.common.Displayinfo Display { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Displayinfo Display { get; set; }
 
     }
 
@@ -831,7 +831,7 @@ namespace BHXY.Server.Common.Proto.p60
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"drop_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
     }
 

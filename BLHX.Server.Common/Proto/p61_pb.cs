@@ -6,7 +6,7 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace BHXY.Server.Common.Proto.p61
+namespace BLHX.Server.Common.Proto.p61
 {
 
     [global::ProtoBuf.ProtoContract(Name = @"bosseventfleet")]
@@ -23,7 +23,7 @@ namespace BHXY.Server.Common.Proto.p61
         public global::System.Collections.Generic.List<TeamCell> Ships { get; set; } = new global::System.Collections.Generic.List<TeamCell>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"commanders")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commandersinfo> Commanders { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commandersinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo> Commanders { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo>();
 
     }
 
@@ -617,7 +617,7 @@ namespace BHXY.Server.Common.Proto.p61
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"drop_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
     }
 
@@ -797,7 +797,7 @@ namespace BHXY.Server.Common.Proto.p61
         public uint Pos { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"ship", IsRequired = true)]
-        public global::BHXY.Server.Common.Proto.common.Shipinfo Ship { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Shipinfo Ship { get; set; }
 
         [global::ProtoBuf.ProtoMember(3, Name = @"last_time", IsRequired = true)]
         public uint LastTime { get; set; }
@@ -830,7 +830,7 @@ namespace BHXY.Server.Common.Proto.p61
         public uint UserId { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"ships")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo> Ships { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Shipinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo> Ships { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Shipinfo>();
 
     }
 

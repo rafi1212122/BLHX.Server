@@ -6,7 +6,7 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace BHXY.Server.Common.Proto.p14
+namespace BLHX.Server.Common.Proto.p14
 {
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_14002")]
@@ -242,7 +242,7 @@ namespace BHXY.Server.Common.Proto.p14
         public global::System.Collections.Generic.List<uint> ShipIdLists { get; set; } = new global::System.Collections.Generic.List<uint>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"spweapon_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Spweaponinfo> SpweaponLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Spweaponinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Spweaponinfo> SpweaponLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Spweaponinfo>();
 
         [global::ProtoBuf.ProtoMember(4, Name = @"spweapon_bag_size", IsRequired = true)]
         public uint SpweaponBagSize { get; set; }
@@ -353,7 +353,7 @@ namespace BHXY.Server.Common.Proto.p14
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"spweapon_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Spweaponinfo> SpweaponLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Spweaponinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Spweaponinfo> SpweaponLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Spweaponinfo>();
 
     }
 
@@ -422,7 +422,7 @@ namespace BHXY.Server.Common.Proto.p14
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"spweapon")]
-        public global::BHXY.Server.Common.Proto.common.Spweaponinfo Spweapon { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Spweaponinfo Spweapon { get; set; }
 
     }
 

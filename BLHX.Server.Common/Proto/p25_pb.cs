@@ -6,7 +6,7 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace BHXY.Server.Common.Proto.p25
+namespace BLHX.Server.Common.Proto.p25
 {
 
     [global::ProtoBuf.ProtoContract(Name = @"commanderboxinfo")]
@@ -229,7 +229,7 @@ namespace BHXY.Server.Common.Proto.p25
         public uint Id { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"commandersid")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commandersinfo> Commandersids { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commandersinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo> Commandersids { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo>();
 
     }
 
@@ -355,7 +355,7 @@ namespace BHXY.Server.Common.Proto.p25
         public uint Id { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"commandersid")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commandersinfo> Commandersids { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commandersinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo> Commandersids { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"name", IsRequired = true)]
         public string Name { get; set; }
@@ -370,7 +370,7 @@ namespace BHXY.Server.Common.Proto.p25
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"commanders")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commanderinfo> Commanders { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commanderinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commanderinfo> Commanders { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commanderinfo>();
 
         [global::ProtoBuf.ProtoMember(2, Name = @"box")]
         public global::System.Collections.Generic.List<Commanderboxinfo> Boxs { get; set; } = new global::System.Collections.Generic.List<Commanderboxinfo>();
@@ -409,7 +409,7 @@ namespace BHXY.Server.Common.Proto.p25
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"commander", IsRequired = true)]
-        public global::BHXY.Server.Common.Proto.common.Commanderinfo Commander { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Commanderinfo Commander { get; set; }
 
         [global::ProtoBuf.ProtoMember(3, Name = @"finish_time", IsRequired = true)]
         public uint FinishTime { get; set; }
@@ -502,7 +502,7 @@ namespace BHXY.Server.Common.Proto.p25
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"awards")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> Awards { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> Awards { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
     }
 
@@ -580,7 +580,7 @@ namespace BHXY.Server.Common.Proto.p25
         public uint Exp { get; set; }
 
         [global::ProtoBuf.ProtoMember(4, Name = @"awards")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> Awards { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> Awards { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
         [global::ProtoBuf.ProtoMember(5, Name = @"op_time", IsRequired = true)]
         public uint OpTime { get; set; }
@@ -652,7 +652,7 @@ namespace BHXY.Server.Common.Proto.p25
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"commander_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commanderinfo> CommanderLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commanderinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commanderinfo> CommanderLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commanderinfo>();
 
     }
 

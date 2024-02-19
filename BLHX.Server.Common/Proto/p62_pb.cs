@@ -6,7 +6,7 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace BHXY.Server.Common.Proto.p62
+namespace BLHX.Server.Common.Proto.p62
 {
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_62002")]
@@ -194,7 +194,7 @@ namespace BHXY.Server.Common.Proto.p62
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"this_weekly_tasks", IsRequired = true)]
-        public global::BHXY.Server.Common.Proto.guild.WeeklyTask ThisWeeklyTasks { get; set; }
+        public global::BLHX.Server.Common.Proto.guild.WeeklyTask ThisWeeklyTasks { get; set; }
 
     }
 
@@ -245,7 +245,7 @@ namespace BHXY.Server.Common.Proto.p62
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"drop_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
     }
 
@@ -260,13 +260,13 @@ namespace BHXY.Server.Common.Proto.p62
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"inclog")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.guild.CapitalLog> Inclogs { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.guild.CapitalLog>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.CapitalLog> Inclogs { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.CapitalLog>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"declog")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.guild.CapitalLog> Declogs { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.guild.CapitalLog>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.CapitalLog> Declogs { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.CapitalLog>();
 
         [global::ProtoBuf.ProtoMember(4, Name = @"otherlog")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.guild.CapitalLog> Otherlogs { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.guild.CapitalLog>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.CapitalLog> Otherlogs { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.CapitalLog>();
 
     }
 
@@ -413,7 +413,7 @@ namespace BHXY.Server.Common.Proto.p62
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"technologys")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.guild.GuildTechnology> Technologys { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.guild.GuildTechnology>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.GuildTechnology> Technologys { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.GuildTechnology>();
 
     }
 

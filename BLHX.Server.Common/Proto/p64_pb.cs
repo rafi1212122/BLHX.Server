@@ -6,7 +6,7 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace BHXY.Server.Common.Proto.p64
+namespace BLHX.Server.Common.Proto.p64
 {
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_64001")]
@@ -149,7 +149,7 @@ namespace BHXY.Server.Common.Proto.p64
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"rewards")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> Rewards { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> Rewards { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
     }
 
@@ -164,7 +164,7 @@ namespace BHXY.Server.Common.Proto.p64
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"rewards")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> Rewards { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> Rewards { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
     }
 

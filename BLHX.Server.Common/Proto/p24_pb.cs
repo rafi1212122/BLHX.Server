@@ -6,7 +6,7 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace BHXY.Server.Common.Proto.p24
+namespace BLHX.Server.Common.Proto.p24
 {
 
     [global::ProtoBuf.ProtoContract(Name = @"userchallengeinfo")]
@@ -53,7 +53,7 @@ namespace BHXY.Server.Common.Proto.p24
         public uint Pos { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"commanderinfo", IsRequired = true)]
-        public global::BHXY.Server.Common.Proto.common.Commanderinfo Commanderinfo { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Commanderinfo Commanderinfo { get; set; }
 
     }
 
@@ -140,7 +140,7 @@ namespace BHXY.Server.Common.Proto.p24
         public global::System.Collections.Generic.List<uint> ShipLists { get; set; } = new global::System.Collections.Generic.List<uint>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"commanders")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commandersinfo> Commanders { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Commandersinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo> Commanders { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo>();
 
     }
 
@@ -227,10 +227,10 @@ namespace BHXY.Server.Common.Proto.p24
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"times")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Kvdata> Times { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Kvdata>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Kvdata> Times { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Kvdata>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"awards")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Kvdata> Awards { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Kvdata>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Kvdata> Awards { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Kvdata>();
 
     }
 
@@ -245,7 +245,7 @@ namespace BHXY.Server.Common.Proto.p24
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"drop_list")]
-        public global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BHXY.Server.Common.Proto.common.Dropinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
 
     }
 
@@ -275,7 +275,7 @@ namespace BHXY.Server.Common.Proto.p24
         public uint HpRant { get; set; }
 
         [global::ProtoBuf.ProtoMember(3, Name = @"ship_info", IsRequired = true)]
-        public global::BHXY.Server.Common.Proto.common.Shipinfo ShipInfo { get; set; }
+        public global::BLHX.Server.Common.Proto.common.Shipinfo ShipInfo { get; set; }
 
     }
 
