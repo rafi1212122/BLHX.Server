@@ -1,4 +1,5 @@
 ﻿using BHXY.Server.Common.Proto.p10;
+using BLHX.Server.Common.Database;
 using BLHX.Server.Common.Proto;
 using BLHX.Server.Common.Utils;
 
@@ -6,6 +7,7 @@ namespace BLHX.Server.Game.Handlers
 {
     internal static class P10
     {
+        #region GateCommands
         [PacketHandler(Command.Cs10800)]
         static void Cs10800Handler(Connection connection, Packet packet)
         {
@@ -31,6 +33,7 @@ namespace BLHX.Server.Game.Handlers
                 Timestamp = (uint)DateTimeOffset.Now.ToUnixTimeSeconds(),
                 Monday0oclockTimestamp = 1606114800
             });
+            connection.EndProtocol();
         }
 
         [PacketHandler(Command.Cs10020)]
@@ -43,7 +46,7 @@ namespace BLHX.Server.Game.Handlers
             connection.Send(new Sc10021()
             {
                 Result = 0,
-                AccountId = 1,
+                AccountId = uint.Parse(req.Arg2),
                 Serverlists = [
                     new Serverinfo()
                     {
@@ -57,17 +60,25 @@ namespace BLHX.Server.Game.Handlers
                 ],
                 ServerTicket = req.Arg3
             });
+            connection.EndProtocol();
         }
+        #endregion
 
         [PacketHandler(Command.Cs10022)]
         static void Cs10022Handler(Connection connection, Packet packet)
         {
             var req = packet.Decode<Cs10022>();
-            connection.Send(new Sc10023()
+            var rsp = new Sc10023();
+
+            var account = DBManager.AccountContext.Accounts.SingleOrDefault(x => x.Uid == req.AccountId);
+            if (account is null)
             {
-                Result = 0,
-                UserId = 1
-            });
+                rsp.Result = 1;
+                connection.Send(rsp);
+                return;
+            }
+            // TODO: Create/access player data!
+            connection.Send(rsp);
         }
     }
 }
