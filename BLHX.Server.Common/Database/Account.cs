@@ -10,7 +10,8 @@ namespace BLHX.Server.Common.Database
 
         public AccountContext()
         {
-            Database.EnsureCreated();
+            if (Database.GetPendingMigrations().Any())
+                Database.Migrate();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)

@@ -6,14 +6,16 @@ public static class Data
 {
     static readonly Logger c = new(nameof(Data), ConsoleColor.Yellow);
 
-    public static Dictionary<int, ChapterTemplate> ChapterTemplate;
-    public static Dictionary<int, ShipDataStatistics> ShipDataStatistics;
-    public static Dictionary<int, TaskDateTemplate> TaskDataTemplate;
+    public static Dictionary<int, ChapterTemplate> ChapterTemplate = [];
+    public static Dictionary<int, ShipDataStatistics> ShipDataStatistics = [];
+    public static Dictionary<int, ShipDataTemplate> ShipDataTemplate = [];
+    public static Dictionary<int, TaskDateTemplate> TaskDataTemplate = [];
 
     public static void Load()
     {
         LoadData(ref ChapterTemplate, "chapter_template.json", nameof(ChapterTemplate));
         LoadData(ref ShipDataStatistics, "ship_data_statistics.json", nameof(ShipDataStatistics));
+        LoadData(ref ShipDataTemplate, "ship_data_template.json", nameof(ShipDataTemplate));
         LoadData(ref TaskDataTemplate, "task_data_template.json", nameof(TaskDataTemplate));
 
         c.Log("All data tables loaded");

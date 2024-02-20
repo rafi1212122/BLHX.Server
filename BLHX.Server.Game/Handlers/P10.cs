@@ -31,7 +31,7 @@ namespace BLHX.Server.Game.Handlers
                     "dTag-1"
                 ],
                 Timestamp = (uint)DateTimeOffset.Now.ToUnixTimeSeconds(),
-                Monday0oclockTimestamp = 1606114800
+                Monday0oclockTimestamp = Connection.Monday0oclockTimestamp
             });
             connection.EndProtocol();
         }
@@ -75,10 +75,40 @@ namespace BLHX.Server.Game.Handlers
             {
                 rsp.Result = 1;
                 connection.Send(rsp);
+                connection.EndProtocol();
                 return;
             }
-            // TODO: Create/access player data!
+
+            connection.account = account;
             rsp.ServerTicket = req.ServerTicket;
+
+            var player = DBManager.PlayerContext.Players.SingleOrDefault(x => x.Token == req.ServerTicket);
+            if (player is null)
+            {
+                connection.Send(rsp);
+                return;
+            }
+
+            connection.player = player;
+            rsp.UserId = player.Uid;
+            connection.Send(rsp);
+        }
+
+        [PacketHandler(Command.Cs10024)]
+        static void CreateNewPlayerHandler(Connection connection, Packet packet)
+        {
+            var req = packet.Decode<Cs10024>();
+            var rsp = new Sc10025();
+            if (connection.player is not null)
+            {
+                rsp.Result = 1011;
+                connection.Send(rsp);
+                return;
+            }
+
+            var player = DBManager.PlayerContext.Init(connection.account.Token, req.ShipId, req.NickName);
+            connection.player = player;
+            rsp.UserId = connection.player.Uid;
             connection.Send(rsp);
         }
 

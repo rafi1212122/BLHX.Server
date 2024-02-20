@@ -1,4 +1,6 @@
-﻿using BLHX.Server.Common.Proto;
+﻿using BLHX.Server.Common.Database;
+using BLHX.Server.Common.Proto;
+using BLHX.Server.Common.Proto.p11;
 using BLHX.Server.Common.Utils;
 using ProtoBuf;
 using System.Buffers.Binary;
@@ -10,12 +12,15 @@ namespace BLHX.Server.Game
 {
     public class Connection
     {
+        public const uint Monday0oclockTimestamp = 1606114800;
         public readonly Logger c;
+        public Account account = null!;
+        public Player player = null!;
         readonly TcpClient tcpClient;
         readonly CancellationTokenSource cts = new();
         readonly Task loopTask;
         ushort packetIdx = 0;
-        private ushort NextPacketIdx => packetIdx++;
+        private ushort NextPacketIdx => packetIdx;
         public IPEndPoint EndPoint => (IPEndPoint)tcpClient.Client.RemoteEndPoint!;
 
         public Connection(TcpClient tcpClient)
@@ -51,7 +56,7 @@ namespace BLHX.Server.Game
                             string svrList = @"[{""id"":1,""name"":""BLHX.Server"",""state"":0,""flag"":0,""sort"":0}]";
                             SendHttpResponse(svrList, "application/json");
                             readLen = len;
-                            cts.Cancel();
+                            EndProtocol();
                             break;
                         }
 
@@ -63,13 +68,18 @@ namespace BLHX.Server.Game
 
                         var handler = PacketFactory.GetPacketHandler(packet.command);
                         if (handler is not null)
+                        {
                             handler(this, packet);
+                            packetIdx++;
+                        }
                         else
+                        {
                             c.Warn($"{packet.command} unhandled!"
 #if DEBUG
                                 , Enum.IsDefined(packet.command) ? BitConverter.ToString(packet.bytes).Replace("-", "") : BitConverter.ToString(buf[readLen..]).Replace("-", "")
 #endif
                             );
+                        }
 
                         readLen += packet.length + Packet.LENGTH_SIZE;
                     }

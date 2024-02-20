@@ -1,6 +1,9 @@
 ﻿using BLHX.Server.Common.Utils;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Reflection;
+using System.Text.Json;
 
 namespace BLHX.Server.Common.Database
 {
@@ -8,6 +11,7 @@ namespace BLHX.Server.Common.Database
     {
         public static readonly Logger c = new(nameof(DBManager), ConsoleColor.DarkCyan);
         public static AccountContext AccountContext { get; }
+        public static PlayerContext PlayerContext { get; }
 
         static DBManager()
         {
@@ -20,6 +24,7 @@ namespace BLHX.Server.Common.Database
             }
 
             AccountContext = new AccountContext();
+            PlayerContext = new PlayerContext();
         }
     }
 
@@ -32,5 +37,23 @@ namespace BLHX.Server.Common.Database
     public interface IBLHXDBContext<TSelf> : IBLHXDBContext where TSelf : DbContext
     {
         string IBLHXDBContext.GetFullDbPath() => Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, (string)typeof(TSelf).GetProperty(nameof(DbPath))!.GetValue(null)!);
+    }
+
+    public static class PropertyBuilderExtensions
+    {
+        public static PropertyBuilder<T> HasJsonConversion<T>(this PropertyBuilder<T> propertyBuilder) where T : class, new()
+        {
+            ValueConverter<T, string> converter = new
+            (
+                v => JsonSerializer.Serialize(v, JsonSerializerOptions.Default),
+                v => JsonSerializer.Deserialize<T>(v, JsonSerializerOptions.Default) ?? new T()
+            );
+
+            propertyBuilder.HasConversion(converter);
+            propertyBuilder.Metadata.SetValueConverter(converter);
+            propertyBuilder.HasColumnType("jsonb");
+
+            return propertyBuilder;
+        }
     }
 }

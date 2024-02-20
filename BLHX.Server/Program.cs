@@ -3,6 +3,7 @@ using BLHX.Server.Common.Utils;
 using BLHX.Server.Game;
 using BLHX.Server.Sdk;
 using System.Net.NetworkInformation;
+using System.Reflection;
 
 namespace BLHX.Server;
 
@@ -10,6 +11,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        Logger.c.Log($"Version {Assembly.GetEntryAssembly()?.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion}");
         Logger.c.Log("Starting...");
 
         Config.Load();
