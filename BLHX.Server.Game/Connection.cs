@@ -1,7 +1,7 @@
 ﻿using BLHX.Server.Common.Database;
 using BLHX.Server.Common.Proto;
-using BLHX.Server.Common.Proto.p11;
 using BLHX.Server.Common.Utils;
+using BLHX.Server.Game.Handlers;
 using ProtoBuf;
 using System.Buffers.Binary;
 using System.Net;
@@ -115,6 +115,13 @@ namespace BLHX.Server.Game
 
             // c.Debug(BitConverter.ToString(sendBuf).Replace("-", ""));
             ns.Write(sendBuf);
+        }
+
+        public void InitClientData()
+        {
+            this.NotifyPlayerData();
+            this.NotifyStatisticsInit();
+            this.NotifyShipData();
         }
 
         public void SendHttpResponse(string rsp, string type = "text/plain")

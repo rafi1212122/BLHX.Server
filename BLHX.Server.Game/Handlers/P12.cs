@@ -18,5 +18,18 @@ namespace BLHX.Server.Game.Handlers
                 });
             }
         }
+
+        public static void NotifyFleetData(this Connection connection)
+        {
+            if (connection.player is not null)
+            {
+                connection.Send(new Sc12101()
+                {
+                    GroupLists = [
+                        new Groupinfo() { Id = 1, ShipLists = [1, 2] }
+                    ]
+                });
+            }
+        }
     }
 }

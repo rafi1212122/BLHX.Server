@@ -8,15 +8,25 @@ namespace BLHX.Server.Game.Handlers
         [PacketHandler(Command.Cs11001)]
         static void ServerTimeHandler(Connection connection, Packet packet)
         {
-            connection.NotifyPlayerData();
-            connection.NotifyStatisticsInit();
-            connection.NotifyShipData();
+            connection.InitClientData();
             connection.Send(new Sc11002()
             {
                 Timestamp = (uint)DateTimeOffset.Now.ToUnixTimeSeconds(),
                 Monday0oclockTimestamp = Connection.Monday0oclockTimestamp,
                 ShipCount = connection.player is null ? 0 : (uint)connection.player.Ships.Count
             });
+        }
+
+        [PacketHandler(Command.Cs11603)]
+        static void FetchSecondaryPasswordHandler(Connection connection, Packet packet)
+        {
+            connection.Send(new Sc11604());
+        }
+
+        [PacketHandler(Command.Cs11017)]
+        static void StageDropListHandler(Connection connection, Packet packet)
+        {
+            connection.Send(new Sc11018());
         }
 
         [PacketHandler(Command.Cs11401)]
@@ -51,7 +61,10 @@ namespace BLHX.Server.Game.Handlers
                     GmFlag = 1,
                     Rank = 1,
                     GuideIndex = 1,
+                    ChatRoomId = 1,
                     RegisterTime = (uint)new DateTimeOffset(connection.player.CreatedAt).ToUnixTimeSeconds(),
+                    ShipCount = (uint)connection.player.Ships.Count,
+                    CommanderBagMax = 40,
                     Display = connection.player.DisplayInfo,
                     Appreciation = new()
                 });

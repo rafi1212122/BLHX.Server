@@ -30,8 +30,7 @@ namespace BLHX.Server.PcapParser
 
             // Open the capture file
             using (PacketCommunicator communicator =
-                selectedDevice.Open(65536,                                  // portion of the packet to capture
-                                                                            // 65536 guarantees that the whole packet will be captured on all the link layers
+                selectedDevice.Open(65536,                                  // portion of the packet to capture, 65536 guarantees that the whole packet will be captured on all the link layers
                                     PacketDeviceOpenAttributes.Promiscuous, // promiscuous mode
                                     1000))                                  // read timeout
             {
