@@ -1,4 +1,5 @@
-﻿using BLHX.Server.Common.Database;
+﻿using BLHX.Server.Common.Data;
+using BLHX.Server.Common.Database;
 using BLHX.Server.Common.Proto;
 using BLHX.Server.Common.Utils;
 using BLHX.Server.Game.Handlers;
@@ -117,11 +118,35 @@ namespace BLHX.Server.Game
             ns.Write(sendBuf);
         }
 
+        void SendPacket(Packet packet)
+        {
+            var ns = tcpClient.GetStream();
+
+            byte[] sendBuf = GC.AllocateUninitializedArray<byte>(Packet.LENGTH_SIZE + Packet.HEADER_SIZE + packet.bytes.Length);
+            BinaryPrimitives.WriteUInt16BigEndian(sendBuf, (ushort)(packet.bytes.Length + Packet.HEADER_SIZE));
+            sendBuf[Packet.LENGTH_SIZE] = 0;
+            BinaryPrimitives.WriteUInt16BigEndian(sendBuf.AsSpan(Packet.LENGTH_SIZE + 1), (ushort)packet.command);
+            BinaryPrimitives.WriteUInt16BigEndian(sendBuf.AsSpan(Packet.HEADER_SIZE), NextPacketIdx);
+            packet.bytes.CopyTo(sendBuf.AsSpan(Packet.LENGTH_SIZE + Packet.HEADER_SIZE));
+
+            ns.Write(sendBuf);
+        }
+
         public void InitClientData()
         {
             this.NotifyPlayerData();
+            this.NotifyRefluxData();
+            this.NotifyGameRoom();
             this.NotifyStatisticsInit();
             this.NotifyShipData();
+            this.NotifyShipSkinData();
+            this.NotifyFleetData();
+            this.NotifyShopMonthData();
+            this.NotifyChapterData();
+            this.NotifyBagData();
+            this.NotifyDormData();
+            this.NotifyNavalAcademy();
+            // SendPacket(new() { bytes = Convert.FromBase64String("CAEQABgAIAAyBQjqBxABMgUI6QcQATIFCNcIEAEyBQjQCBABMgUIlQoQATIFCJoKEAEyBQjTCBABMgUIzggQATIFCM8IEAEyBQiYChABMgUIlgoQATIFCNEIEAEyBQjSCBABMgUI2AgQATgBQAJK/gEIARIQCgQxMTEyEBYYDSABMAA4ABIQCgQxMTA2EAwYFyABMAA4ABIQCgQxMTA1EBYYDyABMAA4ABIQCgQxMzAyEBgYDCABMAA4ABIQCgQxMzA0EBgYFCABMAA4ABIQCgQxMTAzEAwYDCABMAA4ABIQCgQxMTAyEBEYDCABMAA4ABIQCgQxMTA3EBcYFCABMAA4ABIQCgQxMzA2EBAYGCABMAA4ABIQCgQxMzAxEBQYGCABMAA4ABIQCgQxMTA0EBAYDCABMAA4ABIQCgQxMTExEBYYFiACMAA4ABIQCgQxMDAxEAAYACABMAA4ABIQCgQxMDAyEAAYACABMAA4AFAAWABgAGj/o82uBnIA"), command = Command.Sc19001 });
         }
 
         public void SendHttpResponse(string rsp, string type = "text/plain")

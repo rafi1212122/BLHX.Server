@@ -4,6 +4,7 @@ namespace BLHX.Server.Common.Data;
 
 public static class JSON
 {
+    public static JsonSerializerOptions serializerOptions = new() { IncludeFields = true, WriteIndented = true };
     public static string ConfigPath => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config.json");
     public static string ShareConfigPath => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources\\sharecfgdata\\");
 
@@ -15,22 +16,16 @@ public static class JSON
             Save(path, obj);
         }
 
-        return JsonSerializer.Deserialize<T>(File.ReadAllText(path));
+        return JsonSerializer.Deserialize<T>(File.ReadAllText(path), serializerOptions) ?? new T();
     }
 
     public static void Save<T>(string path, T obj)
     {
-        File.WriteAllText(path, JsonSerializer.Serialize(obj, new JsonSerializerOptions()
-        {
-            WriteIndented = true
-        }));
+        File.WriteAllText(path, JsonSerializer.Serialize(obj, serializerOptions));
     }
 
     public static string Stringify<T>(T obj)
     {
-        return JsonSerializer.Serialize(obj, new JsonSerializerOptions()
-        {
-            WriteIndented = true
-        });
+        return JsonSerializer.Serialize(obj, serializerOptions);
     }
 }

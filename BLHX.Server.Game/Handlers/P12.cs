@@ -19,6 +19,11 @@ namespace BLHX.Server.Game.Handlers
             }
         }
 
+        public static void NotifyShipSkinData(this Connection connection)
+        {
+            connection.Send(new Sc12201());
+        }
+
         public static void NotifyFleetData(this Connection connection)
         {
             if (connection.player is not null)
@@ -26,7 +31,10 @@ namespace BLHX.Server.Game.Handlers
                 connection.Send(new Sc12101()
                 {
                     GroupLists = [
-                        new Groupinfo() { Id = 1, ShipLists = [1, 2] }
+                        new Groupinfo() { Id = 1, ShipLists = [1, 2] },
+                        new Groupinfo() { Id = 2 },
+                        new Groupinfo() { Id = 11 },
+                        new Groupinfo() { Id = 12 }
                     ]
                 });
             }

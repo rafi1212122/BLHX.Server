@@ -6,15 +6,15 @@ using System.Reflection;
 
 namespace BLHX.Server.Game
 {
-    readonly struct Packet
+    struct Packet
     {
         public const int LENGTH_SIZE = 2;
         public const int HEADER_SIZE = 5;
-        public readonly ushort length;
-        public readonly byte flag;
-        public readonly Command command;
-        public readonly ushort id;
-        public readonly byte[] bytes;
+        public ushort length;
+        public byte flag;
+        public Command command;
+        public ushort id;
+        public byte[] bytes;
 
         public Packet(byte[] recv)
         {
@@ -26,7 +26,7 @@ namespace BLHX.Server.Game
             Array.Copy(recv, HEADER_SIZE + LENGTH_SIZE, bytes, 0, length - HEADER_SIZE);
         }
 
-        public T Decode<T>() where T : IExtensible => Serializer.Deserialize<T>(bytes.AsSpan());
+        public readonly T Decode<T>() where T : IExtensible => Serializer.Deserialize<T>(bytes.AsSpan());
     }
 
     static class PacketFactory

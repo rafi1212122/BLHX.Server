@@ -1,4 +1,5 @@
 ﻿using BLHX.Server.Common.Data;
+using BLHX.Server.Common.Database;
 using BLHX.Server.Common.Utils;
 using BLHX.Server.Game;
 using BLHX.Server.Sdk;
@@ -14,6 +15,8 @@ internal class Program
         Logger.c.Log($"Version {Assembly.GetEntryAssembly()?.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion}");
         Logger.c.Log("Starting...");
 
+        // Preload
+        System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(DBManager).TypeHandle);
         Config.Load();
         if (Config.Instance.Address == "127.0.0.1")
         {

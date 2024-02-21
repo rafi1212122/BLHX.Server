@@ -11,4 +11,11 @@ namespace BLHX.Server.Game.Handlers
             connection.Send(new Sc26102());
         }
     }
+    static class P26ConnectionNotifyExtensions
+    {
+        public static void NotifyGameRoom(this Connection connection)
+        {
+            connection.Send(new Sc26120());
+        }
+    }
 }

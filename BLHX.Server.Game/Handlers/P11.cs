@@ -70,5 +70,10 @@ namespace BLHX.Server.Game.Handlers
                 });
             }
         }
+
+        public static void NotifyRefluxData(this Connection connection)
+        {
+            connection.Send(new Sc11752());
+        }
     }
 }
