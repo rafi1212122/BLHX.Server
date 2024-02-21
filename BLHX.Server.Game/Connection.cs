@@ -140,6 +140,9 @@ namespace BLHX.Server.Game
             this.NotifyStatisticsInit();
             this.NotifyShipData();
             this.NotifyShipSkinData();
+            this.NotifyTechnologyData();
+            this.NotifyBlueprintData();
+            this.NotifyTechSetLists();
             this.NotifyFleetData();
             this.NotifyShopMonthData();
             this.NotifyChapterData();
