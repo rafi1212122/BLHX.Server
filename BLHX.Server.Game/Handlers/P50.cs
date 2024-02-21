@@ -16,5 +16,23 @@ namespace BLHX.Server.Game.Handlers
         {
             connection.Send(new Sc50017());
         }
+        
+        [PacketHandler(Command.Cs50102, IsNotifyHandler = true)]
+        static void SendMsgHandler(Connection connection, Packet packet)
+        {
+            var req = packet.Decode<Cs50102>();
+
+            GameServer.ChatManager.SendChat(new()
+            {
+                Content = req.Content,
+                Player = new()
+                {
+                    Id = connection.player.Uid,
+                    Lv = connection.player.Level,
+                    Name = connection.player.Name,
+                    Display = connection.player.DisplayInfo
+                }
+            });
+        }
     }
 }

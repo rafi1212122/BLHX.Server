@@ -32,7 +32,7 @@ namespace BLHX.Server.Game
     static class PacketFactory
     {
         static readonly Logger c = new(nameof(PacketFactory), ConsoleColor.DarkGreen);
-        static readonly Dictionary<Command, PacketHandlerDelegate> handlers = [];
+        static readonly Dictionary<Command, (PacketHandlerDelegate, PacketHandlerAttribute)> handlers = [];
 
         static PacketFactory()
         {
@@ -47,24 +47,37 @@ namespace BLHX.Server.Game
                 if (handlers.ContainsKey(attr.command))
                     continue;
 
-                handlers.Add(attr.command, (PacketHandlerDelegate)Delegate.CreateDelegate(typeof(PacketHandlerDelegate), method));
+                handlers.Add(attr.command, ((PacketHandlerDelegate)Delegate.CreateDelegate(typeof(PacketHandlerDelegate), method), attr));
                 c.Log($"Loaded {method.Name} for {attr.command}");
             }
             c.Log($"{handlers.Count} packet handlers loaded!");
         }
 
-        public static PacketHandlerDelegate? GetPacketHandler(Command command)
+        public static (PacketHandlerDelegate?, PacketHandlerAttribute?) GetPacketHandler(Command command)
         {
             handlers.TryGetValue(command, out var handler);
-            return handler;
+            return ((PacketHandlerDelegate, PacketHandlerAttribute)?)handler ?? (null, null)!;
         }
     }
 
     delegate void PacketHandlerDelegate(Connection connection, Packet packet);
 
+
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-    class PacketHandlerAttribute(Command command) : Attribute
+    class PacketHandlerAttribute : Attribute
     {
-        public Command command = command;
+        public Command command;
+
+        /// <summary>
+        /// Some packets that sent by the client doensn't need a reply.
+        /// It's important for such packet doesnt increment the packet id counter, example for such packet is Cs12299 & Cs50102
+        /// </summary>
+        public bool IsNotifyHandler { get; init; }
+        public bool SaveDataAfterRun { get; init; }
+
+        public PacketHandlerAttribute(Command command)
+        {
+            this.command = command;
+        }
     }
 }

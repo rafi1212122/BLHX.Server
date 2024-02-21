@@ -2,6 +2,7 @@
 using System.Net.Sockets;
 using BLHX.Server.Common.Data;
 using BLHX.Server.Common.Utils;
+using BLHX.Server.Game.Managers;
 
 namespace BLHX.Server.Game
 {
@@ -11,6 +12,7 @@ namespace BLHX.Server.Game
         public static readonly Dictionary<IPEndPoint, Connection> connections = new();
         public static readonly Logger c = new(nameof(GameServer), ConsoleColor.Magenta);
         public static IPEndPoint EndPoint { get; }
+        public static ChatManager ChatManager { get; } = new ChatManager();
 
         static GameServer()
         {

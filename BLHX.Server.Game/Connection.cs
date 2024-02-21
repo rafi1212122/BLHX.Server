@@ -7,6 +7,7 @@ using ProtoBuf;
 using System.Buffers.Binary;
 using System.Net;
 using System.Net.Sockets;
+using System.Reflection;
 using System.Text;
 
 namespace BLHX.Server.Game
@@ -67,11 +68,15 @@ namespace BLHX.Server.Game
                         var packet = new Packet(buf[readLen..]);
                         c.Log(packet.command.ToString());
 
-                        var handler = PacketFactory.GetPacketHandler(packet.command);
-                        if (handler is not null)
+                        (PacketHandlerDelegate? handler, PacketHandlerAttribute? attr) = PacketFactory.GetPacketHandler(packet.command);
+                        if (handler is not null && attr is not null)
                         {
                             handler(this, packet);
-                            packetIdx++;
+
+                            if (!attr.IsNotifyHandler)
+                                packetIdx++;
+                            if (!attr.SaveDataAfterRun)
+                                DBManager.PlayerContext.SaveChanges();
                         }
                         else
                         {
@@ -120,6 +125,7 @@ namespace BLHX.Server.Game
 
         void SendPacket(Packet packet)
         {
+            c.Log(packet.command.ToString());
             var ns = tcpClient.GetStream();
 
             byte[] sendBuf = GC.AllocateUninitializedArray<byte>(Packet.LENGTH_SIZE + Packet.HEADER_SIZE + packet.bytes.Length);

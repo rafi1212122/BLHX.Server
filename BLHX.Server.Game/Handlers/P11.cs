@@ -18,12 +18,11 @@ namespace BLHX.Server.Game.Handlers
             });
         }
 
-        [PacketHandler(Command.Cs11009)]
+        [PacketHandler(Command.Cs11009, SaveDataAfterRun = true)]
         static void ChangeManifestoHandler(Connection connection, Packet packet)
         {
             var req = packet.Decode<Cs11009>();
             connection.player.Adv = req.Adv;
-            DBManager.PlayerContext.SaveChanges();
 
             connection.Send(new Sc11010());
         }
