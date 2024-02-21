@@ -3,7 +3,7 @@ using BLHX.Server.Common.Utils;
 
 namespace BLHX.Server.Game.Commands;
 
-[commandHandler("test", "Test command", "test type=gacha")]
+[CommandHandler("test", "Test command", "test type=gacha")]
 public class TestCommand : Command
 {
     static readonly string[] RarityStrings = { "Unknown", "Unused", "Normal", "Rare", "Elite", "SSR", "UR" };

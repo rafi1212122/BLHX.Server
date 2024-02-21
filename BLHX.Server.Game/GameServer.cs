@@ -17,7 +17,7 @@ namespace BLHX.Server.Game
         static GameServer()
         {
             // Preload
-            System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(PacketFactory).TypeHandle);
+            System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(PacketHandlerFactory).TypeHandle);
 
             EndPoint = new(IPAddress.Any, (int)Config.Instance.Port);
             listener = new TcpListener(EndPoint);

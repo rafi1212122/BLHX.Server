@@ -68,7 +68,7 @@ namespace BLHX.Server.Game
                         var packet = new Packet(buf[readLen..]);
                         c.Log(packet.command.ToString());
 
-                        (PacketHandlerDelegate? handler, PacketHandlerAttribute? attr) = PacketFactory.GetPacketHandler(packet.command);
+                        (PacketHandlerDelegate? handler, PacketHandlerAttribute? attr) = PacketHandlerFactory.GetPacketHandler(packet.command);
                         if (handler is not null && attr is not null)
                         {
                             handler(this, packet);

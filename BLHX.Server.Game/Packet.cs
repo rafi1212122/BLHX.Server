@@ -29,12 +29,12 @@ namespace BLHX.Server.Game
         public readonly T Decode<T>() where T : IExtensible => Serializer.Deserialize<T>(bytes.AsSpan());
     }
 
-    static class PacketFactory
+    static class PacketHandlerFactory
     {
-        static readonly Logger c = new(nameof(PacketFactory), ConsoleColor.DarkGreen);
+        static readonly Logger c = new(nameof(PacketHandlerFactory), ConsoleColor.DarkGreen);
         static readonly Dictionary<Command, (PacketHandlerDelegate, PacketHandlerAttribute)> handlers = [];
 
-        static PacketFactory()
+        static PacketHandlerFactory()
         {
             LoadPacketHandlers();
         }

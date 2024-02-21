@@ -12,7 +12,7 @@ public static class InputSystem
 
             if (string.IsNullOrEmpty(command)) continue;
 
-            CommandHandler.HandleCommand(command);
+            CommandHandlerFactory.HandleCommand(command);
         }
     }
 }

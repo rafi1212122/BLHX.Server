@@ -4,13 +4,13 @@ using System.Reflection;
 namespace BLHX.Server.Game.Commands;
 
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-public class commandHandler : Attribute
+public class CommandHandler : Attribute
 {
     public string Name { get; }
     public string Description { get; }
     public string Example { get; }
 
-    public commandHandler(string commandName, string description, string example)
+    public CommandHandler(string commandName, string description, string example)
     {
         Name = commandName;
         Description = description;
@@ -67,13 +67,13 @@ public abstract class Command
     }
 }
 
-public static class CommandHandler
+public static class CommandHandlerFactory
 {
     public static readonly List<Command> Commands = new List<Command>();
     
     static readonly Dictionary<string, Action<Dictionary<string, string>>> commandFunctions;
 
-    static CommandHandler()
+    static CommandHandlerFactory()
     {
         commandFunctions = new Dictionary<string, Action<Dictionary<string, string>>>(StringComparer.OrdinalIgnoreCase);
 
@@ -83,11 +83,11 @@ public static class CommandHandler
     public static void RegisterCommands(Assembly assembly)
     {
         var commandTypes = assembly.GetTypes()
-            .Where(t => Attribute.IsDefined(t, typeof(commandHandler)) && typeof(Command).IsAssignableFrom(t));
+            .Where(t => Attribute.IsDefined(t, typeof(CommandHandler)) && typeof(Command).IsAssignableFrom(t));
 
         foreach (var commandType in commandTypes)
         {
-            var commandAttribute = (commandHandler?)Attribute.GetCustomAttribute(commandType, typeof(commandHandler));
+            var commandAttribute = (CommandHandler?)Attribute.GetCustomAttribute(commandType, typeof(CommandHandler));
             if (commandAttribute != null)
             {
                 var commandInstance = (Command)Activator.CreateInstance(commandType)!;

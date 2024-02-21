@@ -2,7 +2,7 @@
 
 namespace BLHX.Server.Game.Commands;
 
-[commandHandler("save", "Save the current state", "save")]
+[CommandHandler("save", "Save the current state", "save")]
 public class SaveCommand : Command
 {
     public override void Execute(Dictionary<string, string> args)
