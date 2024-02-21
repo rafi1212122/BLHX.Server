@@ -1,9 +1,23 @@
-﻿using BLHX.Server.Common.Proto.p12;
+﻿using BLHX.Server.Common.Proto;
+using BLHX.Server.Common.Proto.p12;
 
 namespace BLHX.Server.Game.Handlers
 {
     internal static class P12
     {
+        [PacketHandler(Command.Cs12102, SaveDataAfterRun = true)]
+        static void UpdateFleetHandler(Connection connection, Packet packet)
+        {
+            var fleet = packet.Decode<Cs12102>();
+            var toUpdate = connection.player.Fleets.Find(x => x.Id == fleet.Id);
+
+            if (toUpdate is not null)
+                toUpdate.ShipLists = fleet.ShipLists;
+            else
+                connection.player.Fleets.Add(new() { Id = fleet.Id, ShipLists = fleet.ShipLists });
+
+            connection.Send(new Sc12103());
+        }
     }
 
     static class P12ConnectionNotifyExtensions
@@ -30,12 +44,7 @@ namespace BLHX.Server.Game.Handlers
             {
                 connection.Send(new Sc12101()
                 {
-                    GroupLists = [
-                        new Groupinfo() { Id = 1, ShipLists = [1, 2] },
-                        new Groupinfo() { Id = 2 },
-                        new Groupinfo() { Id = 11 },
-                        new Groupinfo() { Id = 12 }
-                    ]
+                    GroupLists = connection.player.Fleets
                 });
             }
         }

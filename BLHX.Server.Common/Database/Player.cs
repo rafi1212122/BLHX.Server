@@ -1,4 +1,5 @@
 ﻿using BLHX.Server.Common.Proto.common;
+using BLHX.Server.Common.Proto.p12;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -48,6 +49,14 @@ namespace BLHX.Server.Common.Database
             {
                 e.Property(b => b.DisplayInfo)
                 .HasJsonConversion();
+                e.Property(b => b.Fleets)
+                .HasJsonConversion()
+                .HasDefaultValue(new List<Groupinfo>() {
+                    new() { Id = 1, ShipLists = [1, 2] },
+                    new() { Id = 2 },
+                    new() { Id = 11 },
+                    new() { Id = 12 }
+                });
                 e.Property(b => b.Adv)
                 .HasDefaultValue("");
                 e.HasMany(b => b.Resources)
@@ -101,6 +110,8 @@ namespace BLHX.Server.Common.Database
         public uint Exp { get; set; }
         public Displayinfo DisplayInfo { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        public List<Groupinfo> Fleets { get; set; } = null!;
 
         public virtual ICollection<PlayerResource> Resources { get; set; } = [];
         public virtual ICollection<PlayerShip> Ships { get; set; } = [];
