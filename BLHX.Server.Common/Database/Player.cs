@@ -122,7 +122,7 @@ namespace BLHX.Server.Common.Database
             if (num < 0)
                 res.Num = (uint)Math.Max(res.Num - num, 0);
             else
-                res.Num = Math.Max(res.Num + (uint)num, uint.MaxValue);
+                res.Num = Math.Min(res.Num + (uint)num, uint.MaxValue);
         }
 
         public void AddShip(uint shipTemplateId)
