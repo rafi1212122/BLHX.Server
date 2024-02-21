@@ -1,9 +1,21 @@
-﻿using BLHX.Server.Common.Proto.p16;
+﻿using BLHX.Server.Common.Proto;
+using BLHX.Server.Common.Proto.p16;
 
 namespace BLHX.Server.Game.Handlers
 {
     internal static class P16
     {
+        [PacketHandler(Command.Cs16104)]
+        static void GetChargeListHandler(Connection connection, Packet packet)
+        {
+            connection.Send(new Sc16105());
+        }
+
+        [PacketHandler(Command.Cs16106)]
+        static void GetExchangeItemHandler(Connection connection, Packet packet)
+        {
+            connection.Send(new Sc16107());
+        }
     }
 
     static class P16ConnectionNotifyExtensions

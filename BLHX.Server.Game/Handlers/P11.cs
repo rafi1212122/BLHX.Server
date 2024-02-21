@@ -60,7 +60,7 @@ namespace BLHX.Server.Game.Handlers
                     EquipBagMax = 350,
                     GmFlag = 1,
                     Rank = 1,
-                    GuideIndex = 1,
+                    GuideIndex = 1000000,
                     ChatRoomId = 1,
                     RegisterTime = (uint)new DateTimeOffset(connection.player.CreatedAt).ToUnixTimeSeconds(),
                     ShipCount = (uint)connection.player.Ships.Count,

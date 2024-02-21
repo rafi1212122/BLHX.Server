@@ -5,6 +5,12 @@ namespace BLHX.Server.Game.Handlers
 {
     internal static class P60
     {
+        [PacketHandler(Command.Cs60033)]
+        static void GetGuildShopHandler(Connection connection, Packet packet)
+        {
+            connection.Send(new Sc60034());
+        }
+        
         [PacketHandler(Command.Cs60037)]
         static void GuildInfoHandler(Connection connection, Packet packet)
         {

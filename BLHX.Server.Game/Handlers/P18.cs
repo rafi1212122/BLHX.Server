@@ -13,5 +13,11 @@ namespace BLHX.Server.Game.Handlers
                 Rank = 1
             });
         }
+        
+        [PacketHandler(Command.Cs18100)]
+        static void GetMilitaryShopHandler(Connection connection, Packet packet)
+        {
+            connection.Send(new Sc18101());
+        }
     }
 }
