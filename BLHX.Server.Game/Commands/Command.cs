@@ -50,14 +50,14 @@ public abstract class Command
         }
     }
 
-    protected T Parse<T>(string? value, T fallback = default)
+    protected T Parse<T>(string? value, T fallback = default!)
     {
         var tryParseMethod = typeof(T).GetMethod("TryParse", [typeof(string), typeof(T).MakeByRefType()]);
 
         if (tryParseMethod != null)
         {
-            var parameters = new object[] { value, null };
-            bool success = (bool)tryParseMethod.Invoke(null, parameters);
+            var parameters = new object[] { value!, null! };
+            bool success = (bool)tryParseMethod.Invoke(null, parameters)!;
 
             if (success)
                 return (T)parameters[1];
@@ -87,10 +87,10 @@ public static class CommandHandler
 
         foreach (var commandType in commandTypes)
         {
-            var commandAttribute = (commandHandler)Attribute.GetCustomAttribute(commandType, typeof(commandHandler));
+            var commandAttribute = (commandHandler?)Attribute.GetCustomAttribute(commandType, typeof(commandHandler));
             if (commandAttribute != null)
             {
-                var commandInstance = (Command)Activator.CreateInstance(commandType);
+                var commandInstance = (Command)Activator.CreateInstance(commandType)!;
                 commandFunctions[commandAttribute.Name] = commandInstance.Execute;
                 Commands.Add(commandInstance);
             }

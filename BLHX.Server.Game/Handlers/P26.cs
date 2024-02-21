@@ -11,6 +11,12 @@ namespace BLHX.Server.Game.Handlers
             connection.Send(new Sc26102());
         }
 
+        [PacketHandler(Command.Cs26103)]
+        static void MiniGameOPHandler(Connection connection, Packet packet)
+        {
+            connection.Send(new Sc26104());
+        }
+
         [PacketHandler(Command.Cs26150)]
         static void GetMinigameShopHandler(Connection connection, Packet packet)
         {

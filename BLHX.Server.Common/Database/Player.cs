@@ -48,6 +48,8 @@ namespace BLHX.Server.Common.Database
             {
                 e.Property(b => b.DisplayInfo)
                 .HasJsonConversion();
+                e.Property(b => b.Adv)
+                .HasDefaultValue("");
                 e.HasMany(b => b.Resources)
                 .WithOne(e => e.Player)
                 .HasForeignKey(e => e.PlayerUid)
@@ -92,6 +94,8 @@ namespace BLHX.Server.Common.Database
         public uint Uid { get; set; }
         public string Token { get; set; }
         public string Name { get; set; }
+        // Aka. manifesto
+        public string Adv { get; set; } = string.Empty;
         public uint Level { get; set; }
         // TODO: Exp add setter to recalculate cap and set level
         public uint Exp { get; set; }
