@@ -89,6 +89,7 @@ namespace BLHX.Server.Game.Handlers
                 return;
             }
 
+            DBManager.PlayerContext.PlayerRoutine(player);
             connection.player = player;
             rsp.UserId = player.Uid;
             connection.Send(rsp);
@@ -116,6 +117,7 @@ namespace BLHX.Server.Game.Handlers
         static void HeartbeatHandler(Connection connection, Packet packet)
         {
             connection.Send(new Sc10101() { State = 1 });
+            connection.Tick();
         }
     }
 }

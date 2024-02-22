@@ -28,6 +28,13 @@ namespace BLHX.Server.Common.Database
         }
     }
 
+    enum SavingState
+    {
+        None,
+        Saving,
+        Attempting
+    }
+
     public interface IBLHXDBContext
     {
         public static abstract string DbPath { get; }

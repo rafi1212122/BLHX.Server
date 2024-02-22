@@ -76,7 +76,7 @@ namespace BLHX.Server.Game
                             if (!attr.IsNotifyHandler)
                                 packetIdx++;
                             if (!attr.SaveDataAfterRun)
-                                DBManager.PlayerContext.SaveChanges();
+                                DBManager.PlayerContext.Save();
                         }
                         else
                         {
@@ -136,6 +136,20 @@ namespace BLHX.Server.Game
             packet.bytes.CopyTo(sendBuf.AsSpan(Packet.LENGTH_SIZE + Packet.HEADER_SIZE));
 
             ns.Write(sendBuf);
+        }
+
+        public void Tick()
+        {
+            foreach (var resourceField in player.ResourceFields)
+            {
+                resourceField.CalculateYield();
+            }
+
+            DBManager.PlayerContext.Save();
+            this.NotifyResourceList();
+#if DEBUG
+            c.Log($"Tick");
+#endif
         }
 
         public void InitClientData()

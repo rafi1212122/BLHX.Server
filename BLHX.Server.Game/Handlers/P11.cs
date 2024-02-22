@@ -16,6 +16,7 @@ namespace BLHX.Server.Game.Handlers
                 Monday0oclockTimestamp = Connection.Monday0oclockTimestamp,
                 ShipCount = connection.player is null ? 0 : (uint)connection.player.Ships.Count
             });
+            connection.Tick();
         }
 
         [PacketHandler(Command.Cs11009, SaveDataAfterRun = true)]
@@ -25,6 +26,15 @@ namespace BLHX.Server.Game.Handlers
             connection.player.Adv = req.Adv;
 
             connection.Send(new Sc11010());
+        }
+
+        [PacketHandler(Command.Cs11013, SaveDataAfterRun = true)]
+        static void HarvestResourceHandler(Connection connection, Packet packet)
+        {
+            var req = packet.Decode<Cs11013>();
+            connection.player.HarvestResourceField((ResourceFieldType)req.Type);
+
+            connection.Send(new Sc11014());
         }
 
         [PacketHandler(Command.Cs11601)]
@@ -60,6 +70,17 @@ namespace BLHX.Server.Game.Handlers
 
     static class P11ConnectionNotifyExtensions
     {
+        public static void NotifyResourceList(this Connection connection)
+        {
+            if (connection.player is not null)
+            {
+                connection.Send(new Sc11004()
+                {
+                    ResourceLists = connection.player.Resources.Select(x => new Resource() { Num = x.Num, Type = x.Id }).ToList()
+                });
+            }
+        }
+
         public static void NotifyPlayerData(this Connection connection)
         {
             if (connection.player is not null)

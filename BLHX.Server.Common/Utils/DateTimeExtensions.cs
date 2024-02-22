@@ -10,5 +10,10 @@
             int offset = (dayOfMonth + (int)firstDayOfWeek - 1) / 7;
             return offset + 1;
         }
+
+        public static double GetSecondsPassed(this DateTime date)
+        {
+            return (DateTime.Now - date).TotalSeconds;
+        }
     }
 }

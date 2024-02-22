@@ -1,22 +1,45 @@
 ﻿using BLHX.Server.Common.Proto.common;
 using BLHX.Server.Common.Proto.p12;
+using BLHX.Server.Common.Utils;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Numerics;
 
 namespace BLHX.Server.Common.Database
 {
     public sealed class PlayerContext : DbContext, IBLHXDBContext<PlayerContext>
     {
+        SavingState savingState;
         public static string DbPath => "Databases/players.db";
         public DbSet<Player> Players { get; set; }
         public DbSet<PlayerResource> Resources { get; set; }
+        public DbSet<ResourceField> ResourceFields { get; set; }
         public DbSet<PlayerShip> Ships { get; set; }
 
         public PlayerContext()
         {
             if (Database.GetPendingMigrations().Any())
                 Database.Migrate();
+
+            SavingChanges += (_, _) => savingState = SavingState.Saving;
+            SavedChanges += (_, _) => savingState = SavingState.None;
+            SaveChangesFailed += (_, _) => savingState = SavingState.None;
+        }
+
+        // Thread-safe method pls
+        public void Save()
+        {
+            if (savingState == SavingState.Attempting) 
+                return;
+
+            while (savingState != SavingState.None)
+            {
+                savingState = SavingState.Attempting;
+                Task.Delay(1).Wait();
+            }
+
+            SaveChanges();
         }
 
         public Player Init(string token, uint shipId, string name)
@@ -24,7 +47,7 @@ namespace BLHX.Server.Common.Database
             var player = new Player(token, new Displayinfo() { Icon = shipId }, name);
 
             Players.Add(player);
-            SaveChanges();
+            Save();
 
             // Initial resousrces
             player.DoResource(8, 4000);
@@ -37,9 +60,19 @@ namespace BLHX.Server.Common.Database
             player.AddShip(shipId);
             player.AddShip(106011);
 
-            SaveChanges();
+            PlayerRoutine(player);
 
             return player;
+        }
+
+        public void PlayerRoutine(Player player)
+        {
+            if (!ResourceFields.Any(x => x.Type == ResourceFieldType.Gold))
+                ResourceFields.Add(new() { Type = ResourceFieldType.Gold, PlayerUid = player.Uid });
+            if (!ResourceFields.Any(x => x.Type == ResourceFieldType.Oil))
+                ResourceFields.Add(new() { Type = ResourceFieldType.Oil, PlayerUid = player.Uid });
+
+            Save();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -60,6 +93,10 @@ namespace BLHX.Server.Common.Database
                 e.Property(b => b.Adv)
                 .HasDefaultValue("");
                 e.HasMany(b => b.Resources)
+                .WithOne(e => e.Player)
+                .HasForeignKey(e => e.PlayerUid)
+                .IsRequired();
+                e.HasMany(b => b.ResourceFields)
                 .WithOne(e => e.Player)
                 .HasForeignKey(e => e.PlayerUid)
                 .IsRequired();
@@ -114,6 +151,7 @@ namespace BLHX.Server.Common.Database
         public List<Groupinfo> Fleets { get; set; } = null!;
 
         public virtual ICollection<PlayerResource> Resources { get; set; } = [];
+        public virtual ICollection<ResourceField> ResourceFields { get; set; } = [];
         public virtual ICollection<PlayerShip> Ships { get; set; } = [];
 
         public Player(string token, Displayinfo displayInfo, string name)
@@ -166,6 +204,28 @@ namespace BLHX.Server.Common.Database
             };
 
             DBManager.PlayerContext.Ships.Add(ship);
+        }
+
+        public void HarvestResourceField(ResourceFieldType type)
+        {
+            foreach (var resourceField in ResourceFields)
+            {
+                if (resourceField.Type == type)
+                {
+                    var amount = resourceField.Flush();
+                    switch (type)
+                    {
+                        case ResourceFieldType.Gold:
+                            DoResource(1, (int)amount);
+                            break;
+                        case ResourceFieldType.Oil:
+                            DoResource(2, (int)amount);
+                            break;
+                    }
+
+                    resourceField.CalculateYield();
+                }
+            }
         }
     }
 
@@ -245,6 +305,78 @@ namespace BLHX.Server.Common.Database
                 MetaRepairLists = MetaRepairLists,
                 CoreLists = CoreLists
             };
+        }
+    }
+
+    public enum ResourceFieldType
+    {
+        Gold = 1,
+        Oil = 2
+    }
+
+    [PrimaryKey(nameof(Type), nameof(PlayerUid))]
+    public class ResourceField
+    {
+        [Key]
+        public ResourceFieldType Type { get; set; }
+        public uint Level { get; set; } = 1;
+        public DateTime LastHarvestTime { get; set; } = DateTime.Now;
+        public DateTime UpgradeTime { get; set; } = DateTime.Now;
+
+        [Key]
+        public uint PlayerUid { get; set; }
+        public virtual Player Player { get; set; } = null!;
+
+        public void CalculateYield()
+        {
+            // TODO: Take UpgradeTime into acccount of the reward
+            switch (Type)
+            {
+                case ResourceFieldType.Gold:
+                    if (Data.Data.GoldFieldTemplate.TryGetValue((int)Level, out var goldTemplate))
+                    {
+                        var num = (goldTemplate.HourTime * goldTemplate.Production) / 3600f * LastHarvestTime.GetSecondsPassed();
+                        Player.DoResource(7, (int)Math.Min((uint)Math.Floor(num), goldTemplate.Store));
+                    }
+                    break;
+                case ResourceFieldType.Oil:
+                    if (Data.Data.OilFieldTemplate.TryGetValue((int)Level, out var oilTemplate))
+                    {
+                        var num = (oilTemplate.HourTime * oilTemplate.Production) / 3600f * LastHarvestTime.GetSecondsPassed();
+                        Player.DoResource(5, (int)Math.Min((uint)Math.Floor(num), oilTemplate.Store));
+                    }
+                    break;
+            }
+        }
+
+        public uint Flush()
+        {
+            uint amount = 0;
+            // TODO: Take UpgradeTime into acccount of the reward
+            switch (Type)
+            {
+                case ResourceFieldType.Gold:
+                    if (Data.Data.GoldFieldTemplate.TryGetValue((int)Level, out var goldTemplate))
+                    {
+                        var goldField = Player.Resources.First(x => x.Id == 7);
+                        amount = goldField.Num;
+
+                        goldField.Num = 0;
+                    }
+                    break;
+                case ResourceFieldType.Oil:
+                    if (Data.Data.OilFieldTemplate.TryGetValue((int)Level, out var oilTemplate))
+                    {
+                        var oilField = Player.Resources.First(x => x.Id == 5);
+                        amount = oilField.Num;
+
+                        oilField.Num = 0;
+                    }
+                    break;
+            }
+            LastHarvestTime = DateTime.Now;
+
+            return amount;
         }
     }
 }

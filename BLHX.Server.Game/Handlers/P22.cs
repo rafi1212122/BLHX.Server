@@ -24,8 +24,8 @@ namespace BLHX.Server.Game.Handlers
         {
             connection.Send(new Sc22001()
             {
-                OilWellLevel = 1,
-                GoldWellLevel = 1,
+                OilWellLevel = connection.player.ResourceFields.FirstOrDefault(x => x.Type == Common.Database.ResourceFieldType.Oil)?.Level ?? 1,
+                GoldWellLevel = connection.player.ResourceFields.FirstOrDefault(x => x.Type == Common.Database.ResourceFieldType.Gold)?.Level ?? 1,
                 ClassLv = 1,
                 Class = new(),
                 SkillClassNum = 2
