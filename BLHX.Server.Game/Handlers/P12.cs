@@ -48,5 +48,10 @@ namespace BLHX.Server.Game.Handlers
                 });
             }
         }
+
+        public static void NotifyBuildShipData(this Connection connection)
+        {
+            connection.Send(new Sc12024());
+        }
     }
 }

@@ -7,7 +7,6 @@ using ProtoBuf;
 using System.Buffers.Binary;
 using System.Net;
 using System.Net.Sockets;
-using System.Reflection;
 using System.Text;
 
 namespace BLHX.Server.Game
@@ -148,7 +147,7 @@ namespace BLHX.Server.Game
             DBManager.PlayerContext.Save();
             this.NotifyResourceList();
 #if DEBUG
-            c.Log($"Tick");
+            c.Log("Ticked!");
 #endif
         }
 
@@ -167,6 +166,8 @@ namespace BLHX.Server.Game
             this.NotifyShopMonthData();
             this.NotifyChapterData();
             this.NotifyBagData();
+            this.NotifyBuildShipData();
+            this.NotifyActivityData();
             this.NotifyDormData();
             this.NotifyNavalAcademy();
         }

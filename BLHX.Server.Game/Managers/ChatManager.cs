@@ -6,7 +6,7 @@ namespace BLHX.Server.Game.Managers
     {
         List<MsgInfo> messages = [];
 
-        public void SendChat(MsgInfo msgInfo)
+        public void SendChat(MsgInfo msgInfo, bool broadcast = true)
         {
             msgInfo.Timestamp = (uint)DateTimeOffset.Now.ToUnixTimeSeconds();
 

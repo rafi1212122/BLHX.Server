@@ -22,6 +22,12 @@ namespace BLHX.Server.Game.Handlers
         {
             var req = packet.Decode<Cs50102>();
 
+            if (req.Content.StartsWith("/"))
+            {
+                Commands.CommandHandlerFactory.HandleCommand(req.Content.Substring(1), connection);
+                return;
+            }
+
             GameServer.ChatManager.SendChat(new()
             {
                 Content = req.Content,
@@ -33,6 +39,29 @@ namespace BLHX.Server.Game.Handlers
                     Display = connection.player.DisplayInfo
                 }
             });
+        }
+    }
+
+    static class P50ConnectionNotifyExtensions
+    {
+        public static void SendSystemMsg(this Connection connection, string msg)
+        {
+
+            var ntf = new Sc50101()
+            {
+                Content = msg,
+                Player = new()
+                {
+                    Name = "System",
+                    Display = new()
+                    {
+                        Icon = 107061
+                    }
+                },
+                Type = 1
+            };
+
+            connection.Send(ntf);
         }
     }
 }

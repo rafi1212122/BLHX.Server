@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using BLHX.Server.Game.Handlers;
+using System.Reflection;
 using System.Text;
 
 namespace BLHX.Server.Game.Commands;
@@ -15,7 +16,29 @@ public class HelpCommand : Command
         StringBuilder sb = new StringBuilder();
 
         sb.AppendLine("Available Commands: ");
-        foreach (var command in CommandHandlerFactory.Commands)
+        foreach (var command in CommandHandlerFactory.Commands.Where(x => x.Usage.HasFlag(CommandUsage.Console)))
+        {
+            if (!commandAttributes.TryGetValue(command.GetType(), out var attr))
+            {
+                attr = command.GetType().GetCustomAttribute(typeof(CommandHandler)) as CommandHandler;
+                commandAttributes[command.GetType()] = attr;
+            }
+
+            if (attr != null)
+                sb.AppendLine($"  {attr.Name} - {attr.Description} (Example: {attr.Example}), Usage: {command.Usage}");
+        }
+
+        Console.Write(sb.ToString());
+    }
+
+    public override void Execute(Dictionary<string, string> args, Connection connection)
+    {
+        base.Execute(args);
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.AppendLine("Available Commands: ");
+        foreach (var command in CommandHandlerFactory.Commands.Where(x => x.Usage.HasFlag(CommandUsage.User)))
         {
             if (!commandAttributes.TryGetValue(command.GetType(), out var attr))
             {
@@ -27,6 +50,6 @@ public class HelpCommand : Command
                 sb.AppendLine($"  {attr.Name} - {attr.Description} (Example: {attr.Example})");
         }
 
-        Console.Write(sb.ToString());
+        connection.SendSystemMsg(sb.ToString());
     }
 }

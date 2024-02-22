@@ -335,15 +335,21 @@ namespace BLHX.Server.Common.Database
                 case ResourceFieldType.Gold:
                     if (Data.Data.GoldFieldTemplate.TryGetValue((int)Level, out var goldTemplate))
                     {
+                        var res = Player.Resources.FirstOrDefault(x => x.Id == 7);
                         var num = (goldTemplate.HourTime * goldTemplate.Production) / 3600f * LastHarvestTime.GetSecondsPassed();
-                        Player.DoResource(7, (int)Math.Min((uint)Math.Floor(num), goldTemplate.Store));
+
+                        if (res is not null)
+                            res.Num = Math.Min((uint)Math.Floor(num), goldTemplate.Store);
                     }
                     break;
                 case ResourceFieldType.Oil:
                     if (Data.Data.OilFieldTemplate.TryGetValue((int)Level, out var oilTemplate))
                     {
+                        var res = Player.Resources.FirstOrDefault(x => x.Id == 5);
                         var num = (oilTemplate.HourTime * oilTemplate.Production) / 3600f * LastHarvestTime.GetSecondsPassed();
-                        Player.DoResource(5, (int)Math.Min((uint)Math.Floor(num), oilTemplate.Store));
+
+                        if (res is not null)
+                            res.Num = Math.Min((uint)Math.Floor(num), oilTemplate.Store);
                     }
                     break;
             }

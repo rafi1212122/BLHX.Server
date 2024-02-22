@@ -113,5 +113,10 @@ namespace BLHX.Server.Game.Handlers
         {
             connection.Send(new Sc11752());
         }
+
+        public static void NotifyActivityData(this Connection connection)
+        {
+            connection.Send(new Sc11200());
+        }
     }
 }
