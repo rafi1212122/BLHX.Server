@@ -25,7 +25,7 @@ public class HelpCommand : Command
             }
 
             if (attr != null)
-                sb.AppendLine($"  {attr.Name} - {attr.Description} (Example: {attr.Example}), Usage: {command.Usage}");
+                sb.AppendLine($"  {attr.Name} - {attr.Description} (Example: {attr.Example})");
         }
 
         Console.Write(sb.ToString());

@@ -14,5 +14,11 @@ namespace BLHX.Server.Game.Handlers
                 MetaShipLists = req.GroupIds.Select(x => new MetaShipInfo() { GroupId = x }).ToList()
             });
         }
+
+        [PacketHandler(Command.Cs34501)]
+        static void GetWorldBossHandler(Connection connection, Packet packet)
+        {
+            connection.Send(new Sc34502());
+        }
     }
 }

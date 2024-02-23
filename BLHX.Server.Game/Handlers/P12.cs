@@ -1,4 +1,6 @@
-﻿using BLHX.Server.Common.Proto;
+﻿using BLHX.Server.Common.Data;
+using BLHX.Server.Common.Proto;
+using BLHX.Server.Common.Proto.common;
 using BLHX.Server.Common.Proto.p12;
 
 namespace BLHX.Server.Game.Handlers
@@ -18,6 +20,16 @@ namespace BLHX.Server.Game.Handlers
 
             connection.Send(new Sc12103());
         }
+
+        [PacketHandler(Command.Cs12202, SaveDataAfterRun = true)]
+        static void SetShipSkinHandler(Connection connection, Packet packet)
+        {
+            var req = packet.Decode<Cs12202>();
+            if (connection.player.Ships.Any(x => x.Id == req.ShipId))
+                connection.player.Ships.First(x => x.Id == req.ShipId).SkinId = req.SkinId;
+
+            connection.Send(new Sc12203());
+        }
     }
 
     static class P12ConnectionNotifyExtensions
@@ -35,7 +47,7 @@ namespace BLHX.Server.Game.Handlers
 
         public static void NotifyShipSkinData(this Connection connection)
         {
-            connection.Send(new Sc12201());
+            connection.Send(new Sc12201() { SkinLists = connection.player.ShipSkins });
         }
 
         public static void NotifyFleetData(this Connection connection)

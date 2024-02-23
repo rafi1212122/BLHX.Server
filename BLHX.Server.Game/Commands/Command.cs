@@ -1,4 +1,5 @@
 ﻿using BLHX.Server.Common.Utils;
+using BLHX.Server.Game.Handlers;
 using System.Reflection;
 
 namespace BLHX.Server.Game.Commands;
@@ -75,6 +76,11 @@ public abstract class Command
     public virtual void Execute(Dictionary<string, string> args, Connection connection)
     {
         Execute(args);
+    }
+
+    public virtual void NotifySuccess(Connection connection)
+    {
+        connection.SendSystemMsg($"{GetType().Name} success!");
     }
 
     protected T Parse<T>(string? value, T fallback = default!)

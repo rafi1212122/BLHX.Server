@@ -1,6 +1,5 @@
 ﻿using BLHX.Server.Common.Utils;
 using System.Reflection;
-using System.Text.RegularExpressions;
 
 namespace BLHX.Server.Common.Data;
 
@@ -13,6 +12,9 @@ public static class Data
     
     [LoadData("tradingport_template.json", LoadDataType.ShareCfg)]
     public static Dictionary<int, ResourceFieldTemplate> GoldFieldTemplate { get; private set; } = null!;
+    
+    [LoadData("ship_skin_template.json", LoadDataType.ShareCfg)]
+    public static Dictionary<int, ShipSkinTemplate> ShipSkinTemplate { get; private set; } = null!;
     
     [LoadData("chapter_template.json", LoadDataType.ShareCfgData)]
     public static Dictionary<int, ChapterTemplate> ChapterTemplate { get; private set; } = null!;

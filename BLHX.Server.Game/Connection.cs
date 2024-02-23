@@ -139,16 +139,19 @@ namespace BLHX.Server.Game
 
         public void Tick()
         {
-            foreach (var resourceField in player.ResourceFields)
+            if (player is not null)
             {
-                resourceField.CalculateYield();
-            }
+                foreach (var resourceField in player.ResourceFields)
+                {
+                    resourceField.CalculateYield();
+                }
 
-            DBManager.PlayerContext.Save();
-            this.NotifyResourceList();
+                DBManager.PlayerContext.Save();
+                this.NotifyResourceList();
 #if DEBUG
-            c.Log("Ticked!");
+                c.Log("Ticked!");
 #endif
+            }
         }
 
         public void InitClientData()
@@ -172,6 +175,7 @@ namespace BLHX.Server.Game
             this.NotifyActivityData();
             this.NotifyDormData();
             this.NotifyNavalAcademy();
+            this.NotifyWorldData();
         }
 
         public void SendHttpResponse(string rsp, string type = "text/plain")

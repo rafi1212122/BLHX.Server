@@ -90,6 +90,9 @@ namespace BLHX.Server.Common.Database
                     new() { Id = 11 },
                     new() { Id = 12 }
                 });
+                e.Property(b => b.ShipSkins)
+                .HasJsonConversion()
+                .HasDefaultValue(new List<Idtimeinfo>() { });
                 e.Property(b => b.Adv)
                 .HasDefaultValue("");
                 e.HasMany(b => b.Resources)
@@ -149,6 +152,7 @@ namespace BLHX.Server.Common.Database
         public DateTime CreatedAt { get; set; }
 
         public List<Groupinfo> Fleets { get; set; } = null!;
+        public List<Idtimeinfo> ShipSkins { get; set; } = null!;
 
         public virtual ICollection<PlayerResource> Resources { get; set; } = [];
         public virtual ICollection<ResourceField> ResourceFields { get; set; } = [];
