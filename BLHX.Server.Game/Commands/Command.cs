@@ -100,6 +100,7 @@ public static class CommandHandlerFactory
     
     static readonly Dictionary<string, Action<Dictionary<string, string>>> commandFunctions;
     static readonly Dictionary<string, Action<Dictionary<string, string>, Connection>> commandFunctionsConn;
+    private static readonly char[] separator = new[] { ' ' };
 
     static CommandHandlerFactory()
     {
@@ -133,7 +134,7 @@ public static class CommandHandlerFactory
 
     public static void HandleCommand(string commandLine, Connection? connection = null)
     {
-        var parts = commandLine.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        var parts = commandLine.Split(separator, StringSplitOptions.RemoveEmptyEntries);
         if (parts.Length == 0)
             return;
 

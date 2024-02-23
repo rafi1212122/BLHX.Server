@@ -166,6 +166,8 @@ namespace BLHX.Server.Game
             this.NotifyShopMonthData();
             this.NotifyChapterData();
             this.NotifyBagData();
+            this.NotifyEquipList();
+            this.NotifyEquipSkinList();
             this.NotifyBuildShipData();
             this.NotifyActivityData();
             this.NotifyDormData();
