@@ -1,9 +1,19 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace BLHX.Server.Common.Data;
 
 public class ChapterTemplate : Model
 {
+    [JsonIgnore]
+    public List<GridItem> GridItems 
+    { 
+        get 
+        {
+            return Grids.Select(x => new GridItem() { Row = x[0].GetUInt32(), Column = x[1].GetUInt32(), Blocking = x[2].GetBoolean(), Flag = x[3].GetInt32() }).ToList();
+        } 
+    }
+
     [JsonPropertyName("ItemTransformPattern")]
     public object ItemTransformPattern { get; set; }
     [JsonPropertyName("act_id")]
@@ -85,7 +95,7 @@ public class ChapterTemplate : Model
     [JsonPropertyName("friendly_id")]
     public int FriendlyId { get; set; }
     [JsonPropertyName("grids")]
-    public object[][] Grids { get; set; }
+    public List<List<JsonElement>> Grids { get; set; }
     [JsonPropertyName("group_num")]
     public int GroupNum { get; set; }
     [JsonPropertyName("guarder_expedition_list")]
@@ -202,4 +212,12 @@ public class ChapterTemplate : Model
     public object WinCondition { get; set; }
     [JsonPropertyName("win_condition_display")]
     public string WinConditionDisplay { get; set; }
+}
+
+public readonly struct GridItem
+{
+    public uint Row { get; init; }
+    public uint Column { get; init; }
+    public bool Blocking { get; init; }
+    public int Flag { get; init; }
 }

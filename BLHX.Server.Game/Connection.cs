@@ -122,7 +122,7 @@ namespace BLHX.Server.Game
             ns.Write(sendBuf);
         }
 
-        void SendPacket(Packet packet)
+        void Send(Packet packet)
         {
             c.Log(packet.command.ToString());
             var ns = tcpClient.GetStream();
