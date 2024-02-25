@@ -3,6 +3,34 @@ using System.Text.Json.Serialization;
 
 namespace BLHX.Server.Common.Data;
 
+public enum ChapterAttachFlag
+{
+    AttachNone = 0,
+    AttachBorn = 1,
+    AttachBox = 2,
+    AttachSupply = 3,
+    AttachElite = 4,
+    AttachAmbush = 5,
+    AttachEnemy = 6,
+    AttachTorpedo_Enemy = 7,
+    AttachBoss = 8,
+    AttachStory = 9,
+    AttachAreaBoss = 11,
+    AttachChampion = 12,
+    AttachTorpedo_Fleet = 14,
+    AttachChampionPatrol = 15,
+    AttachBorn_Sub = 16,
+    AttachTransport = 17,
+    AttachTransport_Target = 18,
+    AttachChampionSub = 19,
+    AttachOni = 20,
+    AttachOni_Target = 21,
+    AttachBomb_Enemy = 24,
+    AttachBarrier = 25,
+    AttachHugeSupply = 26,
+    AttachLandbase = 100
+}
+
 public class ChapterTemplate : Model
 {
     [JsonIgnore]
@@ -10,7 +38,7 @@ public class ChapterTemplate : Model
     { 
         get 
         {
-            return Grids.Select(x => new GridItem() { Row = x[0].GetUInt32(), Column = x[1].GetUInt32(), Blocking = x[2].GetBoolean(), Flag = x[3].GetInt32() }).ToList();
+            return Grids.Select(x => new GridItem() { Row = x[0].GetUInt32(), Column = x[1].GetUInt32(), Blocking = x[2].GetBoolean(), Flag = (ChapterAttachFlag)x[3].GetInt32() }).ToList();
         } 
     }
 
@@ -219,5 +247,5 @@ public readonly struct GridItem
     public uint Row { get; init; }
     public uint Column { get; init; }
     public bool Blocking { get; init; }
-    public int Flag { get; init; }
+    public ChapterAttachFlag Flag { get; init; }
 }

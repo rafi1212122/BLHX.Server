@@ -477,5 +477,35 @@ namespace BLHX.Server.Common.Database
                 Time = (uint)new DateTimeOffset(Time).ToUnixTimeSeconds()
             };
         }
+
+        public static ChapterInfo FromProto(Currentchapterinfo chapterInfo, uint uid)
+        {
+            return new()
+            {
+                Id = chapterInfo.Id,
+                AiLists = chapterInfo.AiLists,
+                BattleStatistics = chapterInfo.BattleStatistics,
+                BuffLists = chapterInfo.BuffLists,
+                CellFlagLists = chapterInfo.CellFlagLists,
+                CellLists = chapterInfo.CellLists,
+                ChapterHp = chapterInfo.ChapterHp,
+                ChapterStrategyLists = chapterInfo.ChapterStrategyLists,
+                ContinuousKillCount = chapterInfo.ContinuousKillCount,
+                EscortLists = chapterInfo.EscortLists,
+                ExtraFlagLists = chapterInfo.ExtraFlagLists,
+                FleetDuties = chapterInfo.FleetDuties,
+                GroupLists = chapterInfo.GroupLists,
+                InitShipCount = chapterInfo.InitShipCount,
+                IsSubmarineAutoAttack = Convert.ToBoolean(chapterInfo.IsSubmarineAutoAttack),
+                KillCount = chapterInfo.KillCount,
+                LoopFlag = chapterInfo.LoopFlag,
+                ModelActCount = chapterInfo.ModelActCount,
+                MoveStepCount = chapterInfo.MoveStepCount,
+                OperationBuffs = chapterInfo.OperationBuffs,
+                Round = chapterInfo.Round,
+                Time = DateTimeOffset.FromUnixTimeSeconds(chapterInfo.Time).DateTime,
+                PlayerUid = uid
+            };
+        }
     }
 }
