@@ -19,7 +19,7 @@ public class TestCommand : Command
 
     [Argument("value")]
     public string? Value { get; set; }
-
+    
     public override void Execute(Dictionary<string, string> args)
     {
         base.Execute(args);
@@ -31,6 +31,9 @@ public class TestCommand : Command
                 break;
             case "lookup":
                 LookupShip(Parse(Value, 1));
+                break;
+            case "pathfinding":
+                TestPathfinding();
                 break;
             default:
                 Logger.c.Warn("Unknown test type");
@@ -75,5 +78,55 @@ public class TestCommand : Command
             Logger.c.Log($"Ship {id} ({ship.EnglishName}):\n{JSON.Stringify(ship)}");
         else
             Logger.c.Warn($"Ship {id} not found");
+    }
+
+    void TestPathfinding()
+    {
+        bool verbose = Parse(Verbose, true);
+        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+        var grid = Data.ChapterTemplate[103].GridItems;
+        (uint startX, uint startY, uint width, uint height) = grid.GetDimensions();
+        var path = Pathfinding.AStar(grid, 0, 0, width - 1, height - 1);
+
+        if (verbose)
+        {
+            Logger.c.Log("TEST GRID:");
+            for (uint x = 0; x < width; x++)
+            {
+                for (uint y = 0; y < height; y++)
+                {
+                    var gridItem = grid.Find(x, y).Value;
+
+                    if (gridItem.Column >= startX && gridItem.Column <= width &&
+                        gridItem.Row >= startY && gridItem.Row <= height)
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    else if (x == 0 && y == 0)
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    else if (x == width - 1 && y == height - 1)
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+
+                    Console.Write(grid.Find(x, y).Value.Blocking ? "1" : "0");
+                    Console.ResetColor();
+                }
+
+                Console.WriteLine();
+            }
+        }
+        
+        if (path != null)
+        {
+            Logger.c.Log($"Path found! Length: {path.Count}");
+            
+            if (verbose)
+                foreach (var node in path)
+                    Logger.c.Log(node.ToString());
+        }
+        else
+            Logger.c.Warn("No path found!");
+        
+        stopwatch.Stop();
+        
+        Logger.c.Log("----------------------------------------");
+        Logger.c.Log($"PROCESSING TIME: {stopwatch.Elapsed}");
     }
 }
