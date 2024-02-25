@@ -1,10 +1,10 @@
 ﻿using BLHX.Server.Common.Proto.common;
 using BLHX.Server.Common.Proto.p12;
+using BLHX.Server.Common.Proto.p13;
 using BLHX.Server.Common.Utils;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Numerics;
 
 namespace BLHX.Server.Common.Database
 {
@@ -16,6 +16,7 @@ namespace BLHX.Server.Common.Database
         public DbSet<PlayerResource> Resources { get; set; }
         public DbSet<ResourceField> ResourceFields { get; set; }
         public DbSet<PlayerShip> Ships { get; set; }
+        public DbSet<ChapterInfo> ChapterInfoes { get; set; }
 
         public PlayerContext()
         {
@@ -127,6 +128,31 @@ namespace BLHX.Server.Common.Database
                 e.Property(b => b.CoreLists)
                 .HasJsonConversion();
             });
+            modelBuilder.Entity<ChapterInfo>(e =>
+            {
+                e.Property(x => x.EscortLists)
+                .HasJsonConversion();
+                e.Property(x => x.AiLists)
+                .HasJsonConversion();
+                e.Property(x => x.BuffLists)
+                .HasJsonConversion();
+                e.Property(x => x.GroupLists)
+                .HasJsonConversion();
+                e.Property(x => x.BattleStatistics)
+                .HasJsonConversion();
+                e.Property(x => x.CellFlagLists)
+                .HasJsonConversion();
+                e.Property(x => x.CellLists)
+                .HasJsonConversion();
+                e.Property(x => x.ChapterStrategyLists)
+                .HasJsonConversion();
+                e.Property(x => x.ExtraFlagLists)
+                .HasJsonConversion();
+                e.Property(x => x.FleetDuties)
+                .HasJsonConversion();
+                e.Property(x => x.OperationBuffs)
+                .HasJsonConversion();
+            });
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -153,10 +179,12 @@ namespace BLHX.Server.Common.Database
 
         public List<Groupinfo> Fleets { get; set; } = null!;
         public List<Idtimeinfo> ShipSkins { get; set; } = null!;
+        public uint? CurrentChapter { get; set; }
 
         public virtual ICollection<PlayerResource> Resources { get; set; } = [];
         public virtual ICollection<ResourceField> ResourceFields { get; set; } = [];
         public virtual ICollection<PlayerShip> Ships { get; set; } = [];
+        public virtual ICollection<ChapterInfo> ChapterInfoes { get; set; } = [];
 
         public Player(string token, Displayinfo displayInfo, string name)
         {
@@ -387,6 +415,67 @@ namespace BLHX.Server.Common.Database
             LastHarvestTime = DateTime.Now;
 
             return amount;
+        }
+    }
+
+    [PrimaryKey(nameof(Id), nameof(PlayerUid))]
+    public class ChapterInfo
+    {
+        [Key]
+        public uint Id { get; set; }
+        public DateTime Time { get; set; }
+        public List<Chaptercellinfo> CellLists { get; set; } = [];
+        public List<Groupinchapter> GroupLists { get; set; } = [];
+        public List<Chaptercellinfo> AiLists { get; set; } = [];
+        public List<Chaptercellinfo> EscortLists { get; set; } = [];
+        public uint Round { get; set; }
+        public bool IsSubmarineAutoAttack { get; set; }
+        public List<uint> OperationBuffs { get; set; } = [];
+        public uint ModelActCount { get; set; }
+        public List<uint> BuffLists { get; set; } = [];
+        public uint LoopFlag { get; set; }
+        public List<uint> ExtraFlagLists { get; set; } = [];
+        public List<Cellflag> CellFlagLists { get; set; } = [];
+        public uint ChapterHp { get; set; }
+        public List<Strategyinfo> ChapterStrategyLists { get; set; } = [];
+        public uint KillCount { get; set; }
+        public uint InitShipCount { get; set; }
+        public uint ContinuousKillCount { get; set; }
+        public List<Strategyinfo> BattleStatistics { get; set; } = [];
+        public List<fleetDutykeyValuePair> FleetDuties { get; set; } = [];
+        public uint MoveStepCount { get; set; }
+
+        [Key]
+        public uint PlayerUid { get; set; }
+        public virtual Player Player { get; set; } = null!;
+
+        public Currentchapterinfo ToProto()
+        {
+            return new Currentchapterinfo()
+            {
+                Id = Id,
+                AiLists = AiLists,
+                BattleStatistics = BattleStatistics,
+                BuffLists = BuffLists,
+                CellFlagLists = CellFlagLists,
+                CellLists = CellLists,
+                ChapterHp = ChapterHp, 
+                ChapterStrategyLists = ChapterStrategyLists,
+                ContinuousKillCount = ContinuousKillCount,
+                EscortLists = EscortLists,
+                ExtraFlagLists = ExtraFlagLists,
+                FleetDuties = FleetDuties,
+                GroupLists = GroupLists,
+                InitShipCount = InitShipCount,
+                IsSubmarineAutoAttack = Convert.ToUInt32(IsSubmarineAutoAttack),
+                KillCount = KillCount,
+                LoopFlag = LoopFlag,
+                ModelActCount = ModelActCount,
+                MoveStepCount = MoveStepCount,
+                OperationBuffs = OperationBuffs,
+                Round = Round,
+                Time = (uint)new DateTimeOffset(Time).ToUnixTimeSeconds()
+            };
         }
     }
 }
