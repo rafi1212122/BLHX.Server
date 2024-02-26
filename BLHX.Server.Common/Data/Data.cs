@@ -16,6 +16,9 @@ public static class Data
     [LoadData("ship_skin_template.json", LoadDataType.ShareCfg)]
     public static Dictionary<int, ShipSkinTemplate> ShipSkinTemplate { get; private set; } = null!;
     
+    [LoadData("battle_cost_template.json", LoadDataType.ShareCfg)]
+    public static Dictionary<uint, BattleCostTemplate> BattleCostTemplate { get; private set; } = null!;
+    
     [LoadData("chapter_template.json", LoadDataType.ShareCfgData)]
     public static Dictionary<int, ChapterTemplate> ChapterTemplate { get; private set; } = null!;
     

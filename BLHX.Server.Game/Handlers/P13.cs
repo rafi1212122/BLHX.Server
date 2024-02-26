@@ -31,6 +31,7 @@ namespace BLHX.Server.Game.Handlers
                 if (x.Flag == ChapterAttachFlag.AttachEnemy)
                 {
                     cellInfo.ItemType = (uint)x.Flag;
+                    // TODO: Use weigted values
                     cellInfo.ItemId = (uint)chapterTemplate.ExpeditionIdWeightList[Random.Shared.Next(chapterTemplate.ExpeditionIdWeightList.Length)][0];
                 }
 
@@ -90,13 +91,14 @@ namespace BLHX.Server.Game.Handlers
                 case ChapterOP.OpMove:
                     rsp.MovePaths.Add(new() { Row = req.ActArg1, Column = req.ActArg2 });
                     break;
+                case ChapterOP.OpEnemyRound:
+                    break;
                 case ChapterOP.OpRetreat:
                 case ChapterOP.OpBox:
                 case ChapterOP.OpAmbush:
                 case ChapterOP.OpStrategy:
                 case ChapterOP.OpRepair:
                 case ChapterOP.OpSupply:
-                case ChapterOP.OpEnemyRound:
                 case ChapterOP.OpSubState:
                 case ChapterOP.OpStory:
                 case ChapterOP.OpBarrier:
@@ -111,6 +113,12 @@ namespace BLHX.Server.Game.Handlers
             }
 
             connection.Send(rsp);
+        }
+
+        [PacketHandler(Command.Cs13106)]
+        static void ChapterBattleResultRequestHandler(Connection connection, Packet packet)
+        {
+            connection.Send(new Sc13105());
         }
 
         [PacketHandler(Command.Cs13505)]

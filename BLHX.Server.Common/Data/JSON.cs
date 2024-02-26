@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using BLHX.Server.Common.Utils;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 
 namespace BLHX.Server.Common.Data;
@@ -19,7 +20,7 @@ public static partial class JSON
         }
 
         string text = File.ReadAllText(path);
-        if (typeof(T).IsGenericType && typeof(T).GetGenericTypeDefinition() == typeof(Dictionary<,>) && typeof(T).GetGenericArguments()[0] == typeof(int))
+        if (typeof(T).IsGenericType && typeof(T).GetGenericTypeDefinition() == typeof(Dictionary<,>) && typeof(T).GetGenericArguments()[0].IsTypeNumeric())
         {
             text = DictKeyAll().Replace(text, "");
         }
