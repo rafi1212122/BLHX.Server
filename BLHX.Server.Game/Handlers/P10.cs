@@ -116,7 +116,7 @@ namespace BLHX.Server.Game.Handlers
         [PacketHandler(Command.Cs10100, IsNotifyHandler = true)]
         static void HeartbeatHandler(Connection connection, Packet packet)
         {
-            connection.Send(new Sc10101() { State = 1 });
+            connection.Send(new Sc10101());
             connection.Tick();
         }
     }

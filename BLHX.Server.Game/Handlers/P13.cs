@@ -2,6 +2,8 @@
 using BLHX.Server.Common.Database;
 using BLHX.Server.Common.Proto;
 using BLHX.Server.Common.Proto.p13;
+using BLHX.Server.Common.Utils;
+using System.Numerics;
 
 namespace BLHX.Server.Game.Handlers
 {
@@ -86,14 +88,18 @@ namespace BLHX.Server.Game.Handlers
             var req = packet.Decode<Cs13103>();
             var rsp = new Sc13104();
 
+            var currentChapter = connection.player.ChapterInfoes.FirstOrDefault(x => x.Id == connection.player.CurrentChapter);
             switch ((ChapterOP)req.Act)
             {
+                case ChapterOP.OpRetreat:
+                    connection.player.CurrentChapter = null;
+                    break;
                 case ChapterOP.OpMove:
+                    // TODO: Use pathfinding
                     rsp.MovePaths.Add(new() { Row = req.ActArg1, Column = req.ActArg2 });
                     break;
                 case ChapterOP.OpEnemyRound:
                     break;
-                case ChapterOP.OpRetreat:
                 case ChapterOP.OpBox:
                 case ChapterOP.OpAmbush:
                 case ChapterOP.OpStrategy:
@@ -108,8 +114,8 @@ namespace BLHX.Server.Game.Handlers
                 case ChapterOP.OpSwitch:
                 case ChapterOP.OpSkipBattle:
                     rsp.Result = 1;
-                    connection.Send(rsp);
-                    throw new NotImplementedException($"{nameof(Cs13103)}, {JSON.Stringify(req)}");
+                    connection.c.Error($"{nameof(Cs13103)}, {JSON.Stringify(req)}");
+                    break;
             }
 
             connection.Send(rsp);
@@ -118,7 +124,29 @@ namespace BLHX.Server.Game.Handlers
         [PacketHandler(Command.Cs13106)]
         static void ChapterBattleResultRequestHandler(Connection connection, Packet packet)
         {
-            connection.Send(new Sc13105());
+            var rsp = new Sc13105();
+            var currentChapter = connection.player.ChapterInfoes.FirstOrDefault(x => x.Id == connection.player.CurrentChapter);
+            if (currentChapter is null || !Data.ChapterTemplate.TryGetValue((int)currentChapter.Id, out var chapterTemplate))
+            {
+                connection.Send(rsp);
+                return;
+            }
+
+            currentChapter.KillCount++;
+            if (currentChapter.KillCount >= chapterTemplate.BossRefresh)
+            {
+                int bossId = chapterTemplate.BossExpeditionId[Random.Shared.Next(chapterTemplate.BossExpeditionId.Length)];
+                var bossGridItem = chapterTemplate.GridItems.Find(x => x.Flag == ChapterAttachFlag.AttachBoss);
+                var bossCell = currentChapter.CellLists.Find(x => x.Pos.Row == bossGridItem.Row && x.Pos.Column == bossGridItem.Column);
+                if (bossCell is not null)
+                {
+                    bossCell.ItemId = (uint)bossId;
+                    bossCell.ItemType = (uint)ChapterAttachFlag.AttachBoss;
+                    rsp.MapUpdates.Add(bossCell);
+                }
+            }
+
+            connection.Send(rsp);
         }
 
         [PacketHandler(Command.Cs13505)]
@@ -132,7 +160,12 @@ namespace BLHX.Server.Game.Handlers
     {
         public static void NotifyChapterData(this Connection connection)
         {
-            connection.Send(new Sc13001() { ReactChapter = new() });
+            connection.Send(new Sc13001() 
+            { 
+                ReactChapter = new(), 
+                ChapterLists = connection.player.ChapterInfoes.Select(x => x.ToProto()).ToList(),
+                CurrentChapter = connection.player.ChapterInfoes.FirstOrDefault(x => x.Id == connection.player.CurrentChapter)?.ToProto(),
+            });
         }
     }
 
