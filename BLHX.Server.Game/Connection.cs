@@ -22,7 +22,7 @@ namespace BLHX.Server.Game
         readonly Task loopTask;
         ushort packetIdx = 0;
         private ushort NextPacketIdx => packetIdx;
-        public IPEndPoint EndPoint => (IPEndPoint)tcpClient.Client.RemoteEndPoint!;
+        public IPEndPoint EndPoint => (IPEndPoint?)tcpClient.Client.RemoteEndPoint ?? IPEndPoint.Parse("0.0.0.0:0");
 
         public Connection(TcpClient tcpClient)
         {

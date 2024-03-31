@@ -20,13 +20,13 @@ namespace BLHX.Server.Game.Handlers
                 ProxyIp = Config.Instance.Address,
                 ProxyPort = Config.Instance.Port,
                 Versions = [
-                    "$azhash$7$1$459$470aa097fec844d6",
-                    "$cvhash$467$98edcdd4e7dac668",
-                    "$l2dhash$514$b59cdb747b1c64c9",
+                    "$azhash$7$1$532$312a453ef34efc48",
+                    "$cvhash$477$8487e9251175425e",
+                    "$l2dhash$526$4bf900d597d9b176",
                     "$pichash$15$0d6f59289972cc8a",
                     "$bgmhash$13$76fdc897426a138d",
-                    "$paintinghash$82$6daa07fa50583c60",
-                    "$mangahash$24$3cefad85368b3296",
+                    "$paintinghash$99$19becda4b1a9955a",
+                    "$mangahash$31$e79f94a955fca957",
                     "$cipherhash$24$3cefad85368b3296",
                     "dTag-1"
                 ],
