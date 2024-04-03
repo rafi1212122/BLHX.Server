@@ -159,7 +159,7 @@ namespace BLHX.Server.Common.Database {
         public string Name { get; set; }
         // Aka. manifesto
         public string Adv { get; set; } = string.Empty;
-        public uint ShipBagMax { get; set; } = 9990;
+        public uint ShipBagMax { get; set; } = 9854938;
         public uint Level { get; set; }
         // TODO: Exp add setter to recalculate cap and set level
         public uint Exp { get; set; }

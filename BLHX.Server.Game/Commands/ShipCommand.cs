@@ -5,23 +5,33 @@ using BLHX.Server.Common.Utils;
 using BLHX.Server.Game.Handlers;
 
 namespace BLHX.Server.Game.Commands {
-    [CommandHandler("ship", "Unlock a character or all characters", "ship unlock=all")]
+    [CommandHandler("ship", "Unlock a character or all characters", "ship unlock=all rarity=6")]
     public class ShipCommand : Command {
         [Argument("unlock")]
         public string? Unlock { get; set; }
+
+        [Argument("rarity")]
+        public string? Rarity { get; set; }
 
         public override void Execute(Dictionary<string, string> args, Connection connection) {
             base.Execute(args);
 
             if (Unlock is null) {
-                Logger.c.Log($"Usage: /ship unlock=<all|clear|shipId>");
+                Logger.c.Log($"Usage: /ship unlock=<all|clear|shipId> rarity=1-6");
                 return;
             }
 
             if (Unlock.Equals("all", StringComparison.CurrentCultureIgnoreCase)) {
-                int amount = 585; // not sure why but if you add more than this amount the client crashes
-                List<int> all_ship_ids = Data.ShipDataTemplate.Where(x => x.Value.Star == x.Value.StarMax && x.Value.Star >= 5).ToDictionary().Keys.ToList();
-                List<PlayerShip> all_ships = all_ship_ids.Select(ship_id => CreateShipFromId((uint)ship_id, connection.player.Uid)).ToList();
+                int amount = 585; // adding more than this currently causes the client to crash since too much data is sent in a single packet
+                Dictionary<int, ShipDataTemplate> ship_ids_filter = Data.ShipDataTemplate.Where(x => x.Value.Star == x.Value.StarMax && x.Value.Star >= 5).ToDictionary();
+
+                List<int> all_ship_ids = ship_ids_filter.Keys.ToList();
+
+                if (Rarity is not null && int.TryParse(Rarity, out int rarity)) {
+                    all_ship_ids = Data.ShipDataStatistics.Where(ship_data => all_ship_ids.Contains(ship_data.Key) && ship_data.Value.Rarity == rarity).ToDictionary().Keys.ToList();
+                }
+
+                List<PlayerShip> all_ships = all_ship_ids.Select(ship_id => CreateShipFromId((uint)ship_id, connection.player.Uid)).Take(amount).ToList();
 
                 all_ships.AddRange(GetDefaultShips(connection.player.Ships)); // add the defaults
                 connection.player.Ships = all_ships;
@@ -39,6 +49,7 @@ namespace BLHX.Server.Game.Commands {
                 return;
             }
 
+            Rarity = null;
             DBManager.PlayerContext.Save();
             connection.NotifyShipData();
             base.NotifySuccess(connection);
