@@ -2,16 +2,12 @@
 using BLHX.Server.Common.Proto;
 using BLHX.Server.Common.Proto.p11;
 
-namespace BLHX.Server.Game.Handlers
-{
-    internal static class P11
-    {
+namespace BLHX.Server.Game.Handlers {
+    internal static class P11 {
         [PacketHandler(Command.Cs11001)]
-        static void ServerTimeHandler(Connection connection, Packet packet)
-        {
+        static void ServerTimeHandler(Connection connection, Packet packet) {
             connection.InitClientData();
-            connection.Send(new Sc11002()
-            {
+            connection.Send(new Sc11002() {
                 Timestamp = (uint)DateTimeOffset.Now.ToUnixTimeSeconds(),
                 Monday0oclockTimestamp = Connection.Monday0oclockTimestamp,
                 ShipCount = connection.player is null ? 0 : (uint)connection.player.Ships.Count
@@ -20,8 +16,7 @@ namespace BLHX.Server.Game.Handlers
         }
 
         [PacketHandler(Command.Cs11009, SaveDataAfterRun = true)]
-        static void ChangeManifestoHandler(Connection connection, Packet packet)
-        {
+        static void ChangeManifestoHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs11009>();
             connection.player.Adv = req.Adv;
 
@@ -29,8 +24,7 @@ namespace BLHX.Server.Game.Handlers
         }
 
         [PacketHandler(Command.Cs11013, SaveDataAfterRun = true)]
-        static void HarvestResourceHandler(Connection connection, Packet packet)
-        {
+        static void HarvestResourceHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs11013>();
             connection.player.HarvestResourceField((ResourceFieldType)req.Type);
 
@@ -38,55 +32,43 @@ namespace BLHX.Server.Game.Handlers
         }
 
         [PacketHandler(Command.Cs11601)]
-        static void GetEmojiInfoHandler(Connection connection, Packet packet)
-        {
+        static void GetEmojiInfoHandler(Connection connection, Packet packet) {
             connection.Send(new Sc11602());
         }
 
         [PacketHandler(Command.Cs11603)]
-        static void FetchSecondaryPasswordHandler(Connection connection, Packet packet)
-        {
+        static void FetchSecondaryPasswordHandler(Connection connection, Packet packet) {
             connection.Send(new Sc11604());
         }
 
         [PacketHandler(Command.Cs11017)]
-        static void StageDropListHandler(Connection connection, Packet packet)
-        {
+        static void StageDropListHandler(Connection connection, Packet packet) {
             connection.Send(new Sc11018());
         }
 
         [PacketHandler(Command.Cs11401)]
-        static void ChangeChatRoomHandler(Connection connection, Packet packet)
-        {
+        static void ChangeChatRoomHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs11401>();
 
-            connection.Send(new Sc11402()
-            {
+            connection.Send(new Sc11402() {
                 Result = 0,
                 RoomId = req.RoomId
             });
         }
     }
 
-    static class P11ConnectionNotifyExtensions
-    {
-        public static void NotifyResourceList(this Connection connection)
-        {
-            if (connection.player is not null)
-            {
-                connection.Send(new Sc11004()
-                {
+    static class P11ConnectionNotifyExtensions {
+        public static void NotifyResourceList(this Connection connection) {
+            if (connection.player is not null) {
+                connection.Send(new Sc11004() {
                     ResourceLists = connection.player.Resources.Select(x => new Resource() { Num = x.Num, Type = x.Id }).ToList()
                 });
             }
         }
 
-        public static void NotifyPlayerData(this Connection connection)
-        {
-            if (connection.player is not null)
-            {
-                connection.Send(new Sc11003()
-                {
+        public static void NotifyPlayerData(this Connection connection) {
+            if (connection.player is not null) {
+                connection.Send(new Sc11003() {
                     Id = connection.player.Uid,
                     Name = connection.player.Name,
                     Level = connection.player.Level,
@@ -94,7 +76,7 @@ namespace BLHX.Server.Game.Handlers
                     Adv = connection.player.Adv,
                     ResourceLists = connection.player.Resources.Select(x => new Resource() { Num = x.Num, Type = x.Id }).ToList(),
                     Characters = [1],
-                    ShipBagMax = 150,
+                    ShipBagMax = connection.player.ShipBagMax,
                     EquipBagMax = 350,
                     GmFlag = 1,
                     Rank = 1,
@@ -109,13 +91,11 @@ namespace BLHX.Server.Game.Handlers
             }
         }
 
-        public static void NotifyRefluxData(this Connection connection)
-        {
+        public static void NotifyRefluxData(this Connection connection) {
             connection.Send(new Sc11752());
         }
 
-        public static void NotifyActivityData(this Connection connection)
-        {
+        public static void NotifyActivityData(this Connection connection) {
             connection.Send(new Sc11200());
         }
     }

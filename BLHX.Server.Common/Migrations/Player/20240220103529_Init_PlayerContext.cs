@@ -3,42 +3,36 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace BLHX.Server.Common.Migrations.Player
-{
+namespace BLHX.Server.Common.Migrations.Player {
     /// <inheritdoc />
-    public partial class Init_PlayerContext : Migration
-    {
+    public partial class Init_PlayerContext : Migration {
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.CreateTable(
                 name: "Players",
-                columns: table => new
-                {
+                columns: table => new {
                     Uid = table.Column<uint>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Token = table.Column<string>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Level = table.Column<uint>(type: "INTEGER", nullable: false),
                     Exp = table.Column<uint>(type: "INTEGER", nullable: false),
+                    ShipBagMax = table.Column<uint>(type: "INTEGER", nullable: false),
                     DisplayInfo = table.Column<string>(type: "jsonb", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Players", x => x.Uid);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Resources",
-                columns: table => new
-                {
+                columns: table => new {
                     Id = table.Column<uint>(type: "INTEGER", nullable: false),
                     PlayerUid = table.Column<uint>(type: "INTEGER", nullable: false),
                     Num = table.Column<uint>(type: "INTEGER", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Resources", x => new { x.Id, x.PlayerUid });
                     table.ForeignKey(
                         name: "FK_Resources_Players_PlayerUid",
@@ -50,8 +44,7 @@ namespace BLHX.Server.Common.Migrations.Player
 
             migrationBuilder.CreateTable(
                 name: "Ships",
-                columns: table => new
-                {
+                columns: table => new {
                     Id = table.Column<uint>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     TemplateId = table.Column<uint>(type: "INTEGER", nullable: false),
@@ -79,8 +72,7 @@ namespace BLHX.Server.Common.Migrations.Player
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     LastChangeName = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Ships", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Ships_Players_PlayerUid",
@@ -108,8 +100,7 @@ namespace BLHX.Server.Common.Migrations.Player
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropTable(
                 name: "Resources");
 

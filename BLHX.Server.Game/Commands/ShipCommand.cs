@@ -19,9 +19,9 @@ namespace BLHX.Server.Game.Commands {
             }
 
             if (Unlock.Equals("all", StringComparison.CurrentCultureIgnoreCase)) {
-                int amount = 500; // not sure why but if you add more than this amount the client crashes
+                int amount = 585; // not sure why but if you add more than this amount the client crashes
                 List<int> all_ship_ids = Data.ShipDataTemplate.Where(x => x.Value.Star == x.Value.StarMax && x.Value.Star >= 5).ToDictionary().Keys.ToList();
-                List<PlayerShip> all_ships = all_ship_ids.Select(ship_id => CreateShipFromId((uint)ship_id, connection.player.Uid)).Take(amount).ToList();
+                List<PlayerShip> all_ships = all_ship_ids.Select(ship_id => CreateShipFromId((uint)ship_id, connection.player.Uid)).ToList();
 
                 all_ships.AddRange(GetDefaultShips(connection.player.Ships)); // add the defaults
                 connection.player.Ships = all_ships;
