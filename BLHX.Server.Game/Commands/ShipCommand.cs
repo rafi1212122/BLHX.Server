@@ -31,7 +31,7 @@ namespace BLHX.Server.Game.Commands {
                     all_ship_ids = Data.ShipDataStatistics.Where(ship_data => all_ship_ids.Contains(ship_data.Key) && ship_data.Value.Rarity == rarity).ToDictionary().Keys.ToList();
                 }
 
-                List<PlayerShip> all_ships = all_ship_ids.Select(ship_id => CreateShipFromId((uint)ship_id, connection.player.Uid)).Take(amount).ToList();
+                List<PlayerShip> all_ships = all_ship_ids.Select(ship_id => CreateShipFromId((uint)ship_id, connection.player.Uid)).ToList();
 
                 all_ships.AddRange(GetDefaultShips(connection.player.Ships)); // add the defaults
                 connection.player.Ships = all_ships;

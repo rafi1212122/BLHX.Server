@@ -31,6 +31,9 @@ public static class Data
     [LoadData("task_data_template.json", LoadDataType.ShareCfgData)]
     public static Dictionary<int, TaskDateTemplate> TaskDataTemplate { get; private set; } = null!;
 
+    [LoadData("item_data_statistics.json", LoadDataType.ShareCfgData)]
+    public static Dictionary<int, ItemDataStatistics> ItemDataStatistics { get; private set; } = null!;
+
     public static void Load()
     {
         foreach (var prop in typeof(Data).GetProperties().Where(x => x.GetCustomAttribute<LoadDataAttribute>() is not null))
