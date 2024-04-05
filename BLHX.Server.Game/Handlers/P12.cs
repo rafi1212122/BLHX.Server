@@ -28,7 +28,7 @@ namespace BLHX.Server.Game.Handlers {
         }
 
         [PacketHandler(Command.Cs12002, SaveDataAfterRun = true)]
-        static void UseResourceHandler(Connection connection, Packet packet) {
+        static void BuildHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs12002>();
 
             Logger.c.Log("Id: " + req.Id);
@@ -45,7 +45,7 @@ namespace BLHX.Server.Game.Handlers {
         }
 
         [PacketHandler(Command.Cs12008, SaveDataAfterRun = true)]
-        static void FinishAllBuildHandler(Connection connection, Packet packet) {
+        static void FinishBuildHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs12008>();
 
             connection.Send(new Sc12009() { PosLists = req.PosLists });

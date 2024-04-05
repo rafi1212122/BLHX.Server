@@ -74,6 +74,8 @@ namespace BLHX.Server.Common.Database {
             modelBuilder.Entity<Player>(e => {
                 e.Property(b => b.DisplayInfo)
                 .HasJsonConversion();
+                e.Property(b => b.Appreciation)
+                .HasJsonConversion();
                 e.Property(b => b.Fleets)
                 .HasJsonConversion()
                 .HasDefaultValue(new List<Groupinfo>() {
@@ -99,6 +101,11 @@ namespace BLHX.Server.Common.Database {
                 .WithOne(e => e.Player)
                 .HasForeignKey(e => e.PlayerUid)
                 .IsRequired();
+                e.OwnsOne(x => x.RefundShopInfoLists);
+                e.OwnsOne(x => x.CardLists);
+                e.OwnsOne(x => x.CdLists);
+                e.OwnsOne(x => x.TakingShipLists);
+
             });
             modelBuilder.Entity<PlayerShip>(e => {
                 e.Property(b => b.Id)
@@ -153,26 +160,113 @@ namespace BLHX.Server.Common.Database {
     [PrimaryKey(nameof(Uid))]
     [Index(nameof(Token), IsUnique = true)]
     public class Player {
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public uint Uid { get; set; }
-        public string Token { get; set; }
+
         public string Name { get; set; }
-        // Aka. manifesto
-        public string Adv { get; set; } = string.Empty;
-        public uint ShipBagMax { get; set; } = 9854938;
+
         public uint Level { get; set; }
-        // TODO: Exp add setter to recalculate cap and set level
-        public uint Exp { get; set; }
+
+        public uint Exp { get; set; } // TODO: Exp add setter to recalculate cap and set level
+
+        public uint AttackCount { get; set; }
+
+        public uint WinCount { get; set; }
+
+        public string Adv { get; set; } = string.Empty;  // Aka. manifesto
+
+        public uint ShipBagMax { get; set; } = 150;
+
+        public uint EquipBagMax { get; set; } = 250;
+
+        public uint GmFlag { get; set; } = 1;
+
+        public uint Rank { get; set; } = 1;
+
+        public uint PvpAttackCount { get; set; }
+
+        public uint PvpWinCount { get; set; }
+
+        public uint CollectAttackCount { get; set; }
+
+        public uint GuideIndex { get; set; } = 1000000;
+
+        public uint BuyOilCount { get; set; }
+
+        public uint ChatRoomId { get; set; } = 1;
+
+        public uint MaxRank { get; set; }
+
+        public uint ShipCount { get { return (uint)Ships.Count; } }
+
+        public uint AccPayLv { get; set; }
+
+        public uint GuildWaitTime { get; set; }
+
+        public uint ChatMsgBanTime { get; set; }
+
+        public uint CommanderBagMax { get; set; } = 40;
+
         public Displayinfo DisplayInfo { get; set; }
+
+        public uint Rmb { get; set; }
+
+        public Appreciationinfo Appreciation { get; set; }
+
+        public uint ThemeUploadNotAllowedTime { get; set; }
+
+        public uint RandomShipMode { get; set; }
+
+        public uint MarryShip { get; set; }
+
+        public uint ChildDisplay { get; set; }
+
         public DateTime CreatedAt { get; set; }
 
-        public List<Groupinfo> Fleets { get; set; } = null!;
-        public List<Idtimeinfo> ShipSkins { get; set; } = null!;
+        public List<uint> Characters { get; set; } = [1];
+
+        public List<uint> StoryLists { get; set; } = [];
+
+        public List<uint> FlagLists { get; set; } = [];
+
+        public List<uint> MedalIds { get; set; } = [];
+
+        public List<uint> CartoonReadMarks { get; set; } = [];
+
+        public List<uint> CartoonCollectMarks { get; set; } = [];
+
+        public List<uint> RandomShipLists { get; set; } = [];
+
+        public List<uint> Soundstories { get; set; } = [];
+
+        public virtual List<Proto.p11.Cardinfo> CardLists { get; set; } = [];
+
+        public virtual List<Proto.p11.Cooldown> CdLists { get; set; } = [];
+
+        public virtual List<Idtimeinfo> IconFrameLists { get; set; } = [];
+
+        public virtual List<Idtimeinfo> ChatFrameLists { get; set; } = [];
+
+        public virtual List<RefundShopinfo> RefundShopInfoLists { get; set; } = [];
+
+        public virtual List<Proto.p11.ShipTakingData> TakingShipLists { get; set; } = [];
+
+        //
+        public string Token { get; set; }
+
         public uint? CurrentChapter { get; set; }
 
+        public List<Groupinfo> Fleets { get; set; } = null!;
+
+        public List<Idtimeinfo> ShipSkins { get; set; } = null!;
+
         public virtual ICollection<PlayerResource> Resources { get; set; } = [];
+
         public virtual ICollection<ResourceField> ResourceFields { get; set; } = [];
+
         public virtual ICollection<PlayerShip> Ships { get; set; } = [];
+
         public virtual ICollection<ChapterInfo> ChapterInfoes { get; set; } = [];
 
         public Player(string token, Displayinfo displayInfo, string name) {
@@ -181,6 +275,7 @@ namespace BLHX.Server.Common.Database {
             Name = name;
             Level = 1;
             CreatedAt = DateTime.Now;
+            Appreciation = new Appreciationinfo() { Gallerys = [], Musics = [], FavorGallerys = [], FavorMusics = [] };
         }
 
         public void DoResource(uint id, int num) {

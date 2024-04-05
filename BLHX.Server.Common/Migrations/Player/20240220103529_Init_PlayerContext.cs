@@ -17,7 +17,6 @@ namespace BLHX.Server.Common.Migrations.Player {
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Level = table.Column<uint>(type: "INTEGER", nullable: false),
                     Exp = table.Column<uint>(type: "INTEGER", nullable: false),
-                    ShipBagMax = table.Column<uint>(type: "INTEGER", nullable: false),
                     DisplayInfo = table.Column<string>(type: "jsonb", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
