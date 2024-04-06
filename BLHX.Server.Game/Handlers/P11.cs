@@ -31,6 +31,13 @@ namespace BLHX.Server.Game.Handlers {
             connection.Send(new Sc11014());
         }
 
+        [PacketHandler(Command.Cs11019, SaveDataAfterRun = true)]
+        static void UpdateCommonFlagHandler(Connection connection, Packet packet) {
+            var req = packet.Decode<Cs11019>();
+
+            connection.Send(new Sc11020());
+        }
+
         [PacketHandler(Command.Cs11601)]
         static void GetEmojiInfoHandler(Connection connection, Packet packet) {
             connection.Send(new Sc11602());

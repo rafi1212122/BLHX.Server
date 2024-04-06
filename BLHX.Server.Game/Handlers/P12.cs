@@ -2,6 +2,10 @@
 using BLHX.Server.Common.Proto.p12;
 using BLHX.Server.Common.Utils;
 using BLHX.Server.Common.Proto.common;
+using BLHX.Server.Common.Proto.p11;
+using BLHX.Server.Common.Data;
+using BLHX.Server.Common.Database;
+using BLHX.Server.Game.Managers;
 
 namespace BLHX.Server.Game.Handlers {
     internal static class P12 {
@@ -28,29 +32,62 @@ namespace BLHX.Server.Game.Handlers {
         }
 
         [PacketHandler(Command.Cs12002, SaveDataAfterRun = true)]
-        static void BuildHandler(Connection connection, Packet packet) {
+        static void BuildShipHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs12002>();
 
             Logger.c.Log("Id: " + req.Id);
             Logger.c.Log("Cost Type: " + req.Costtype);
             Logger.c.Log("Count: " + req.Count);
 
+            // Id: gacha banner id
+            // Count: number of batch builds
+            // cost type: 1 wisdom cube + 1500 coin for each gacha i guess?
 
+            // TODO: remove the resources used from player resources
 
-            connection.Send(new Sc12003() {
-                BuildInfoes = [
-                    new Buildinfo() { BuildId = req.Id, FinishTime = 0, Time = 0 },
-                ]
+            if (!BuildManager.Instance.BatchBuildShip(req.Id, req.Count))
+                Logger.c.Log("Build capacity is full or something went wrong");
+
+            connection.Send(new Sc12003() { 
+                BuildInfoes = BuildManager.Instance.ToBuildInfoes() 
             });
         }
 
         [PacketHandler(Command.Cs12008, SaveDataAfterRun = true)]
-        static void FinishBuildHandler(Connection connection, Packet packet) {
+        static void BuildShipImmediatelyHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs12008>();
-
+            
             connection.Send(new Sc12009() { PosLists = req.PosLists });
         }
 
+        [PacketHandler(Command.Cs12043, SaveDataAfterRun = true)]
+        static void GetShipHandler(Connection connection, Packet packet) {
+            var req = packet.Decode<Cs12043>();
+            
+            // pos: position in build, Tid: banner id? 
+            connection.Send(new Sc12044() {
+                infoLists = BuildManager.Instance.ToInfoLists()
+            });
+        }
+
+        [PacketHandler(Command.Cs12025, SaveDataAfterRun = true)]
+        static void GetShipAfterHandler(Connection connection, Packet packet) {
+            var req = packet.Decode<Cs12025>();
+
+            connection.Send(new Sc12026() {
+                ShipLists = BuildManager.Instance.GetBuildResults(req.PosLists, connection.player.Uid)
+            });
+            
+        }
+
+        [PacketHandler(Command.Cs12045, SaveDataAfterRun = true)]
+        static void GetShipConfirmHandler(Connection connection, Packet packet) {
+            var req = packet.Decode<Cs12045>();
+
+            BuildManager.Instance.ClearBuilds();
+
+            connection.Send(new Sc12046());
+        }
     }
 
     static class P12ConnectionNotifyExtensions {
@@ -76,7 +113,15 @@ namespace BLHX.Server.Game.Handlers {
         }
 
         public static void NotifyBuildShipData(this Connection connection) {
-            connection.Send(new Sc12024());
+            Logger.c.Log("NotifyBuildShipData");
+
+            connection.Send(new Sc12024() {
+                WorklistCount = 1,
+                WorklistLists = BuildManager.Instance.ToBuildInfoes(),
+                DrawCount1 = 1,
+                DrawCount10 = 1,
+                ExchangeCount = 1,
+            });
         }
     }
 }

@@ -3,6 +3,7 @@ using BLHX.Server.Common.Database;
 using BLHX.Server.Common.Proto.common;
 using BLHX.Server.Common.Utils;
 using BLHX.Server.Game.Handlers;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace BLHX.Server.Game.Commands {
     [CommandHandler("ship", "Unlock a character or all characters", "ship unlock=all rarity=6")]
@@ -32,6 +33,9 @@ namespace BLHX.Server.Game.Commands {
                 }
 
                 List<PlayerShip> all_ships = all_ship_ids.Select(ship_id => CreateShipFromId((uint)ship_id, connection.player.Uid)).Take(amount).ToList();
+
+                foreach (int id in all_ship_ids)
+                    Logger.c.Log(id + "");
 
                 all_ships.AddRange(GetDefaultShips(connection.player.Ships)); // add the defaults
                 connection.player.Ships = all_ships;

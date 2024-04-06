@@ -2,18 +2,15 @@
 using BLHX.Server.Common.Database;
 using BLHX.Server.Common.Proto;
 using BLHX.Server.Common.Data;
+using BLHX.Server.Common.Utils;
 
-namespace BLHX.Server.Game.Handlers
-{
-    internal static class P10
-    {
+namespace BLHX.Server.Game.Handlers {
+    internal static class P10 {
         #region GateCommands
         [PacketHandler(Command.Cs10800)]
-        static void VersionHandler(Connection connection, Packet packet)
-        {
+        static void VersionHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs10800>();
-            connection.Send(new Sc10801()
-            {
+            connection.Send(new Sc10801() {
                 GatewayIp = Config.Instance.Address,
                 GatewayPort = Config.Instance.Port,
                 Url = "http://" + Config.Instance.Address,
@@ -37,14 +34,12 @@ namespace BLHX.Server.Game.Handlers
         }
 
         [PacketHandler(Command.Cs10020)]
-        static void UserLoginHandler(Connection connection, Packet packet)
-        {
+        static void UserLoginHandler(Connection connection, Packet packet) {
             // Arg2 uid
             // Arg3 accessToken
             // CheckKey md5(Arg1 + salt)
             var req = packet.Decode<Cs10020>();
-            connection.Send(new Sc10021()
-            {
+            connection.Send(new Sc10021() {
                 Result = 0,
                 AccountId = uint.Parse(req.Arg2),
                 Serverlists = [
@@ -65,14 +60,12 @@ namespace BLHX.Server.Game.Handlers
         #endregion
 
         [PacketHandler(Command.Cs10022)]
-        static void ServerLoginHandler(Connection connection, Packet packet)
-        {
+        static void ServerLoginHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs10022>();
             var rsp = new Sc10023();
 
             var account = DBManager.AccountContext.Accounts.SingleOrDefault(x => x.Uid == req.AccountId);
-            if (account is null || account.Token != req.ServerTicket)
-            {
+            if (account is null || account.Token != req.ServerTicket) {
                 rsp.Result = 1;
                 connection.Send(rsp);
                 connection.EndProtocol();
@@ -83,8 +76,7 @@ namespace BLHX.Server.Game.Handlers
             rsp.ServerTicket = req.ServerTicket;
 
             var player = DBManager.PlayerContext.Players.SingleOrDefault(x => x.Token == req.ServerTicket);
-            if (player is null)
-            {
+            if (player is null) {
                 connection.Send(rsp);
                 return;
             }
@@ -96,12 +88,10 @@ namespace BLHX.Server.Game.Handlers
         }
 
         [PacketHandler(Command.Cs10024)]
-        static void CreateNewPlayerHandler(Connection connection, Packet packet)
-        {
+        static void CreateNewPlayerHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs10024>();
             var rsp = new Sc10025();
-            if (connection.player is not null)
-            {
+            if (connection.player is not null) {
                 rsp.Result = 1011;
                 connection.Send(rsp);
                 return;
@@ -114,10 +104,21 @@ namespace BLHX.Server.Game.Handlers
         }
 
         [PacketHandler(Command.Cs10100, IsNotifyHandler = true)]
-        static void HeartbeatHandler(Connection connection, Packet packet)
-        {
+        static void HeartbeatHandler(Connection connection, Packet packet) {
             connection.Send(new Sc10101());
             connection.Tick();
         }
+
+        [PacketHandler(Command.Cs10992)]
+        static void LevelUpHandler(Connection connection, Packet packet) {
+            var req = packet.Decode<Cs10992>();
+
+            Logger.c.Log("TrackType: " + req.TrackType);
+            Logger.c.Log("EventId: " + req.EventId);
+            Logger.c.Log("Para1: " + req.Para1);
+            Logger.c.Log("Para2: " + req.Para2);
+            Logger.c.Log("Para3: " + req.Para3);
+        }
+
     }
 }

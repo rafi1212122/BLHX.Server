@@ -6,12 +6,10 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace BLHX.Server.Common.Proto.p10
-{
+namespace BLHX.Server.Common.Proto.p10 {
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_10001")]
-    public partial class Cs10001 : global::ProtoBuf.IExtensible
-    {
+    public partial class Cs10001 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -28,8 +26,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_10020")]
-    public partial class Cs10020 : global::ProtoBuf.IExtensible
-    {
+    public partial class Cs10020 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -42,8 +39,7 @@ namespace BLHX.Server.Common.Proto.p10
 
         [global::ProtoBuf.ProtoMember(3, Name = @"arg2")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Arg2
-        {
+        public string Arg2 {
             get => __pbn__Arg2 ?? "";
             set => __pbn__Arg2 = value;
         }
@@ -53,8 +49,7 @@ namespace BLHX.Server.Common.Proto.p10
 
         [global::ProtoBuf.ProtoMember(4, Name = @"arg3")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Arg3
-        {
+        public string Arg3 {
             get => __pbn__Arg3 ?? "";
             set => __pbn__Arg3 = value;
         }
@@ -64,8 +59,7 @@ namespace BLHX.Server.Common.Proto.p10
 
         [global::ProtoBuf.ProtoMember(5, Name = @"arg4")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Arg4
-        {
+        public string Arg4 {
             get => __pbn__Arg4 ?? "";
             set => __pbn__Arg4 = value;
         }
@@ -77,8 +71,7 @@ namespace BLHX.Server.Common.Proto.p10
         public string CheckKey { get; set; }
 
         [global::ProtoBuf.ProtoMember(7, Name = @"device")]
-        public uint Device
-        {
+        public uint Device {
             get => __pbn__Device.GetValueOrDefault();
             set => __pbn__Device = value;
         }
@@ -89,8 +82,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_10022")]
-    public partial class Cs10022 : global::ProtoBuf.IExtensible
-    {
+    public partial class Cs10022 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -116,8 +108,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_10024")]
-    public partial class Cs10024 : global::ProtoBuf.IExtensible
-    {
+    public partial class Cs10024 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -134,8 +125,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_10026")]
-    public partial class Cs10026 : global::ProtoBuf.IExtensible
-    {
+    public partial class Cs10026 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -146,8 +136,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_10100")]
-    public partial class Cs10100 : global::ProtoBuf.IExtensible
-    {
+    public partial class Cs10100 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -158,8 +147,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_10800")]
-    public partial class Cs10800 : global::ProtoBuf.IExtensible
-    {
+    public partial class Cs10800 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -172,9 +160,30 @@ namespace BLHX.Server.Common.Proto.p10
 
     }
 
+    [global::ProtoBuf.ProtoContract(Name = @"cs_10992")]
+    public partial class Cs10992 : global::ProtoBuf.IExtensible {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"track_type", IsRequired = true)]
+        public uint TrackType { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"event_id", IsRequired = true)]
+        public uint EventId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"para1", IsRequired = true)]
+        public string Para1 { get; set; }
+
+        [global::ProtoBuf.ProtoMember(4, Name = @"para2", IsRequired = true)]
+        public string Para2 { get; set; }
+
+        [global::ProtoBuf.ProtoMember(5, Name = @"para3", IsRequired = true)]
+        public string Para3 { get; set; }
+    }
+
     [global::ProtoBuf.ProtoContract(Name = @"cs_10993")]
-    public partial class Cs10993 : global::ProtoBuf.IExtensible
-    {
+    public partial class Cs10993 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -189,8 +198,7 @@ namespace BLHX.Server.Common.Proto.p10
         public string ActionDes { get; set; }
 
         [global::ProtoBuf.ProtoMember(4, Name = @"action_arg")]
-        public uint ActionArg
-        {
+        public uint ActionArg {
             get => __pbn__ActionArg.GetValueOrDefault();
             set => __pbn__ActionArg = value;
         }
@@ -201,8 +209,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_10994")]
-    public partial class Cs10994 : global::ProtoBuf.IExtensible
-    {
+    public partial class Cs10994 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -213,8 +220,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_10996")]
-    public partial class Cs10996 : global::ProtoBuf.IExtensible
-    {
+    public partial class Cs10996 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -228,8 +234,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"noticeinfo")]
-    public partial class Noticeinfo : global::ProtoBuf.IExtensible
-    {
+    public partial class Noticeinfo : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -246,8 +251,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_10002")]
-    public partial class Sc10002 : global::ProtoBuf.IExtensible
-    {
+    public partial class Sc10002 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -258,8 +262,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_10021")]
-    public partial class Sc10021 : global::ProtoBuf.IExtensible
-    {
+    public partial class Sc10021 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -280,8 +283,7 @@ namespace BLHX.Server.Common.Proto.p10
         public global::System.Collections.Generic.List<Noticeinfo> NoticeLists { get; set; } = new global::System.Collections.Generic.List<Noticeinfo>();
 
         [global::ProtoBuf.ProtoMember(6, Name = @"device")]
-        public uint Device
-        {
+        public uint Device {
             get => __pbn__Device.GetValueOrDefault();
             set => __pbn__Device = value;
         }
@@ -295,8 +297,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_10023")]
-    public partial class Sc10023 : global::ProtoBuf.IExtensible
-    {
+    public partial class Sc10023 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -311,8 +312,7 @@ namespace BLHX.Server.Common.Proto.p10
         public string ServerTicket { get; set; }
 
         [global::ProtoBuf.ProtoMember(4, Name = @"server_load")]
-        public uint ServerLoad
-        {
+        public uint ServerLoad {
             get => __pbn__ServerLoad.GetValueOrDefault();
             set => __pbn__ServerLoad = value;
         }
@@ -321,8 +321,7 @@ namespace BLHX.Server.Common.Proto.p10
         private uint? __pbn__ServerLoad;
 
         [global::ProtoBuf.ProtoMember(5, Name = @"db_load")]
-        public uint DbLoad
-        {
+        public uint DbLoad {
             get => __pbn__DbLoad.GetValueOrDefault();
             set => __pbn__DbLoad = value;
         }
@@ -333,8 +332,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_10025")]
-    public partial class Sc10025 : global::ProtoBuf.IExtensible
-    {
+    public partial class Sc10025 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -348,8 +346,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_10027")]
-    public partial class Sc10027 : global::ProtoBuf.IExtensible
-    {
+    public partial class Sc10027 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -363,8 +360,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_10101")]
-    public partial class Sc10101 : global::ProtoBuf.IExtensible
-    {
+    public partial class Sc10101 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -375,8 +371,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_10801")]
-    public partial class Sc10801 : global::ProtoBuf.IExtensible
-    {
+    public partial class Sc10801 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -395,8 +390,7 @@ namespace BLHX.Server.Common.Proto.p10
 
         [global::ProtoBuf.ProtoMember(5, Name = @"proxy_ip")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string ProxyIp
-        {
+        public string ProxyIp {
             get => __pbn__ProxyIp ?? "";
             set => __pbn__ProxyIp = value;
         }
@@ -405,8 +399,7 @@ namespace BLHX.Server.Common.Proto.p10
         private string __pbn__ProxyIp;
 
         [global::ProtoBuf.ProtoMember(6, Name = @"proxy_port")]
-        public uint ProxyPort
-        {
+        public uint ProxyPort {
             get => __pbn__ProxyPort.GetValueOrDefault();
             set => __pbn__ProxyPort = value;
         }
@@ -426,8 +419,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_10995")]
-    public partial class Sc10995 : global::ProtoBuf.IExtensible
-    {
+    public partial class Sc10995 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -438,8 +430,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_10997")]
-    public partial class Sc10997 : global::ProtoBuf.IExtensible
-    {
+    public partial class Sc10997 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -468,8 +459,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_10998")]
-    public partial class Sc10998 : global::ProtoBuf.IExtensible
-    {
+    public partial class Sc10998 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -483,8 +473,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_10999")]
-    public partial class Sc10999 : global::ProtoBuf.IExtensible
-    {
+    public partial class Sc10999 : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -495,8 +484,7 @@ namespace BLHX.Server.Common.Proto.p10
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"serverinfo")]
-    public partial class Serverinfo : global::ProtoBuf.IExtensible
-    {
+    public partial class Serverinfo : global::ProtoBuf.IExtensible {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
@@ -517,8 +505,7 @@ namespace BLHX.Server.Common.Proto.p10
         public string Name { get; set; }
 
         [global::ProtoBuf.ProtoMember(6, Name = @"tag_state")]
-        public uint TagState
-        {
+        public uint TagState {
             get => __pbn__TagState.GetValueOrDefault();
             set => __pbn__TagState = value;
         }
@@ -527,8 +514,7 @@ namespace BLHX.Server.Common.Proto.p10
         private uint? __pbn__TagState;
 
         [global::ProtoBuf.ProtoMember(7, Name = @"sort")]
-        public uint Sort
-        {
+        public uint Sort {
             get => __pbn__Sort.GetValueOrDefault();
             set => __pbn__Sort = value;
         }
@@ -538,8 +524,7 @@ namespace BLHX.Server.Common.Proto.p10
 
         [global::ProtoBuf.ProtoMember(8, Name = @"proxy_ip")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string ProxyIp
-        {
+        public string ProxyIp {
             get => __pbn__ProxyIp ?? "";
             set => __pbn__ProxyIp = value;
         }
@@ -548,8 +533,7 @@ namespace BLHX.Server.Common.Proto.p10
         private string __pbn__ProxyIp;
 
         [global::ProtoBuf.ProtoMember(9, Name = @"proxy_port")]
-        public uint ProxyPort
-        {
+        public uint ProxyPort {
             get => __pbn__ProxyPort.GetValueOrDefault();
             set => __pbn__ProxyPort = value;
         }

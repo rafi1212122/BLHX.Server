@@ -2,6 +2,14 @@
 
 public static class RNG
 {
+    public enum Rarity {
+        Normal = 2,
+        Rare = 3,
+        Elite = 4,
+        SSR = 5,
+        UR = 6,
+    }
+
     public static readonly SortedDictionary<int, float> ShipRarityRates = new()
     {
         {6, 1.2f},  // UR
