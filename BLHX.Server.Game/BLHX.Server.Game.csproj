@@ -10,4 +10,8 @@
     <ProjectReference Include="..\BLHX.Server.Common\BLHX.Server.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="zlib.net" Version="1.0.4" />
+  </ItemGroup>
+
 </Project>

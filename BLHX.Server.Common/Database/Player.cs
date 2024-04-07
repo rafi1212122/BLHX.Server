@@ -6,10 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BLHX.Server.Common.Database
-{
-    public sealed class PlayerContext : DbContext, IBLHXDBContext<PlayerContext>
-    {
+namespace BLHX.Server.Common.Database {
+    public sealed class PlayerContext : DbContext, IBLHXDBContext<PlayerContext> {
         SavingState savingState;
         public static string DbPath => "Databases/players.db";
         public DbSet<Player> Players { get; set; }
@@ -18,8 +16,7 @@ namespace BLHX.Server.Common.Database
         public DbSet<PlayerShip> Ships { get; set; }
         public DbSet<ChapterInfo> ChapterInfoes { get; set; }
 
-        public PlayerContext()
-        {
+        public PlayerContext() {
             if (Database.GetPendingMigrations().Any())
                 Database.Migrate();
 
@@ -29,13 +26,11 @@ namespace BLHX.Server.Common.Database
         }
 
         // Thread-safe method pls
-        public void Save()
-        {
-            if (savingState == SavingState.Attempting) 
+        public void Save() {
+            if (savingState == SavingState.Attempting)
                 return;
 
-            while (savingState != SavingState.None)
-            {
+            while (savingState != SavingState.None) {
                 savingState = SavingState.Attempting;
                 Task.Delay(1).Wait();
             }
@@ -43,8 +38,7 @@ namespace BLHX.Server.Common.Database
             SaveChanges();
         }
 
-        public Player Init(string token, uint shipId, string name)
-        {
+        public Player Init(string token, uint shipId, string name) {
             var player = new Player(token, new Displayinfo() { Icon = shipId }, name);
 
             Players.Add(player);
@@ -66,8 +60,7 @@ namespace BLHX.Server.Common.Database
             return player;
         }
 
-        public void PlayerRoutine(Player player)
-        {
+        public void PlayerRoutine(Player player) {
             if (!ResourceFields.Any(x => x.Type == ResourceFieldType.Gold))
                 ResourceFields.Add(new() { Type = ResourceFieldType.Gold, PlayerUid = player.Uid });
             if (!ResourceFields.Any(x => x.Type == ResourceFieldType.Oil))
@@ -76,12 +69,12 @@ namespace BLHX.Server.Common.Database
             Save();
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Player>(e =>
-            {
+            modelBuilder.Entity<Player>(e => {
                 e.Property(b => b.DisplayInfo)
+                .HasJsonConversion();
+                e.Property(b => b.Appreciation)
                 .HasJsonConversion();
                 e.Property(b => b.Fleets)
                 .HasJsonConversion()
@@ -108,9 +101,13 @@ namespace BLHX.Server.Common.Database
                 .WithOne(e => e.Player)
                 .HasForeignKey(e => e.PlayerUid)
                 .IsRequired();
+                e.OwnsOne(x => x.RefundShopInfoLists);
+                e.OwnsOne(x => x.CardLists);
+                e.OwnsOne(x => x.CdLists);
+                e.OwnsOne(x => x.TakingShipLists);
+
             });
-            modelBuilder.Entity<PlayerShip>(e =>
-            {
+            modelBuilder.Entity<PlayerShip>(e => {
                 e.Property(b => b.Id)
                 .ValueGeneratedOnAdd();
                 e.Property(b => b.State)
@@ -128,8 +125,7 @@ namespace BLHX.Server.Common.Database
                 e.Property(b => b.CoreLists)
                 .HasJsonConversion();
             });
-            modelBuilder.Entity<ChapterInfo>(e =>
-            {
+            modelBuilder.Entity<ChapterInfo>(e => {
                 e.Property(x => x.EscortLists)
                 .HasJsonConversion();
                 e.Property(x => x.AiLists)
@@ -163,43 +159,128 @@ namespace BLHX.Server.Common.Database
 
     [PrimaryKey(nameof(Uid))]
     [Index(nameof(Token), IsUnique = true)]
-    public class Player
-    {
+    public class Player {
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public uint Uid { get; set; }
-        public string Token { get; set; }
+
         public string Name { get; set; }
-        // Aka. manifesto
-        public string Adv { get; set; } = string.Empty;
+
         public uint Level { get; set; }
-        // TODO: Exp add setter to recalculate cap and set level
-        public uint Exp { get; set; }
+
+        public uint Exp { get; set; } // TODO: Exp add setter to recalculate cap and set level
+
+        public uint AttackCount { get; set; }
+
+        public uint WinCount { get; set; }
+
+        public string Adv { get; set; } = string.Empty;  // Aka. manifesto
+
+        public uint ShipBagMax { get; set; } = 150;
+
+        public uint EquipBagMax { get; set; } = 250;
+
+        public uint GmFlag { get; set; } = 1;
+
+        public uint Rank { get; set; } = 1;
+
+        public uint PvpAttackCount { get; set; }
+
+        public uint PvpWinCount { get; set; }
+
+        public uint CollectAttackCount { get; set; }
+
+        public uint GuideIndex { get; set; } = 1000000;
+
+        public uint BuyOilCount { get; set; }
+
+        public uint ChatRoomId { get; set; } = 1;
+
+        public uint MaxRank { get; set; }
+
+        public uint ShipCount { get { return (uint)Ships.Count; } }
+
+        public uint AccPayLv { get; set; }
+
+        public uint GuildWaitTime { get; set; }
+
+        public uint ChatMsgBanTime { get; set; }
+
+        public uint CommanderBagMax { get; set; } = 40;
+
         public Displayinfo DisplayInfo { get; set; }
+
+        public uint Rmb { get; set; }
+
+        public Appreciationinfo Appreciation { get; set; }
+
+        public uint ThemeUploadNotAllowedTime { get; set; }
+
+        public uint RandomShipMode { get; set; }
+
+        public uint MarryShip { get; set; }
+
+        public uint ChildDisplay { get; set; }
+
         public DateTime CreatedAt { get; set; }
 
-        public List<Groupinfo> Fleets { get; set; } = null!;
-        public List<Idtimeinfo> ShipSkins { get; set; } = null!;
+        public List<uint> Characters { get; set; } = [1];
+
+        public List<uint> StoryLists { get; set; } = [];
+
+        public List<uint> FlagLists { get; set; } = [];
+
+        public List<uint> MedalIds { get; set; } = [];
+
+        public List<uint> CartoonReadMarks { get; set; } = [];
+
+        public List<uint> CartoonCollectMarks { get; set; } = [];
+
+        public List<uint> RandomShipLists { get; set; } = [];
+
+        public List<uint> Soundstories { get; set; } = [];
+
+        public virtual List<Proto.p11.Cardinfo> CardLists { get; set; } = [];
+
+        public virtual List<Proto.p11.Cooldown> CdLists { get; set; } = [];
+
+        public virtual List<Idtimeinfo> IconFrameLists { get; set; } = [];
+
+        public virtual List<Idtimeinfo> ChatFrameLists { get; set; } = [];
+
+        public virtual List<RefundShopinfo> RefundShopInfoLists { get; set; } = [];
+
+        public virtual List<Proto.p11.ShipTakingData> TakingShipLists { get; set; } = [];
+
+        //
+        public string Token { get; set; }
+
         public uint? CurrentChapter { get; set; }
 
+        public List<Groupinfo> Fleets { get; set; } = null!;
+
+        public List<Idtimeinfo> ShipSkins { get; set; } = null!;
+
         public virtual ICollection<PlayerResource> Resources { get; set; } = [];
+
         public virtual ICollection<ResourceField> ResourceFields { get; set; } = [];
+
         public virtual ICollection<PlayerShip> Ships { get; set; } = [];
+
         public virtual ICollection<ChapterInfo> ChapterInfoes { get; set; } = [];
 
-        public Player(string token, Displayinfo displayInfo, string name)
-        {
+        public Player(string token, Displayinfo displayInfo, string name) {
             DisplayInfo = displayInfo;
             Token = token;
             Name = name;
             Level = 1;
             CreatedAt = DateTime.Now;
+            Appreciation = new Appreciationinfo() { Gallerys = [], Musics = [], FavorGallerys = [], FavorMusics = [] };
         }
 
-        public void DoResource(uint id, int num)
-        {
+        public void DoResource(uint id, int num) {
             var res = Resources.SingleOrDefault(x => x.Id == id);
-            if (res is null)
-            {
+            if (res is null) {
                 res = new() { Id = id, PlayerUid = Uid };
                 DBManager.PlayerContext.Resources.Add(res);
             }
@@ -210,13 +291,11 @@ namespace BLHX.Server.Common.Database
                 res.Num = Math.Min(res.Num + (uint)num, uint.MaxValue);
         }
 
-        public void AddShip(uint shipTemplateId)
-        {
+        public void AddShip(uint shipTemplateId) {
             if (!Data.Data.ShipDataTemplate.TryGetValue((int)shipTemplateId, out var shipTemplate))
                 throw new InvalidDataException($"Ship template {shipTemplateId} not found!");
 
-            var ship = new PlayerShip()
-            {
+            var ship = new PlayerShip() {
                 TemplateId = shipTemplateId,
                 Level = 1,
                 EquipInfoLists = [
@@ -238,15 +317,11 @@ namespace BLHX.Server.Common.Database
             DBManager.PlayerContext.Ships.Add(ship);
         }
 
-        public void HarvestResourceField(ResourceFieldType type)
-        {
-            foreach (var resourceField in ResourceFields)
-            {
-                if (resourceField.Type == type)
-                {
+        public void HarvestResourceField(ResourceFieldType type) {
+            foreach (var resourceField in ResourceFields) {
+                if (resourceField.Type == type) {
                     var amount = resourceField.Flush();
-                    switch (type)
-                    {
+                    switch (type) {
                         case ResourceFieldType.Gold:
                             DoResource(1, (int)amount);
                             break;
@@ -262,8 +337,7 @@ namespace BLHX.Server.Common.Database
     }
 
     [PrimaryKey(nameof(Id), nameof(PlayerUid))]
-    public class PlayerResource
-    {
+    public class PlayerResource {
         [Key]
         public uint Id { get; set; }
         public uint Num { get; set; }
@@ -274,8 +348,7 @@ namespace BLHX.Server.Common.Database
     }
 
     [PrimaryKey(nameof(Id))]
-    public class PlayerShip
-    {
+    public class PlayerShip {
         [Key]
         public uint Id { get; set; }
         public uint TemplateId { get; set; }
@@ -307,10 +380,8 @@ namespace BLHX.Server.Common.Database
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime? LastChangeName { get; set; }
 
-        public Shipinfo ToProto()
-        {
-            return new()
-            {
+        public Shipinfo ToProto() {
+            return new() {
                 Id = Id,
                 TemplateId = TemplateId,
                 Level = Level,
@@ -340,15 +411,13 @@ namespace BLHX.Server.Common.Database
         }
     }
 
-    public enum ResourceFieldType
-    {
+    public enum ResourceFieldType {
         Gold = 1,
         Oil = 2
     }
 
     [PrimaryKey(nameof(Type), nameof(PlayerUid))]
-    public class ResourceField
-    {
+    public class ResourceField {
         [Key]
         public ResourceFieldType Type { get; set; }
         public uint Level { get; set; } = 1;
@@ -359,14 +428,11 @@ namespace BLHX.Server.Common.Database
         public uint PlayerUid { get; set; }
         public virtual Player Player { get; set; } = null!;
 
-        public void CalculateYield()
-        {
+        public void CalculateYield() {
             // TODO: Take UpgradeTime into acccount of the reward
-            switch (Type)
-            {
+            switch (Type) {
                 case ResourceFieldType.Gold:
-                    if (Data.Data.GoldFieldTemplate.TryGetValue((int)Level, out var goldTemplate))
-                    {
+                    if (Data.Data.GoldFieldTemplate.TryGetValue((int)Level, out var goldTemplate)) {
                         var res = Player.Resources.FirstOrDefault(x => x.Id == 7);
                         var num = (goldTemplate.HourTime * goldTemplate.Production) / 3600f * LastHarvestTime.GetSecondsPassed();
 
@@ -375,8 +441,7 @@ namespace BLHX.Server.Common.Database
                     }
                     break;
                 case ResourceFieldType.Oil:
-                    if (Data.Data.OilFieldTemplate.TryGetValue((int)Level, out var oilTemplate))
-                    {
+                    if (Data.Data.OilFieldTemplate.TryGetValue((int)Level, out var oilTemplate)) {
                         var res = Player.Resources.FirstOrDefault(x => x.Id == 5);
                         var num = (oilTemplate.HourTime * oilTemplate.Production) / 3600f * LastHarvestTime.GetSecondsPassed();
 
@@ -387,15 +452,12 @@ namespace BLHX.Server.Common.Database
             }
         }
 
-        public uint Flush()
-        {
+        public uint Flush() {
             uint amount = 0;
             // TODO: Take UpgradeTime into acccount of the reward
-            switch (Type)
-            {
+            switch (Type) {
                 case ResourceFieldType.Gold:
-                    if (Data.Data.GoldFieldTemplate.TryGetValue((int)Level, out var goldTemplate))
-                    {
+                    if (Data.Data.GoldFieldTemplate.TryGetValue((int)Level, out var goldTemplate)) {
                         var goldField = Player.Resources.First(x => x.Id == 7);
                         amount = goldField.Num;
 
@@ -403,8 +465,7 @@ namespace BLHX.Server.Common.Database
                     }
                     break;
                 case ResourceFieldType.Oil:
-                    if (Data.Data.OilFieldTemplate.TryGetValue((int)Level, out var oilTemplate))
-                    {
+                    if (Data.Data.OilFieldTemplate.TryGetValue((int)Level, out var oilTemplate)) {
                         var oilField = Player.Resources.First(x => x.Id == 5);
                         amount = oilField.Num;
 
@@ -419,8 +480,7 @@ namespace BLHX.Server.Common.Database
     }
 
     [PrimaryKey(nameof(Id), nameof(PlayerUid))]
-    public class ChapterInfo
-    {
+    public class ChapterInfo {
         [Key]
         public uint Id { get; set; }
         public DateTime Time { get; set; }
@@ -449,17 +509,15 @@ namespace BLHX.Server.Common.Database
         public uint PlayerUid { get; set; }
         public virtual Player Player { get; set; } = null!;
 
-        public Currentchapterinfo ToProto()
-        {
-            return new Currentchapterinfo()
-            {
+        public Currentchapterinfo ToProto() {
+            return new Currentchapterinfo() {
                 Id = Id,
                 AiLists = AiLists,
                 BattleStatistics = BattleStatistics,
                 BuffLists = BuffLists,
                 CellFlagLists = CellFlagLists,
                 CellLists = CellLists,
-                ChapterHp = ChapterHp, 
+                ChapterHp = ChapterHp,
                 ChapterStrategyLists = ChapterStrategyLists,
                 ContinuousKillCount = ContinuousKillCount,
                 EscortLists = EscortLists,
@@ -478,10 +536,8 @@ namespace BLHX.Server.Common.Database
             };
         }
 
-        public static ChapterInfo FromProto(Currentchapterinfo chapterInfo, uint uid)
-        {
-            return new()
-            {
+        public static ChapterInfo FromProto(Currentchapterinfo chapterInfo, uint uid) {
+            return new() {
                 Id = chapterInfo.Id,
                 AiLists = chapterInfo.AiLists,
                 BattleStatistics = chapterInfo.BattleStatistics,
