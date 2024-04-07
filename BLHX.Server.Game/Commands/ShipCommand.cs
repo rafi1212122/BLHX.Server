@@ -34,9 +34,6 @@ namespace BLHX.Server.Game.Commands {
 
                 List<PlayerShip> all_ships = all_ship_ids.Select(ship_id => CreateShipFromId((uint)ship_id, connection.player.Uid)).Take(amount).ToList();
 
-                foreach (int id in all_ship_ids)
-                    Logger.c.Log(id + "");
-
                 all_ships.AddRange(GetDefaultShips(connection.player.Ships)); // add the defaults
                 connection.player.Ships = all_ships;
                 connection.SendSystemMsg($"Added {amount} ships!");

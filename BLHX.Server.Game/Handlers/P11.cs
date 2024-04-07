@@ -22,6 +22,13 @@ namespace BLHX.Server.Game.Handlers {
 
             connection.Send(new Sc11010());
         }
+        
+        [PacketHandler(Command.Cs11011, SaveDataAfterRun = true)]
+        static void ChangePlayerIconHandler(Connection connection, Packet packet) {
+            var req = packet.Decode<Cs11011>();
+
+            connection.Send(new Sc11012());
+        }
 
         [PacketHandler(Command.Cs11013, SaveDataAfterRun = true)]
         static void HarvestResourceHandler(Connection connection, Packet packet) {
