@@ -8,9 +8,6 @@ namespace BLHX.Server.Game.Handlers {
         static void DormTrainShoppingHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs16001>();
 
-            Logger.c.Log("Id: " + req.Id);
-            Logger.c.Log("Number: " + req.Number);
-
             connection.Send(new Sc16002() { });
         }
 

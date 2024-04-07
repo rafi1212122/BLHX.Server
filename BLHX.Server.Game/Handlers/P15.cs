@@ -9,14 +9,6 @@ namespace BLHX.Server.Game.Handlers {
         static void UseFudaiItemHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs15002>();
 
-            Logger.c.Log("Arg: ");
-
-            foreach (var arg in req.Args)
-                Logger.c.Log(arg + "");
-
-            Logger.c.Log(req.Count + "");
-            Logger.c.Log(req.Id + "");
-
             connection.Send(new Sc15003() {
                 DropLists = [],
             });

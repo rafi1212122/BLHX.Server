@@ -113,11 +113,7 @@ namespace BLHX.Server.Game.Handlers {
         static void LevelUpHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs10992>();
 
-            Logger.c.Log("TrackType: " + req.TrackType);
-            Logger.c.Log("EventId: " + req.EventId);
-            Logger.c.Log("Para1: " + req.Para1);
-            Logger.c.Log("Para2: " + req.Para2);
-            Logger.c.Log("Para3: " + req.Para3);
+
         }
 
     }

@@ -8,9 +8,6 @@ namespace BLHX.Server.Game.Handlers {
         static void AddShipHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs19002>();
 
-            Logger.c.Log("ShipId: " + req.ShipId);
-            Logger.c.Log("Type: " + req.Type);
-
             connection.Send(new Sc19003() {});
             connection.Send(new Sc19003() {});
         }
@@ -26,13 +23,11 @@ namespace BLHX.Server.Game.Handlers {
         static void GetOSSArgsHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs19103>();
 
-            Logger.c.Log("Typ: " + req.Typ);
-
             connection.Send(new Sc19104() {
                 AccessId = "1",
                 AccessSecret = "1",
                 ExpireTime = (uint)new DateTimeOffset(DateTime.Now.AddDays(31)).ToUnixTimeSeconds(),
-                SecurityToken = "3874839"
+                SecurityToken = "3874839" // idk what this is so i put a random as token
             });
         }
     }

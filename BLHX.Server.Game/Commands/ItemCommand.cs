@@ -46,10 +46,9 @@ namespace BLHX.Server.Game.Commands {
             //    }
             //}
 
+            // code above prob doesn't work yet too lazy to implement, for now this cmd just adds a lot of coins and gems, prob need a inventory manager or something in the future
             connection.player.DoResource(1, 938493849);
             connection.player.DoResource(4, 39843294);
-
-
 
             DBManager.PlayerContext.Save();
             connection.NotifyPlayerData();

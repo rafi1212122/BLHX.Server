@@ -35,10 +35,6 @@ namespace BLHX.Server.Game.Handlers {
         static void BuildShipHandler(Connection connection, Packet packet) {
             var req = packet.Decode<Cs12002>();
 
-            Logger.c.Log("Id: " + req.Id);
-            Logger.c.Log("Cost Type: " + req.Costtype);
-            Logger.c.Log("Count: " + req.Count);
-
             // Id: gacha banner id
             // Count: number of batch builds
             // cost type: 1 wisdom cube + 1500 coin for each gacha i guess?
@@ -113,8 +109,6 @@ namespace BLHX.Server.Game.Handlers {
         }
 
         public static void NotifyBuildShipData(this Connection connection) {
-            Logger.c.Log("NotifyBuildShipData");
-
             connection.Send(new Sc12024() {
                 WorklistCount = 1,
                 WorklistLists = BuildManager.Instance.ToBuildInfoes(),
