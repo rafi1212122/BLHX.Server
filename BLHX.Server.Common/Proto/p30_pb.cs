@@ -5,27 +5,9 @@
 // </auto-generated>
 
 #region Designer generated code
-#pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning disable CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 namespace BLHX.Server.Common.Proto.p30
 {
-
-    [global::ProtoBuf.ProtoContract(Name = @"attachment")]
-    public partial class Attachment : global::ProtoBuf.IExtensible
-    {
-        private global::ProtoBuf.IExtension __pbn__extensionData;
-        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
-
-        [global::ProtoBuf.ProtoMember(1, Name = @"type", IsRequired = true)]
-        public uint Type { get; set; }
-
-        [global::ProtoBuf.ProtoMember(2, Name = @"id", IsRequired = true)]
-        public uint Id { get; set; }
-
-        [global::ProtoBuf.ProtoMember(3, Name = @"number", IsRequired = true)]
-        public uint Number { get; set; }
-
-    }
 
     [global::ProtoBuf.ProtoContract(Name = @"cs_30002")]
     public partial class Cs30002 : global::ProtoBuf.IExtensible
@@ -37,15 +19,11 @@ namespace BLHX.Server.Common.Proto.p30
         [global::ProtoBuf.ProtoMember(1, Name = @"type", IsRequired = true)]
         public uint Type { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"split_id")]
-        public uint SplitId
-        {
-            get => __pbn__SplitId.GetValueOrDefault();
-            set => __pbn__SplitId = value;
-        }
-        public bool ShouldSerializeSplitId() => __pbn__SplitId != null;
-        public void ResetSplitId() => __pbn__SplitId = null;
-        private uint? __pbn__SplitId;
+        [global::ProtoBuf.ProtoMember(2, Name = @"index_begin", IsRequired = true)]
+        public uint IndexBegin { get; set; }
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"index_end", IsRequired = true)]
+        public uint IndexEnd { get; set; }
 
     }
 
@@ -56,8 +34,11 @@ namespace BLHX.Server.Common.Proto.p30
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
-        [global::ProtoBuf.ProtoMember(1, Name = @"id")]
-        public global::System.Collections.Generic.List<uint> Ids { get; set; } = new global::System.Collections.Generic.List<uint>();
+        [global::ProtoBuf.ProtoMember(1, Name = @"index_begin", IsRequired = true)]
+        public uint IndexBegin { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"index_end", IsRequired = true)]
+        public uint IndexEnd { get; set; }
 
     }
 
@@ -68,8 +49,11 @@ namespace BLHX.Server.Common.Proto.p30
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
-        [global::ProtoBuf.ProtoMember(1, Name = @"id", IsRequired = true)]
-        public uint Id { get; set; }
+        [global::ProtoBuf.ProtoMember(1, Name = @"cmd", IsRequired = true)]
+        public uint Cmd { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"match_list")]
+        public global::System.Collections.Generic.List<MatchExpression> MatchLists { get; set; } = new global::System.Collections.Generic.List<MatchExpression>();
 
     }
 
@@ -80,8 +64,8 @@ namespace BLHX.Server.Common.Proto.p30
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
-        [global::ProtoBuf.ProtoMember(1, Name = @"id", IsRequired = true)]
-        public uint Id { get; set; }
+        [global::ProtoBuf.ProtoMember(1, Name = @"mail_id", IsRequired = true)]
+        public uint MailId { get; set; }
 
     }
 
@@ -92,34 +76,111 @@ namespace BLHX.Server.Common.Proto.p30
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
-        [global::ProtoBuf.ProtoMember(1, Name = @"id", IsRequired = true)]
-        public uint Id { get; set; }
-
-        [global::ProtoBuf.ProtoMember(2, Name = @"flag", IsRequired = true)]
-        public uint Flag { get; set; }
+        [global::ProtoBuf.ProtoMember(1, Name = @"arg", IsRequired = true)]
+        public uint Arg { get; set; }
 
     }
 
-    [global::ProtoBuf.ProtoContract(Name = @"mail_detail")]
-    public partial class MailDetail : global::ProtoBuf.IExtensible
+    [global::ProtoBuf.ProtoContract(Name = @"cs_30012")]
+    public partial class Cs30012 : global::ProtoBuf.IExtensible
     {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
-        [global::ProtoBuf.ProtoMember(1, Name = @"id", IsRequired = true)]
-        public uint Id { get; set; }
+        [global::ProtoBuf.ProtoMember(1, Name = @"oil", IsRequired = true)]
+        public uint Oil { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"content", IsRequired = true)]
-        public string Content { get; set; }
-
-        [global::ProtoBuf.ProtoMember(3, Name = @"attachment_list")]
-        public global::System.Collections.Generic.List<Attachment> AttachmentLists { get; set; } = new global::System.Collections.Generic.List<Attachment>();
+        [global::ProtoBuf.ProtoMember(2, Name = @"gold", IsRequired = true)]
+        public uint Gold { get; set; }
 
     }
 
-    [global::ProtoBuf.ProtoContract(Name = @"mail_sigle")]
-    public partial class MailSigle : global::ProtoBuf.IExtensible
+    [global::ProtoBuf.ProtoContract(Name = @"cs_30014")]
+    public partial class Cs30014 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"id_list")]
+        public global::System.Collections.Generic.List<uint> IdLists { get; set; } = new global::System.Collections.Generic.List<uint>();
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"cs_30016")]
+    public partial class Cs30016 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"item_id", IsRequired = true)]
+        public uint ItemId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"groupid", IsRequired = true)]
+        public uint Groupid { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"cs_30018")]
+    public partial class Cs30018 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"item_id", IsRequired = true)]
+        public uint ItemId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"year")]
+        public uint Year
+        {
+            get => __pbn__Year.GetValueOrDefault();
+            set => __pbn__Year = value;
+        }
+        public bool ShouldSerializeYear() => __pbn__Year != null;
+        public void ResetYear() => __pbn__Year = null;
+        private uint? __pbn__Year;
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"groupid")]
+        public uint Groupid
+        {
+            get => __pbn__Groupid.GetValueOrDefault();
+            set => __pbn__Groupid = value;
+        }
+        public bool ShouldSerializeGroupid() => __pbn__Groupid != null;
+        public void ResetGroupid() => __pbn__Groupid = null;
+        private uint? __pbn__Groupid;
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"cs_30102")]
+    public partial class Cs30102 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"type", IsRequired = true)]
+        public uint Type { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"cs_30104")]
+    public partial class Cs30104 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"reward_id", IsRequired = true)]
+        public uint RewardId { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"mail_info")]
+    public partial class MailInfo : global::ProtoBuf.IExtensible
     {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -134,17 +195,74 @@ namespace BLHX.Server.Common.Proto.p30
         [global::ProtoBuf.ProtoMember(3, Name = @"title", IsRequired = true)]
         public string Title { get; set; }
 
-        [global::ProtoBuf.ProtoMember(4, Name = @"attach_flag", IsRequired = true)]
+        [global::ProtoBuf.ProtoMember(4, Name = @"content", IsRequired = true)]
+        public string Content { get; set; }
+
+        [global::ProtoBuf.ProtoMember(5, Name = @"attachment_list")]
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> AttachmentLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
+
+        [global::ProtoBuf.ProtoMember(6, Name = @"attach_flag", IsRequired = true)]
         public uint AttachFlag { get; set; }
 
-        [global::ProtoBuf.ProtoMember(5, Name = @"read_flag", IsRequired = true)]
+        [global::ProtoBuf.ProtoMember(7, Name = @"read_flag", IsRequired = true)]
         public uint ReadFlag { get; set; }
 
-        [global::ProtoBuf.ProtoMember(6, Name = @"attachment_list")]
-        public global::System.Collections.Generic.List<Attachment> AttachmentLists { get; set; } = new global::System.Collections.Generic.List<Attachment>();
-
-        [global::ProtoBuf.ProtoMember(7, Name = @"imp_flag", IsRequired = true)]
+        [global::ProtoBuf.ProtoMember(8, Name = @"imp_flag", IsRequired = true)]
         public uint ImpFlag { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"mail_simple_info")]
+    public partial class MailSimpleInfo : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"id", IsRequired = true)]
+        public uint Id { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"date", IsRequired = true)]
+        public uint Date { get; set; }
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"title", IsRequired = true)]
+        public string Title { get; set; }
+
+        [global::ProtoBuf.ProtoMember(4, Name = @"content", IsRequired = true)]
+        public string Content { get; set; }
+
+        [global::ProtoBuf.ProtoMember(5, Name = @"attachment_list")]
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> AttachmentLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"mail_title")]
+    public partial class MailTitle : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"id", IsRequired = true)]
+        public uint Id { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"title", IsRequired = true)]
+        public string Title { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"match_expression")]
+    public partial class MatchExpression : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"type", IsRequired = true)]
+        public uint Type { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"arg_list")]
+        public global::System.Collections.Generic.List<uint> ArgLists { get; set; } = new global::System.Collections.Generic.List<uint>();
 
     }
 
@@ -158,7 +276,7 @@ namespace BLHX.Server.Common.Proto.p30
         [global::ProtoBuf.ProtoMember(1, Name = @"unread_number", IsRequired = true)]
         public uint UnreadNumber { get; set; }
 
-        [global::ProtoBuf.ProtoMember(3, Name = @"total_number", IsRequired = true)]
+        [global::ProtoBuf.ProtoMember(2, Name = @"total_number", IsRequired = true)]
         public uint TotalNumber { get; set; }
 
     }
@@ -171,7 +289,7 @@ namespace BLHX.Server.Common.Proto.p30
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"mail_list")]
-        public global::System.Collections.Generic.List<MailSigle> MailLists { get; set; } = new global::System.Collections.Generic.List<MailSigle>();
+        public global::System.Collections.Generic.List<MailInfo> MailLists { get; set; } = new global::System.Collections.Generic.List<MailInfo>();
 
     }
 
@@ -182,8 +300,8 @@ namespace BLHX.Server.Common.Proto.p30
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
-        [global::ProtoBuf.ProtoMember(1, Name = @"attachment_list")]
-        public global::System.Collections.Generic.List<Attachment> AttachmentLists { get; set; } = new global::System.Collections.Generic.List<Attachment>();
+        [global::ProtoBuf.ProtoMember(1, Name = @"mail_list")]
+        public global::System.Collections.Generic.List<MailSimpleInfo> MailLists { get; set; } = new global::System.Collections.Generic.List<MailSimpleInfo>();
 
     }
 
@@ -194,8 +312,17 @@ namespace BLHX.Server.Common.Proto.p30
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
-        [global::ProtoBuf.ProtoMember(1, Name = @"id_list")]
-        public global::System.Collections.Generic.List<uint> IdLists { get; set; } = new global::System.Collections.Generic.List<uint>();
+        [global::ProtoBuf.ProtoMember(1, Name = @"result", IsRequired = true)]
+        public uint Result { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"mail_id_list")]
+        public global::System.Collections.Generic.List<uint> MailIdLists { get; set; } = new global::System.Collections.Generic.List<uint>();
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"drop_list")]
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
+
+        [global::ProtoBuf.ProtoMember(4, Name = @"unread_number", IsRequired = true)]
+        public uint UnreadNumber { get; set; }
 
     }
 
@@ -206,8 +333,8 @@ namespace BLHX.Server.Common.Proto.p30
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
-        [global::ProtoBuf.ProtoMember(1, Name = @"detail_info", IsRequired = true)]
-        public MailDetail DetailInfo { get; set; }
+        [global::ProtoBuf.ProtoMember(1, Name = @"result", IsRequired = true)]
+        public uint Result { get; set; }
 
     }
 
@@ -223,7 +350,136 @@ namespace BLHX.Server.Common.Proto.p30
 
     }
 
+    [global::ProtoBuf.ProtoContract(Name = @"sc_30013")]
+    public partial class Sc30013 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"result", IsRequired = true)]
+        public uint Result { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"sc_30015")]
+    public partial class Sc30015 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"mail_title_list")]
+        public global::System.Collections.Generic.List<MailTitle> MailTitleLists { get; set; } = new global::System.Collections.Generic.List<MailTitle>();
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"sc_30017")]
+    public partial class Sc30017 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"years")]
+        public global::System.Collections.Generic.List<uint> Years { get; set; } = new global::System.Collections.Generic.List<uint>();
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"sc_30019")]
+    public partial class Sc30019 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"ret", IsRequired = true)]
+        public uint Ret { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"drop_list")]
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"sc_30101")]
+    public partial class Sc30101 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"number", IsRequired = true)]
+        public uint Number { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"max_timestamp", IsRequired = true)]
+        public uint MaxTimestamp { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"sc_30103")]
+    public partial class Sc30103 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"time_reward_list")]
+        public global::System.Collections.Generic.List<TimeRewardInfo> TimeRewardLists { get; set; } = new global::System.Collections.Generic.List<TimeRewardInfo>();
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"sc_30105")]
+    public partial class Sc30105 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"result", IsRequired = true)]
+        public uint Result { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"drop_list")]
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"number", IsRequired = true)]
+        public uint Number { get; set; }
+
+        [global::ProtoBuf.ProtoMember(4, Name = @"max_timestamp", IsRequired = true)]
+        public uint MaxTimestamp { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"time_reward_info")]
+    public partial class TimeRewardInfo : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"id", IsRequired = true)]
+        public uint Id { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"timestamp", IsRequired = true)]
+        public uint Timestamp { get; set; }
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"title", IsRequired = true)]
+        public string Title { get; set; }
+
+        [global::ProtoBuf.ProtoMember(4, Name = @"text", IsRequired = true)]
+        public string Text { get; set; }
+
+        [global::ProtoBuf.ProtoMember(5, Name = @"attachment_list")]
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> AttachmentLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
+
+        [global::ProtoBuf.ProtoMember(6, Name = @"attach_flag", IsRequired = true)]
+        public uint AttachFlag { get; set; }
+
+        [global::ProtoBuf.ProtoMember(7, Name = @"send_time", IsRequired = true)]
+        public uint SendTime { get; set; }
+
+    }
+
 }
 
-#pragma warning restore CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning restore CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 #endregion

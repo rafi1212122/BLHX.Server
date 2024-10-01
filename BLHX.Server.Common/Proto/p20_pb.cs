@@ -5,7 +5,7 @@
 // </auto-generated>
 
 #region Designer generated code
-#pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning disable CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 namespace BLHX.Server.Common.Proto.p20
 {
 
@@ -21,6 +21,24 @@ namespace BLHX.Server.Common.Proto.p20
 
         [global::ProtoBuf.ProtoMember(2, Name = @"progress", IsRequired = true)]
         public uint Progress { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"act_task_init_list")]
+    public partial class ActTaskInitList : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"act_id", IsRequired = true)]
+        public uint ActId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"tasks")]
+        public global::System.Collections.Generic.List<ActTask> Tasks { get; set; } = new global::System.Collections.Generic.List<ActTask>();
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"finish_ids")]
+        public global::System.Collections.Generic.List<uint> FinishIds { get; set; } = new global::System.Collections.Generic.List<uint>();
 
     }
 
@@ -153,6 +171,24 @@ namespace BLHX.Server.Common.Proto.p20
 
         [global::ProtoBuf.ProtoMember(2, Name = @"task_ids")]
         public global::System.Collections.Generic.List<uint> TaskIds { get; set; } = new global::System.Collections.Generic.List<uint>();
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"cs_20207")]
+    public partial class Cs20207 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"act_id", IsRequired = true)]
+        public uint ActId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"task_id", IsRequired = true)]
+        public uint TaskId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"item_cost", IsRequired = true)]
+        public uint ItemCost { get; set; }
 
     }
 
@@ -308,7 +344,7 @@ namespace BLHX.Server.Common.Proto.p20
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"task")]
-        public global::System.Collections.Generic.List<WeeklyTask> Tasks { get; set; } = new global::System.Collections.Generic.List<WeeklyTask>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.WeeklyTask> Tasks { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.WeeklyTask>();
 
     }
 
@@ -359,7 +395,7 @@ namespace BLHX.Server.Common.Proto.p20
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"next")]
-        public WeeklyTask Next { get; set; }
+        public global::BLHX.Server.Common.Proto.guild.WeeklyTask Next { get; set; }
 
     }
 
@@ -377,7 +413,7 @@ namespace BLHX.Server.Common.Proto.p20
         public uint Pt { get; set; }
 
         [global::ProtoBuf.ProtoMember(3, Name = @"next")]
-        public global::System.Collections.Generic.List<WeeklyTask> Nexts { get; set; } = new global::System.Collections.Generic.List<WeeklyTask>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.WeeklyTask> Nexts { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.WeeklyTask>();
 
     }
 
@@ -404,7 +440,7 @@ namespace BLHX.Server.Common.Proto.p20
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"info")]
-        public global::System.Collections.Generic.List<ActTaskList> Infoes { get; set; } = new global::System.Collections.Generic.List<ActTaskList>();
+        public global::System.Collections.Generic.List<ActTaskInitList> Infoes { get; set; } = new global::System.Collections.Generic.List<ActTaskInitList>();
 
     }
 
@@ -446,6 +482,21 @@ namespace BLHX.Server.Common.Proto.p20
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_20206")]
     public partial class Sc20206 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"result", IsRequired = true)]
+        public uint Result { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"award_list")]
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> AwardLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"sc_20208")]
+    public partial class Sc20208 : global::ProtoBuf.IExtensible
     {
         private global::ProtoBuf.IExtension __pbn__extensionData;
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -528,7 +579,7 @@ namespace BLHX.Server.Common.Proto.p20
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"task")]
-        public global::System.Collections.Generic.List<WeeklyTask> Tasks { get; set; } = new global::System.Collections.Generic.List<WeeklyTask>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.WeeklyTask> Tasks { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.guild.WeeklyTask>();
 
         [global::ProtoBuf.ProtoMember(2, Name = @"pt", IsRequired = true)]
         public uint Pt { get; set; }
@@ -555,5 +606,5 @@ namespace BLHX.Server.Common.Proto.p20
 
 }
 
-#pragma warning restore CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning restore CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 #endregion

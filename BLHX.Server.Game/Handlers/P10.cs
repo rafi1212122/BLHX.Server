@@ -17,18 +17,19 @@ namespace BLHX.Server.Game.Handlers {
                 ProxyIp = Config.Instance.Address,
                 ProxyPort = Config.Instance.Port,
                 Versions = [
-                    "$azhash$7$1$532$312a453ef34efc48",
-                    "$cvhash$477$8487e9251175425e",
-                    "$l2dhash$526$4bf900d597d9b176",
-                    "$pichash$15$0d6f59289972cc8a",
-                    "$bgmhash$13$76fdc897426a138d",
-                    "$paintinghash$99$19becda4b1a9955a",
-                    "$mangahash$31$e79f94a955fca957",
-                    "$cipherhash$24$3cefad85368b3296",
+                    "$azhash$8$2$95$10cebc67d98f59cb",
+                    "$cvhash$530$38388f9a50dc9310",
+                    "$l2dhash$603$8546436aa5a3a01e",
+                    "$pichash$22$e147d036aaf79d0d",
+                    "$bgmhash$22$e147d036aaf79d0d",
+                    "$paintinghash$180$bf5094d856ef7d33",
+                    "$mangahash$52$c65215a4f27efa25",
+                    "$cipherhash$36$ea9de9ee37d80caf",
+                    "$dormhash$16$aafdaa42b89be89e",
                     "dTag-1"
                 ],
                 Timestamp = (uint)DateTimeOffset.Now.ToUnixTimeSeconds(),
-                Monday0oclockTimestamp = Connection.Monday0oclockTimestamp
+                Monday0oclockTimestamp = Connection.Monday0oclockTimestamp,
             });
             connection.EndProtocol();
         }

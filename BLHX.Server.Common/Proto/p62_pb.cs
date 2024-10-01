@@ -5,7 +5,7 @@
 // </auto-generated>
 
 #region Designer generated code
-#pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning disable CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 namespace BLHX.Server.Common.Proto.p62
 {
 
@@ -389,7 +389,7 @@ namespace BLHX.Server.Common.Proto.p62
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"list")]
-        public global::System.Collections.Generic.List<RankInfo> Lists { get; set; } = new global::System.Collections.Generic.List<RankInfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p18.RankInfo> Lists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p18.RankInfo>();
 
     }
 
@@ -419,5 +419,5 @@ namespace BLHX.Server.Common.Proto.p62
 
 }
 
-#pragma warning restore CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning restore CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 #endregion

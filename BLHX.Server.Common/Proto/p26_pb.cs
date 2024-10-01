@@ -5,7 +5,7 @@
 // </auto-generated>
 
 #region Designer generated code
-#pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning disable CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 namespace BLHX.Server.Common.Proto.p26
 {
 
@@ -483,6 +483,39 @@ namespace BLHX.Server.Common.Proto.p26
 
     }
 
+    [global::ProtoBuf.ProtoContract(Name = @"cs_26160")]
+    public partial class Cs26160 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"act_id", IsRequired = true)]
+        public uint ActId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"int_value")]
+        public uint IntValue
+        {
+            get => __pbn__IntValue.GetValueOrDefault();
+            set => __pbn__IntValue = value;
+        }
+        public bool ShouldSerializeIntValue() => __pbn__IntValue != null;
+        public void ResetIntValue() => __pbn__IntValue = null;
+        private uint? __pbn__IntValue;
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"str_value")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string StrValue
+        {
+            get => __pbn__StrValue ?? "";
+            set => __pbn__StrValue = value;
+        }
+        public bool ShouldSerializeStrValue() => __pbn__StrValue != null;
+        public void ResetStrValue() => __pbn__StrValue = null;
+        private string __pbn__StrValue;
+
+    }
+
     [global::ProtoBuf.ProtoContract(Name = @"friendscore")]
     public partial class Friendscore : global::ProtoBuf.IExtensible
     {
@@ -501,6 +534,9 @@ namespace BLHX.Server.Common.Proto.p26
 
         [global::ProtoBuf.ProtoMember(4, Name = @"display", IsRequired = true)]
         public global::BLHX.Server.Common.Proto.common.Displayinfo Display { get; set; }
+
+        [global::ProtoBuf.ProtoMember(5, Name = @"time_data", IsRequired = true)]
+        public uint TimeData { get; set; }
 
     }
 
@@ -570,7 +606,7 @@ namespace BLHX.Server.Common.Proto.p26
         public uint Key { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"value_list")]
-        public global::System.Collections.Generic.List<Keyvalue> ValueLists { get; set; } = new global::System.Collections.Generic.List<Keyvalue>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p11.Mulkeyvalue> ValueLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p11.Mulkeyvalue>();
 
     }
 
@@ -588,7 +624,7 @@ namespace BLHX.Server.Common.Proto.p26
         public global::System.Collections.Generic.List<uint> Datas { get; set; } = new global::System.Collections.Generic.List<uint>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"date1_key_value_list")]
-        public global::System.Collections.Generic.List<Keyvaluelist> Date1KeyValueLists { get; set; } = new global::System.Collections.Generic.List<Keyvaluelist>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p11.Keyvaluelist> Date1KeyValueLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p11.Keyvaluelist>();
 
     }
 
@@ -633,7 +669,7 @@ namespace BLHX.Server.Common.Proto.p26
         private uint? __pbn__Ultimate;
 
         [global::ProtoBuf.ProtoMember(5, Name = @"maxscores")]
-        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Kvdata> Maxscores { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Kvdata>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Kvdata2> Maxscores { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Kvdata2>();
 
     }
 
@@ -1119,7 +1155,7 @@ namespace BLHX.Server.Common.Proto.p26
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"goods")]
-        public global::System.Collections.Generic.List<GoodsInfo> Goods { get; set; } = new global::System.Collections.Generic.List<GoodsInfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p16.GoodsInfo> Goods { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p16.GoodsInfo>();
 
         [global::ProtoBuf.ProtoMember(2, Name = @"next_flash_time", IsRequired = true)]
         public uint NextFlashTime { get; set; }
@@ -1209,6 +1245,18 @@ namespace BLHX.Server.Common.Proto.p26
 
     }
 
+    [global::ProtoBuf.ProtoContract(Name = @"sc_26161")]
+    public partial class Sc26161 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"result", IsRequired = true)]
+        public uint Result { get; set; }
+
+    }
+
     [global::ProtoBuf.ProtoContract(Name = @"select_info")]
     public partial class SelectInfo : global::ProtoBuf.IExtensible
     {
@@ -1226,5 +1274,5 @@ namespace BLHX.Server.Common.Proto.p26
 
 }
 
-#pragma warning restore CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning restore CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 #endregion

@@ -5,7 +5,7 @@
 // </auto-generated>
 
 #region Designer generated code
-#pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning disable CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 namespace BLHX.Server.Common.Proto.common
 {
 
@@ -297,6 +297,24 @@ namespace BLHX.Server.Common.Proto.common
 
         [global::ProtoBuf.ProtoMember(2, Name = @"value", IsRequired = true)]
         public uint Value { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"kvdata2")]
+    public partial class Kvdata2 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"key", IsRequired = true)]
+        public uint Key { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"value1", IsRequired = true)]
+        public uint Value1 { get; set; }
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"value2", IsRequired = true)]
+        public uint Value2 { get; set; }
 
     }
 
@@ -667,5 +685,5 @@ namespace BLHX.Server.Common.Proto.common
 
 }
 
-#pragma warning restore CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning restore CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 #endregion

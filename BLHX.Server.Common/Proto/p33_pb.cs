@@ -5,7 +5,7 @@
 // </auto-generated>
 
 #region Designer generated code
-#pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning disable CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 namespace BLHX.Server.Common.Proto.p33
 {
 
@@ -17,7 +17,7 @@ namespace BLHX.Server.Common.Proto.p33
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"ai_pos", IsRequired = true)]
-        public Chaptercellpos AiPos { get; set; }
+        public global::BLHX.Server.Common.Proto.p13.Chaptercellpos AiPos { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"strategy_id")]
         public uint StrategyId
@@ -30,13 +30,13 @@ namespace BLHX.Server.Common.Proto.p33
         private uint? __pbn__StrategyId;
 
         [global::ProtoBuf.ProtoMember(3, Name = @"target_pos")]
-        public Chaptercellpos TargetPos { get; set; }
+        public global::BLHX.Server.Common.Proto.p13.Chaptercellpos TargetPos { get; set; }
 
         [global::ProtoBuf.ProtoMember(4, Name = @"move_path")]
-        public global::System.Collections.Generic.List<Chaptercellpos> MovePaths { get; set; } = new global::System.Collections.Generic.List<Chaptercellpos>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Chaptercellpos> MovePaths { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Chaptercellpos>();
 
         [global::ProtoBuf.ProtoMember(6, Name = @"ship_update")]
-        public global::System.Collections.Generic.List<Shipinchapter> ShipUpdates { get; set; } = new global::System.Collections.Generic.List<Shipinchapter>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Shipinchapter> ShipUpdates { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Shipinchapter>();
 
         [global::ProtoBuf.ProtoMember(7, Name = @"type", IsRequired = true)]
         public uint Type { get; set; }
@@ -96,7 +96,7 @@ namespace BLHX.Server.Common.Proto.p33
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"pos", IsRequired = true)]
-        public Chaptercellpos Pos { get; set; }
+        public global::BLHX.Server.Common.Proto.p13.Chaptercellpos Pos { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"discovered")]
         public uint Discovered
@@ -193,7 +193,7 @@ namespace BLHX.Server.Common.Proto.p33
         public uint EnterMapId { get; set; }
 
         [global::ProtoBuf.ProtoMember(3, Name = @"elite_fleet_list")]
-        public global::System.Collections.Generic.List<Elitefleetinfo> EliteFleetLists { get; set; } = new global::System.Collections.Generic.List<Elitefleetinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Elitefleetinfo> EliteFleetLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Elitefleetinfo>();
 
         [global::ProtoBuf.ProtoMember(4, Name = @"camp", IsRequired = true)]
         public uint Camp { get; set; }
@@ -234,7 +234,7 @@ namespace BLHX.Server.Common.Proto.p33
         private uint? __pbn__ActArg2;
 
         [global::ProtoBuf.ProtoMember(5, Name = @"pos_list")]
-        public global::System.Collections.Generic.List<Chaptercellpos> PosLists { get; set; } = new global::System.Collections.Generic.List<Chaptercellpos>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Chaptercellpos> PosLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Chaptercellpos>();
 
     }
 
@@ -393,7 +393,7 @@ namespace BLHX.Server.Common.Proto.p33
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"elite_fleet_list")]
-        public global::System.Collections.Generic.List<Elitefleetinfo> EliteFleetLists { get; set; } = new global::System.Collections.Generic.List<Elitefleetinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Elitefleetinfo> EliteFleetLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Elitefleetinfo>();
 
     }
 
@@ -516,19 +516,19 @@ namespace BLHX.Server.Common.Proto.p33
         public uint Id { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"ship_list")]
-        public global::System.Collections.Generic.List<Shipinchapter> ShipLists { get; set; } = new global::System.Collections.Generic.List<Shipinchapter>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Shipinchapter> ShipLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Shipinchapter>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"pos", IsRequired = true)]
-        public Chaptercellpos Pos { get; set; }
+        public global::BLHX.Server.Common.Proto.p13.Chaptercellpos Pos { get; set; }
 
         [global::ProtoBuf.ProtoMember(4, Name = @"loss_flag", IsRequired = true)]
         public uint LossFlag { get; set; }
 
         [global::ProtoBuf.ProtoMember(5, Name = @"box_strategy_list")]
-        public global::System.Collections.Generic.List<Strategyinfo> BoxStrategyLists { get; set; } = new global::System.Collections.Generic.List<Strategyinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Strategyinfo> BoxStrategyLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Strategyinfo>();
 
         [global::ProtoBuf.ProtoMember(6, Name = @"ship_strategy_list")]
-        public global::System.Collections.Generic.List<Strategyinfo> ShipStrategyLists { get; set; } = new global::System.Collections.Generic.List<Strategyinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Strategyinfo> ShipStrategyLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Strategyinfo>();
 
         [global::ProtoBuf.ProtoMember(7, Name = @"strategy_ids")]
         public global::System.Collections.Generic.List<uint> StrategyIds { get; set; } = new global::System.Collections.Generic.List<uint>();
@@ -537,7 +537,7 @@ namespace BLHX.Server.Common.Proto.p33
         public uint Bullet { get; set; }
 
         [global::ProtoBuf.ProtoMember(9, Name = @"start_pos", IsRequired = true)]
-        public Chaptercellpos StartPos { get; set; }
+        public global::BLHX.Server.Common.Proto.p13.Chaptercellpos StartPos { get; set; }
 
         [global::ProtoBuf.ProtoMember(10, Name = @"attach_list")]
         public global::System.Collections.Generic.List<uint> AttachLists { get; set; } = new global::System.Collections.Generic.List<uint>();
@@ -585,13 +585,13 @@ namespace BLHX.Server.Common.Proto.p33
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"pos", IsRequired = true)]
-        public Chaptercellpos Pos { get; set; }
+        public global::BLHX.Server.Common.Proto.p13.Chaptercellpos Pos { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"type", IsRequired = true)]
         public uint Type { get; set; }
 
         [global::ProtoBuf.ProtoMember(3, Name = @"dir", IsRequired = true)]
-        public Chaptercellpos Dir { get; set; }
+        public global::BLHX.Server.Common.Proto.p13.Chaptercellpos Dir { get; set; }
 
         [global::ProtoBuf.ProtoMember(4, Name = @"distance", IsRequired = true)]
         public uint Distance { get; set; }
@@ -609,7 +609,7 @@ namespace BLHX.Server.Common.Proto.p33
         public uint MapId { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"vision_list")]
-        public global::System.Collections.Generic.List<Chaptercellpos> VisionLists { get; set; } = new global::System.Collections.Generic.List<Chaptercellpos>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Chaptercellpos> VisionLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Chaptercellpos>();
 
     }
 
@@ -624,7 +624,7 @@ namespace BLHX.Server.Common.Proto.p33
         public Worldmapid Id { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"cell_list")]
-        public global::System.Collections.Generic.List<Chaptercellinfo> CellLists { get; set; } = new global::System.Collections.Generic.List<Chaptercellinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Chaptercellinfo> CellLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Chaptercellinfo>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"state_flag")]
         public global::System.Collections.Generic.List<uint> StateFlags { get; set; } = new global::System.Collections.Generic.List<uint>();
@@ -651,7 +651,7 @@ namespace BLHX.Server.Common.Proto.p33
         public global::System.Collections.Generic.List<uint> TaskLists { get; set; } = new global::System.Collections.Generic.List<uint>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"goods_list")]
-        public global::System.Collections.Generic.List<GoodsInfo> GoodsLists { get; set; } = new global::System.Collections.Generic.List<GoodsInfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p16.GoodsInfo> GoodsLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p16.GoodsInfo>();
 
         [global::ProtoBuf.ProtoMember(4, Name = @"next_refresh_time", IsRequired = true)]
         public uint NextRefreshTime { get; set; }
@@ -687,7 +687,7 @@ namespace BLHX.Server.Common.Proto.p33
         public Countinfo CountInfo { get; set; }
 
         [global::ProtoBuf.ProtoMember(8, Name = @"out_shop_buy_list")]
-        public global::System.Collections.Generic.List<GoodsInfo> OutShopBuyLists { get; set; } = new global::System.Collections.Generic.List<GoodsInfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p16.GoodsInfo> OutShopBuyLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p16.GoodsInfo>();
 
         [global::ProtoBuf.ProtoMember(9, Name = @"clean_chapter")]
         public global::System.Collections.Generic.List<uint> CleanChapters { get; set; } = new global::System.Collections.Generic.List<uint>();
@@ -744,7 +744,7 @@ namespace BLHX.Server.Common.Proto.p33
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"move_path")]
-        public global::System.Collections.Generic.List<Chaptercellpos> MovePaths { get; set; } = new global::System.Collections.Generic.List<Chaptercellpos>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Chaptercellpos> MovePaths { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Chaptercellpos>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"drop_list")]
         public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo> DropLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Dropinfo>();
@@ -760,10 +760,10 @@ namespace BLHX.Server.Common.Proto.p33
         private uint? __pbn__EnterMapId;
 
         [global::ProtoBuf.ProtoMember(5, Name = @"ship_update")]
-        public global::System.Collections.Generic.List<Shipinchapter> ShipUpdates { get; set; } = new global::System.Collections.Generic.List<Shipinchapter>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Shipinchapter> ShipUpdates { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Shipinchapter>();
 
         [global::ProtoBuf.ProtoMember(6, Name = @"ai_act_list")]
-        public global::System.Collections.Generic.List<AiAct> AiActLists { get; set; } = new global::System.Collections.Generic.List<AiAct>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.AiAct> AiActLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.AiAct>();
 
         [global::ProtoBuf.ProtoMember(7, Name = @"id")]
         public Worldmapid Id { get; set; }
@@ -1060,7 +1060,7 @@ namespace BLHX.Server.Common.Proto.p33
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(3, Name = @"group_list")]
-        public global::System.Collections.Generic.List<Groupinchapter> GroupLists { get; set; } = new global::System.Collections.Generic.List<Groupinchapter>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Groupinchapter> GroupLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Groupinchapter>();
 
     }
 
@@ -1289,7 +1289,7 @@ namespace BLHX.Server.Common.Proto.p33
         private uint? __pbn__Time;
 
         [global::ProtoBuf.ProtoMember(3, Name = @"group_list")]
-        public global::System.Collections.Generic.List<Groupinchapter> GroupLists { get; set; } = new global::System.Collections.Generic.List<Groupinchapter>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Groupinchapter> GroupLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p13.Groupinchapter>();
 
         [global::ProtoBuf.ProtoMember(4, Name = @"round")]
         public uint Round
@@ -1321,7 +1321,7 @@ namespace BLHX.Server.Common.Proto.p33
         public global::System.Collections.Generic.List<WorldItemInfo> ItemLists { get; set; } = new global::System.Collections.Generic.List<WorldItemInfo>();
 
         [global::ProtoBuf.ProtoMember(9, Name = @"goods_list")]
-        public global::System.Collections.Generic.List<GoodsInfo> GoodsLists { get; set; } = new global::System.Collections.Generic.List<GoodsInfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p16.GoodsInfo> GoodsLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p16.GoodsInfo>();
 
         [global::ProtoBuf.ProtoMember(11, Name = @"action_power", IsRequired = true)]
         public uint ActionPower { get; set; }
@@ -1439,7 +1439,7 @@ namespace BLHX.Server.Common.Proto.p33
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"pos", IsRequired = true)]
-        public Chaptercellpos Pos { get; set; }
+        public global::BLHX.Server.Common.Proto.p13.Chaptercellpos Pos { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"item_list")]
         public global::System.Collections.Generic.List<Worlditeminfo> ItemLists { get; set; } = new global::System.Collections.Generic.List<Worlditeminfo>();
@@ -1493,5 +1493,5 @@ namespace BLHX.Server.Common.Proto.p33
 
 }
 
-#pragma warning restore CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning restore CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 #endregion

@@ -5,7 +5,9 @@
 // </auto-generated>
 
 #region Designer generated code
-#pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning disable CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+using BLHX.Server.Common.Proto.p12;
+
 namespace BLHX.Server.Common.Proto.p11
 {
 
@@ -88,6 +90,20 @@ namespace BLHX.Server.Common.Proto.p11
 
         [global::ProtoBuf.ProtoMember(15, Name = @"buff_list")]
         public global::System.Collections.Generic.List<Benefitbuff> BuffLists { get; set; } = new global::System.Collections.Generic.List<Benefitbuff>();
+
+        [global::ProtoBuf.ProtoMember(16, Name = @"str_data1")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string StrData1
+        {
+            get => __pbn__StrData1 ?? "";
+            set => __pbn__StrData1 = value;
+        }
+        public bool ShouldSerializeStrData1() => __pbn__StrData1 != null;
+        public void ResetStrData1() => __pbn__StrData1 = null;
+        private string __pbn__StrData1;
+
+        [global::ProtoBuf.ProtoMember(17, Name = @"data4_list")]
+        public global::System.Collections.Generic.List<uint> Data4Lists { get; set; } = new global::System.Collections.Generic.List<uint>();
 
     }
 
@@ -301,6 +317,42 @@ namespace BLHX.Server.Common.Proto.p11
 
     }
 
+    [global::ProtoBuf.ProtoContract(Name = @"cs_11029")]
+    public partial class Cs11029 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"track_typ", IsRequired = true)]
+        public uint TrackTyp { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"int_arg1", IsRequired = true)]
+        public uint IntArg1 { get; set; }
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"int_arg2", IsRequired = true)]
+        public uint IntArg2 { get; set; }
+
+        [global::ProtoBuf.ProtoMember(4, Name = @"int_arg3", IsRequired = true)]
+        public uint IntArg3 { get; set; }
+
+        [global::ProtoBuf.ProtoMember(5, Name = @"str_arg1", IsRequired = true)]
+        public string StrArg1 { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"cs_11030")]
+    public partial class Cs11030 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"livingarea_cover_id", IsRequired = true)]
+        public uint LivingareaCoverId { get; set; }
+
+    }
+
     [global::ProtoBuf.ProtoContract(Name = @"cs_11100")]
     public partial class Cs11100 : global::ProtoBuf.IExtensible
     {
@@ -447,6 +499,24 @@ namespace BLHX.Server.Common.Proto.p11
 
         [global::ProtoBuf.ProtoMember(1, Name = @"activity_id", IsRequired = true)]
         public uint ActivityId { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"cs_11212")]
+    public partial class Cs11212 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"track_typ", IsRequired = true)]
+        public uint TrackTyp { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"ship_tid", IsRequired = true)]
+        public uint ShipTid { get; set; }
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"from", IsRequired = true)]
+        public uint From { get; set; }
 
     }
 
@@ -699,24 +769,6 @@ namespace BLHX.Server.Common.Proto.p11
 
     }
 
-    [global::ProtoBuf.ProtoContract(Name = @"groupinfo")]
-    public partial class Groupinfo : global::ProtoBuf.IExtensible
-    {
-        private global::ProtoBuf.IExtension __pbn__extensionData;
-        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
-
-        [global::ProtoBuf.ProtoMember(1, Name = @"id", IsRequired = true)]
-        public uint Id { get; set; }
-
-        [global::ProtoBuf.ProtoMember(2, Name = @"ship_list")]
-        public global::System.Collections.Generic.List<uint> ShipLists { get; set; } = new global::System.Collections.Generic.List<uint>();
-
-        [global::ProtoBuf.ProtoMember(3, Name = @"commanders")]
-        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo> Commanders { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Commandersinfo>();
-
-    }
-
     [global::ProtoBuf.ProtoContract(Name = @"ins_message")]
     public partial class InsMessage : global::ProtoBuf.IExtensible
     {
@@ -869,6 +921,21 @@ namespace BLHX.Server.Common.Proto.p11
 
     }
 
+    [global::ProtoBuf.ProtoContract(Name = @"livingarea_cover")]
+    public partial class LivingareaCover : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"id", IsRequired = true)]
+        public uint Id { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"covers")]
+        public global::System.Collections.Generic.List<uint> Covers { get; set; } = new global::System.Collections.Generic.List<uint>();
+
+    }
+
     [global::ProtoBuf.ProtoContract(Name = @"noticeinfo")]
     public partial class Noticeinfo : global::ProtoBuf.IExtensible
     {
@@ -896,6 +963,18 @@ namespace BLHX.Server.Common.Proto.p11
 
         [global::ProtoBuf.ProtoMember(7, Name = @"content", IsRequired = true)]
         public string Content { get; set; }
+
+        [global::ProtoBuf.ProtoMember(8, Name = @"tag_type", IsRequired = true)]
+        public uint TagType { get; set; }
+
+        [global::ProtoBuf.ProtoMember(9, Name = @"icon", IsRequired = true)]
+        public uint Icon { get; set; }
+
+        [global::ProtoBuf.ProtoMember(10, Name = @"track", IsRequired = true)]
+        public string Track { get; set; }
+
+        [global::ProtoBuf.ProtoMember(11, Name = @"priority", IsRequired = true)]
+        public uint Priority { get; set; }
 
     }
 
@@ -1107,6 +1186,18 @@ namespace BLHX.Server.Common.Proto.p11
         [global::ProtoBuf.ProtoMember(46, Name = @"child_display", IsRequired = true)]
         public uint ChildDisplay { get; set; }
 
+        [global::ProtoBuf.ProtoMember(47, Name = @"cover", IsRequired = true)]
+        public LivingareaCover Cover { get; set; }
+
+        [global::ProtoBuf.ProtoMember(48, Name = @"mail_storeroom_lv", IsRequired = true)]
+        public uint MailStoreroomLv { get; set; }
+
+        [global::ProtoBuf.ProtoMember(49, Name = @"battle_ui_list")]
+        public global::System.Collections.Generic.List<uint> BattleUiLists { get; set; } = new global::System.Collections.Generic.List<uint>();
+
+        [global::ProtoBuf.ProtoMember(50, Name = @"battle_ui", IsRequired = true)]
+        public uint BattleUi { get; set; }
+
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_11004")]
@@ -1271,6 +1362,18 @@ namespace BLHX.Server.Common.Proto.p11
 
     }
 
+    [global::ProtoBuf.ProtoContract(Name = @"sc_11031")]
+    public partial class Sc11031 : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"result", IsRequired = true)]
+        public uint Result { get; set; }
+
+    }
+
     [global::ProtoBuf.ProtoContract(Name = @"sc_11101")]
     public partial class Sc11101 : global::ProtoBuf.IExtensible
     {
@@ -1416,7 +1519,7 @@ namespace BLHX.Server.Common.Proto.p11
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"notice_list")]
-        public global::System.Collections.Generic.List<Noticeinfo> NoticeLists { get; set; } = new global::System.Collections.Generic.List<Noticeinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p10.Noticeinfo> NoticeLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p10.Noticeinfo>();
 
     }
 
@@ -1857,5 +1960,5 @@ namespace BLHX.Server.Common.Proto.p11
 
 }
 
-#pragma warning restore CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning restore CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 #endregion

@@ -5,7 +5,7 @@
 // </auto-generated>
 
 #region Designer generated code
-#pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning disable CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 namespace BLHX.Server.Common.Proto.p34
 {
 
@@ -264,10 +264,10 @@ namespace BLHX.Server.Common.Proto.p34
         public uint FightCountUpdateTime { get; set; }
 
         [global::ProtoBuf.ProtoMember(3, Name = @"self_boss")]
-        public WorldbossInfo SelfBoss { get; set; }
+        public global::BLHX.Server.Common.Proto.p33.WorldbossInfo SelfBoss { get; set; }
 
         [global::ProtoBuf.ProtoMember(4, Name = @"other_boss")]
-        public global::System.Collections.Generic.List<WorldbossInfo> OtherBosses { get; set; } = new global::System.Collections.Generic.List<WorldbossInfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p33.WorldbossInfo> OtherBosses { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p33.WorldbossInfo>();
 
         [global::ProtoBuf.ProtoMember(5, Name = @"summon_pt", IsRequired = true)]
         public uint SummonPt { get; set; }
@@ -312,7 +312,7 @@ namespace BLHX.Server.Common.Proto.p34
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"boss_list")]
-        public global::System.Collections.Generic.List<WorldbossInfo> BossLists { get; set; } = new global::System.Collections.Generic.List<WorldbossInfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p33.WorldbossInfo> BossLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p33.WorldbossInfo>();
 
     }
 
@@ -324,7 +324,7 @@ namespace BLHX.Server.Common.Proto.p34
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"rank_list")]
-        public global::System.Collections.Generic.List<WorldbossRank> RankLists { get; set; } = new global::System.Collections.Generic.List<WorldbossRank>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p33.WorldbossRank> RankLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p33.WorldbossRank>();
 
     }
 
@@ -336,7 +336,7 @@ namespace BLHX.Server.Common.Proto.p34
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"boss_info", IsRequired = true)]
-        public WorldbossInfo BossInfo { get; set; }
+        public global::BLHX.Server.Common.Proto.p33.WorldbossInfo BossInfo { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"user_info", IsRequired = true)]
         public global::BLHX.Server.Common.Proto.common.Usersimpleinfo UserInfo { get; set; }
@@ -450,7 +450,7 @@ namespace BLHX.Server.Common.Proto.p34
         public uint Result { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"boss")]
-        public WorldbossInfo Boss { get; set; }
+        public global::BLHX.Server.Common.Proto.p33.WorldbossInfo Boss { get; set; }
 
     }
 
@@ -576,5 +576,5 @@ namespace BLHX.Server.Common.Proto.p34
 
 }
 
-#pragma warning restore CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning restore CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 #endregion

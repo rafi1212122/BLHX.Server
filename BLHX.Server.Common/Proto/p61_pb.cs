@@ -5,7 +5,7 @@
 // </auto-generated>
 
 #region Designer generated code
-#pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning disable CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 namespace BLHX.Server.Common.Proto.p61
 {
 
@@ -275,7 +275,7 @@ namespace BLHX.Server.Common.Proto.p61
         public global::System.Collections.Generic.List<EventPerformance> Perfs { get; set; } = new global::System.Collections.Generic.List<EventPerformance>();
 
         [global::ProtoBuf.ProtoMember(6, Name = @"formation_time")]
-        public global::System.Collections.Generic.List<Keyvalue> FormationTimes { get; set; } = new global::System.Collections.Generic.List<Keyvalue>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p11.Mulkeyvalue> FormationTimes { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p11.Mulkeyvalue>();
 
         [global::ProtoBuf.ProtoMember(7, Name = @"completed_events")]
         public global::System.Collections.Generic.List<EventBaseCompleted> CompletedEvents { get; set; } = new global::System.Collections.Generic.List<EventBaseCompleted>();
@@ -317,10 +317,10 @@ namespace BLHX.Server.Common.Proto.p61
         public global::System.Collections.Generic.List<ShipInEvent> Shipinevents { get; set; } = new global::System.Collections.Generic.List<ShipInEvent>();
 
         [global::ProtoBuf.ProtoMember(6, Name = @"attr_acc_list")]
-        public global::System.Collections.Generic.List<Keyvalue> AttrAccLists { get; set; } = new global::System.Collections.Generic.List<Keyvalue>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p11.Mulkeyvalue> AttrAccLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p11.Mulkeyvalue>();
 
         [global::ProtoBuf.ProtoMember(7, Name = @"attr_count_list")]
-        public global::System.Collections.Generic.List<Keyvalue> AttrCountLists { get; set; } = new global::System.Collections.Generic.List<Keyvalue>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p11.Mulkeyvalue> AttrCountLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p11.Mulkeyvalue>();
 
         [global::ProtoBuf.ProtoMember(8, Name = @"eventnodes")]
         public global::System.Collections.Generic.List<EventNode> Eventnodes { get; set; } = new global::System.Collections.Generic.List<EventNode>();
@@ -698,7 +698,7 @@ namespace BLHX.Server.Common.Proto.p61
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"list")]
-        public global::System.Collections.Generic.List<RankInfo> Lists { get; set; } = new global::System.Collections.Generic.List<RankInfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p18.RankInfo> Lists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p18.RankInfo>();
 
     }
 
@@ -746,7 +746,7 @@ namespace BLHX.Server.Common.Proto.p61
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"list")]
-        public global::System.Collections.Generic.List<RankInfo> Lists { get; set; } = new global::System.Collections.Generic.List<RankInfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p18.RankInfo> Lists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p18.RankInfo>();
 
     }
 
@@ -836,5 +836,5 @@ namespace BLHX.Server.Common.Proto.p61
 
 }
 
-#pragma warning restore CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning restore CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 #endregion

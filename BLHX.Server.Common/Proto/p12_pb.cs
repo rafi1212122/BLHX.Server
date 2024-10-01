@@ -5,7 +5,7 @@
 // </auto-generated>
 
 #region Designer generated code
-#pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning disable CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 namespace BLHX.Server.Common.Proto.p12
 {
 
@@ -776,7 +776,7 @@ namespace BLHX.Server.Common.Proto.p12
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"group_list")]
-        public global::System.Collections.Generic.List<Groupinfo> GroupLists { get; set; } = new global::System.Collections.Generic.List<Groupinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p12.Groupinfo> GroupLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p12.Groupinfo>();
 
     }
 
@@ -812,7 +812,7 @@ namespace BLHX.Server.Common.Proto.p12
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"group", IsRequired = true)]
-        public Groupinfo Group { get; set; }
+        public global::BLHX.Server.Common.Proto.p12.Groupinfo Group { get; set; }
 
     }
 
@@ -896,5 +896,5 @@ namespace BLHX.Server.Common.Proto.p12
 
 }
 
-#pragma warning restore CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning restore CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 #endregion

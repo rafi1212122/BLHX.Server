@@ -5,7 +5,7 @@
 // </auto-generated>
 
 #region Designer generated code
-#pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning disable CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 namespace BLHX.Server.Common.Proto.p40
 {
 
@@ -121,6 +121,15 @@ namespace BLHX.Server.Common.Proto.p40
 
         [global::ProtoBuf.ProtoMember(15, Name = @"otherstatistics")]
         public global::System.Collections.Generic.List<Statisticsinfo> Otherstatistics { get; set; } = new global::System.Collections.Generic.List<Statisticsinfo>();
+
+        [global::ProtoBuf.ProtoMember(16, Name = @"auto_before", IsRequired = true)]
+        public uint AutoBefore { get; set; }
+
+        [global::ProtoBuf.ProtoMember(17, Name = @"auto_switch_time", IsRequired = true)]
+        public uint AutoSwitchTime { get; set; }
+
+        [global::ProtoBuf.ProtoMember(18, Name = @"auto_after", IsRequired = true)]
+        public uint AutoAfter { get; set; }
 
     }
 
@@ -392,5 +401,5 @@ namespace BLHX.Server.Common.Proto.p40
 
 }
 
-#pragma warning restore CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning restore CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 #endregion

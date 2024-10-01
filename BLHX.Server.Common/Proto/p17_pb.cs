@@ -5,7 +5,7 @@
 // </auto-generated>
 
 #region Designer generated code
-#pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning disable CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 namespace BLHX.Server.Common.Proto.p17
 {
 
@@ -507,6 +507,9 @@ namespace BLHX.Server.Common.Proto.p17
         [global::ProtoBuf.ProtoMember(2, Name = @"ship_discuss")]
         public ShipDiscussInfo ShipDiscuss { get; set; }
 
+        [global::ProtoBuf.ProtoMember(3, Name = @"need_level", IsRequired = true)]
+        public uint NeedLevel { get; set; }
+
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_17106")]
@@ -571,7 +574,7 @@ namespace BLHX.Server.Common.Proto.p17
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"list")]
-        public global::System.Collections.Generic.List<Mulkeyvalue> Lists { get; set; } = new global::System.Collections.Generic.List<Mulkeyvalue>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p11.Mulkeyvalue> Lists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p11.Mulkeyvalue>();
 
     }
 
@@ -824,5 +827,5 @@ namespace BLHX.Server.Common.Proto.p17
 
 }
 
-#pragma warning restore CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning restore CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 #endregion

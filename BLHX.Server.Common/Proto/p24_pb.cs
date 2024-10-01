@@ -5,7 +5,7 @@
 // </auto-generated>
 
 #region Designer generated code
-#pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning disable CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 namespace BLHX.Server.Common.Proto.p24
 {
 
@@ -68,7 +68,7 @@ namespace BLHX.Server.Common.Proto.p24
         public uint ActivityId { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"group_list")]
-        public global::System.Collections.Generic.List<Groupinfo> GroupLists { get; set; } = new global::System.Collections.Generic.List<Groupinfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p12.Groupinfo> GroupLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p12.Groupinfo>();
 
         [global::ProtoBuf.ProtoMember(3, Name = @"mode", IsRequired = true)]
         public uint Mode { get; set; }
@@ -232,6 +232,9 @@ namespace BLHX.Server.Common.Proto.p24
         [global::ProtoBuf.ProtoMember(3, Name = @"awards")]
         public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Kvdata> Awards { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.common.Kvdata>();
 
+        [global::ProtoBuf.ProtoMember(4, Name = @"pass_ids")]
+        public global::System.Collections.Generic.List<uint> PassIds { get; set; } = new global::System.Collections.Generic.List<uint>();
+
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"sc_24023")]
@@ -281,5 +284,5 @@ namespace BLHX.Server.Common.Proto.p24
 
 }
 
-#pragma warning restore CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning restore CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 #endregion

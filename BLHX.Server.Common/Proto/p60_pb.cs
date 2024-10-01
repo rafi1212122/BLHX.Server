@@ -5,7 +5,7 @@
 // </auto-generated>
 
 #region Designer generated code
-#pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning disable CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 namespace BLHX.Server.Common.Proto.p60
 {
 
@@ -308,7 +308,7 @@ namespace BLHX.Server.Common.Proto.p60
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, Name = @"player", IsRequired = true)]
-        public PlayerInfo Player { get; set; }
+        public global::BLHX.Server.Common.Proto.p50.PlayerInfo Player { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"content", IsRequired = true)]
         public string Content { get; set; }
@@ -393,36 +393,6 @@ namespace BLHX.Server.Common.Proto.p60
 
     }
 
-    [global::ProtoBuf.ProtoContract(Name = @"user_guild_info")]
-    public partial class UserGuildInfo : global::ProtoBuf.IExtensible
-    {
-        private global::ProtoBuf.IExtension __pbn__extensionData;
-        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
-
-        [global::ProtoBuf.ProtoMember(1, Name = @"donate_count", IsRequired = true)]
-        public uint DonateCount { get; set; }
-
-        [global::ProtoBuf.ProtoMember(2, Name = @"donate_tasks")]
-        public global::System.Collections.Generic.List<uint> DonateTasks { get; set; } = new global::System.Collections.Generic.List<uint>();
-
-        [global::ProtoBuf.ProtoMember(3, Name = @"benefit_time", IsRequired = true)]
-        public uint BenefitTime { get; set; }
-
-        [global::ProtoBuf.ProtoMember(4, Name = @"tech_id")]
-        public global::System.Collections.Generic.List<uint> TechIds { get; set; } = new global::System.Collections.Generic.List<uint>();
-
-        [global::ProtoBuf.ProtoMember(5, Name = @"weekly_task_flag", IsRequired = true)]
-        public uint WeeklyTaskFlag { get; set; }
-
-        [global::ProtoBuf.ProtoMember(6, Name = @"extra_donate", IsRequired = true)]
-        public uint ExtraDonate { get; set; }
-
-        [global::ProtoBuf.ProtoMember(7, Name = @"extra_operation", IsRequired = true)]
-        public uint ExtraOperation { get; set; }
-
-    }
-
     [global::ProtoBuf.ProtoContract(Name = @"guild_shop_info")]
     public partial class GuildShopInfo : global::ProtoBuf.IExtensible
     {
@@ -449,7 +419,7 @@ namespace BLHX.Server.Common.Proto.p60
         public GuildBaseInfo Base { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"leader", IsRequired = true)]
-        public PlayerInfo Leader { get; set; }
+        public global::BLHX.Server.Common.Proto.p50.PlayerInfo Leader { get; set; }
 
         [global::ProtoBuf.ProtoMember(3, Name = @"tech_seat", IsRequired = true)]
         public uint TechSeat { get; set; }
@@ -537,7 +507,7 @@ namespace BLHX.Server.Common.Proto.p60
         public uint Timestamp { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, Name = @"player", IsRequired = true)]
-        public PlayerInfo Player { get; set; }
+        public global::BLHX.Server.Common.Proto.p50.PlayerInfo Player { get; set; }
 
         [global::ProtoBuf.ProtoMember(3, Name = @"content", IsRequired = true)]
         public string Content { get; set; }
@@ -600,7 +570,7 @@ namespace BLHX.Server.Common.Proto.p60
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(2, Name = @"request_list")]
-        public global::System.Collections.Generic.List<MsgInfo> RequestLists { get; set; } = new global::System.Collections.Generic.List<MsgInfo>();
+        public global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p50.MsgInfo> RequestLists { get; set; } = new global::System.Collections.Generic.List<global::BLHX.Server.Common.Proto.p50.MsgInfo>();
 
     }
 
@@ -859,7 +829,37 @@ namespace BLHX.Server.Common.Proto.p60
 
     }
 
+    [global::ProtoBuf.ProtoContract(Name = @"user_guild_info")]
+    public partial class UserGuildInfo : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"donate_count", IsRequired = true)]
+        public uint DonateCount { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"donate_tasks")]
+        public global::System.Collections.Generic.List<uint> DonateTasks { get; set; } = new global::System.Collections.Generic.List<uint>();
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"benefit_time", IsRequired = true)]
+        public uint BenefitTime { get; set; }
+
+        [global::ProtoBuf.ProtoMember(4, Name = @"tech_id")]
+        public global::System.Collections.Generic.List<uint> TechIds { get; set; } = new global::System.Collections.Generic.List<uint>();
+
+        [global::ProtoBuf.ProtoMember(5, Name = @"weekly_task_flag", IsRequired = true)]
+        public uint WeeklyTaskFlag { get; set; }
+
+        [global::ProtoBuf.ProtoMember(6, Name = @"extra_donate", IsRequired = true)]
+        public uint ExtraDonate { get; set; }
+
+        [global::ProtoBuf.ProtoMember(7, Name = @"extra_operation", IsRequired = true)]
+        public uint ExtraOperation { get; set; }
+
+    }
+
 }
 
-#pragma warning restore CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
+#pragma warning restore CS0612, CS0618, CS1591, CS3021, CS8981, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
 #endregion
